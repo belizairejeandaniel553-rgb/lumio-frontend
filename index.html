@@ -1,0 +1,3838 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ff7a00">
+<meta name="description" content="Lumio - Organisez votre vie simplement">
+<title>Lumio</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+  background:#f6f7f9;
+  color:#171717;
+}
+
+button,input,textarea,select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+  border:0;
+}
+
+.hidden{
+  display:none!important;
+}
+
+#auth{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:linear-gradient(135deg,#fff7ef,#f6f7f9);
+}
+
+.auth-card{
+  width:100%;
+  max-width:430px;
+  background:white;
+  padding:30px;
+  border-radius:24px;
+  box-shadow:0 15px 50px rgba(0,0,0,.08);
+}
+
+.logo{
+  width:58px;
+  height:58px;
+  border-radius:18px;
+  background:#ff7a00;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  font-weight:800;
+  margin-bottom:18px;
+}
+
+.auth-card h1{
+  font-size:30px;
+  margin-bottom:8px;
+}
+
+.muted{
+  color:#777;
+}
+
+.form{
+  margin-top:25px;
+}
+
+.field{
+  margin-bottom:15px;
+}
+
+.field label{
+  display:block;
+  font-size:14px;
+  font-weight:700;
+  margin-bottom:7px;
+}
+
+.field input,
+.field textarea,
+.field select{
+  width:100%;
+  padding:13px 14px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  outline:none;
+  background:#fff;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus{
+  border-color:#ff7a00;
+}
+
+.primary{
+  width:100%;
+  padding:14px;
+  border-radius:12px;
+  background:#ff7a00;
+  color:white;
+  font-weight:700;
+}
+
+.secondary{
+  padding:11px 15px;
+  border-radius:11px;
+  background:#f1f1f1;
+}
+
+.auth-switch{
+  text-align:center;
+  margin-top:18px;
+  font-size:14px;
+}
+
+.link{
+  color:#ff7a00;
+  font-weight:700;
+  cursor:pointer;
+}
+
+#error{
+  margin-top:12px;
+  color:#d60000;
+  font-size:14px;
+}
+
+/* APP */
+
+#app{
+  min-height:100vh;
+}
+
+.topbar{
+  height:70px;
+  background:white;
+  border-bottom:1px solid #eee;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 22px;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:22px;
+  font-weight:800;
+}
+
+.brand-logo{
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  background:#ff7a00;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.user-area{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.premium-badge{
+  background:#fff1e5;
+  color:#e86600;
+  padding:7px 10px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:700;
+}
+
+.layout{
+  display:flex;
+  min-height:calc(100vh - 70px);
+}
+
+.sidebar{
+  width:230px;
+  background:white;
+  border-right:1px solid #eee;
+  padding:20px 12px;
+}
+
+.nav-btn{
+  width:100%;
+  padding:13px 14px;
+  background:transparent;
+  text-align:left;
+  border-radius:12px;
+  margin-bottom:5px;
+  font-weight:600;
+}
+
+.nav-btn:hover,
+.nav-btn.active{
+  background:#fff1e5;
+  color:#e86600;
+}
+
+.content{
+  flex:1;
+  padding:25px;
+  max-width:1300px;
+  margin:auto;
+  width:100%;
+}
+
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
+
+.page-title{
+  font-size:28px;
+  margin-bottom:6px;
+}
+
+.page-subtitle{
+  color:#777;
+  margin-bottom:22px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
+}
+
+.card{
+  background:white;
+  border:1px solid #eee;
+  border-radius:18px;
+  padding:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,.03);
+}
+
+.card h3{
+  margin-bottom:8px;
+}
+
+.stat{
+  font-size:30px;
+  font-weight:800;
+  margin-top:8px;
+}
+
+.section{
+  margin-top:22px;
+}
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:14px;
+}
+
+.list{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.item{
+  background:white;
+  border:1px solid #eee;
+  border-radius:14px;
+  padding:14px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.item-main{
+  flex:1;
+}
+
+.item-title{
+  font-weight:700;
+}
+
+.item-small{
+  color:#777;
+  font-size:13px;
+  margin-top:4px;
+}
+
+.item-actions{
+  display:flex;
+  gap:6px;
+}
+
+.danger{
+  background:#ffe8e8;
+  color:#b40000;
+  padding:8px 11px;
+  border-radius:9px;
+}
+
+.success{
+  background:#e9f8ee;
+  color:#18733a;
+  padding:8px 11px;
+  border-radius:9px;
+}
+
+.orange{
+  background:#fff1e5;
+  color:#e86600;
+  padding:8px 11px;
+  border-radius:9px;
+}
+
+.add-form{
+  background:white;
+  border:1px solid #eee;
+  border-radius:18px;
+  padding:18px;
+  margin-bottom:18px;
+}
+
+.add-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr auto;
+  gap:10px;
+}
+
+.add-grid input,
+.add-grid textarea,
+.add-grid select{
+  width:100%;
+  padding:12px;
+  border:1px solid #ddd;
+  border-radius:11px;
+}
+
+.add-grid button{
+  background:#ff7a00;
+  color:white;
+  padding:12px 18px;
+  border-radius:11px;
+  font-weight:700;
+}
+
+.progress{
+  height:10px;
+  background:#eee;
+  border-radius:20px;
+  overflow:hidden;
+  margin-top:12px;
+}
+
+.progress-bar{
+  height:100%;
+  background:#ff7a00;
+  width:0%;
+}
+
+.focus-box{
+  max-width:550px;
+  margin:30px auto;
+  text-align:center;
+  padding:35px;
+}
+
+.timer{
+  font-size:70px;
+  font-weight:800;
+  margin:25px 0;
+}
+
+.timer-buttons{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.premium{
+  background:linear-gradient(135deg,#ff7a00,#ff9b45);
+  color:white;
+}
+
+.premium .primary{
+  background:white;
+  color:#e86600;
+}
+
+.message{
+  padding:12px;
+  border-radius:10px;
+  margin-bottom:15px;
+  display:none;
+}
+
+.message.show{
+  display:block;
+}
+
+.message.ok{
+  background:#e9f8ee;
+  color:#18733a;
+}
+
+.message.bad{
+  background:#ffe8e8;
+  color:#b40000;
+}
+
+@media(max-width:750px){
+
+  .layout{
+    display:block;
+  }
+
+  .sidebar{
+    width:100%;
+    display:flex;
+    overflow-x:auto;
+    padding:10px;
+    border-right:0;
+    border-bottom:1px solid #eee;
+  }
+
+  .nav-btn{
+    min-width:max-content;
+    width:auto;
+    margin-right:5px;
+  }
+
+  .content{
+    padding:17px;
+  }
+
+  .add-grid{
+    grid-template-columns:1fr;
+  }
+
+  .topbar{
+    padding:0 14px;
+  }
+
+  .topbar .muted{
+    display:none;
+  }
+
+  .page-title{
+    font-size:24px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= AUTH ================= -->
+
+<section id="auth">
+
+  <div class="auth-card">
+
+    <div class="logo">L</div>
+
+    <h1 id="authTitle">Bienvenue sur Lumio</h1>
+
+    <p class="muted">
+      Organisez vos tâches, votre temps et vos objectifs.
+    </p>
+
+    <div id="error"></div>
+
+    <form class="form" id="authForm">
+
+      <div class="field">
+        <label>Email</label>
+        <input
+          id="email"
+          type="email"
+          placeholder="vous@email.com"
+          required
+        >
+      </div>
+
+      <div class="field">
+        <label>Mot de passe</label>
+        <input
+          id="password"
+          type="password"
+          placeholder="Minimum 6 caractères"
+          required
+        >
+      </div>
+
+      <button class="primary" id="authSubmit">
+        Créer mon compte
+      </button>
+
+    </form>
+
+    <div class="auth-switch">
+      <span id="switchText">
+        Vous avez déjà un compte ?
+      </span>
+
+      <span class="link" id="switchMode">
+        Se connecter
+      </span>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= APP ================= -->
+
+<section id="app" class="hidden">
+
+  <header class="topbar">
+
+    <div class="brand">
+      <div class="brand-logo">L</div>
+      Lumio
+    </div>
+
+    <div class="user-area">
+
+      <span id="premiumBadge" class="premium-badge hidden">
+        PREMIUM
+      </span>
+
+      <span id="userEmail" class="muted"></span>
+
+      <button class="secondary" onclick="logout()">
+        Déconnexion
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+
+    <nav class="sidebar">
+
+      <button class="nav-btn active" onclick="showPage('dashboard',this)">
+        🏠 Dashboard
+      </button>
+
+      <button class="nav-btn" onclick="showPage('tasks',this)">
+        ✅ Tâches
+      </button>
+
+      <button class="nav-btn" onclick="showPage('planning',this)">
+        📅 Planning
+      </button>
+
+      <button class="nav-btn" onclick="showPage('notes',this)">
+        📝 Notes
+      </button>
+
+      <button class="nav-btn" onclick="showPage('budget',this)">
+        💰 Budget
+      </button>
+
+      <button class="nav-btn" onclick="showPage('goals',this)">
+        🎯 Objectifs
+      </button>
+
+      <button class="nav-btn" onclick="showPage('focus',this)">
+        ⏱️ Focus
+      </button>
+
+      <button class="nav-btn" onclick="showPage('premium',this)">
+        ⭐ Premium
+      </button>
+
+    </nav>
+
+
+    <main class="content">
+
+      <!-- DASHBOARD -->
+
+      <section id="dashboard" class="page active">
+
+        <h1 class="page-title">Bonjour 👋</h1>
+
+        <p class="page-subtitle">
+          Voici votre espace Lumio.
+        </p>
+
+        <div class="grid">
+
+          <div class="card">
+            <h3>Tâches</h3>
+            <div class="stat" id="statTasks">0</div>
+            <p class="muted">Tâches enregistrées</p>
+          </div>
+
+          <div class="card">
+            <h3>Planning</h3>
+            <div class="stat" id="statEvents">0</div>
+            <p class="muted">Événements</p>
+          </div>
+
+          <div class="card">
+            <h3>Notes</h3>
+            <div class="stat" id="statNotes">0</div>
+            <p class="muted">Notes enregistrées</p>
+          </div>
+
+          <div class="card">
+            <h3>Objectifs</h3>
+            <div class="stat" id="statGoals">0</div>
+            <p class="muted">Objectifs</p>
+          </div>
+
+        </div>
+
+        <div class="section">
+
+          <div class="card premium">
+
+            <h2>⭐ Lumio Premium</h2>
+
+            <p style="margin:12px 0 18px;">
+              Débloquez l'expérience Premium de Lumio.
+            </p>
+
+            <button
+              class="primary"
+              onclick="showPage('premium')"
+            >
+              Découvrir Premium
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- TASKS -->
+
+      <section id="tasks" class="page">
+
+        <h1 class="page-title">Tâches</h1>
+
+        <p class="page-subtitle">
+          Organisez ce que vous devez accomplir.
+        </p>
+
+        <div class="add-form">
+
+          <div class="add-grid">
+
+            <input
+              id="taskTitle"
+              placeholder="Nouvelle tâche..."
+            >
+
+            <select id="taskPriority">
+              <option value="low">Faible</option>
+              <option value="medium" selected>Moyenne</option>
+              <option value="high">Haute</option>
+            </select>
+
+            <button onclick="addTask()">
+              Ajouter
+            </button>
+
+          </div>
+
+        </div>
+
+        <div id="tasksList" class="list"></div>
+
+      </section>
+
+
+      <!-- PLANNING -->
+
+      <section id="planning" class="page">
+
+        <h1 class="page-title">Planning</h1>
+
+        <p class="page-subtitle">
+          Planifiez vos journées.
+        </p>
+
+        <div class="add-form">
+
+          <div class="add-grid">
+
+            <input
+              id="eventTitle"
+              placeholder="Événement..."
+            >
+
+            <input
+              id="eventDate"
+              type="date"
+            >
+
+            <button onclick="addEvent()">
+              Ajouter
+            </button>
+
+          </div>
+
+        </div>
+
+        <div id="eventsList" class="list"></div>
+
+      </section>
+
+
+      <!-- NOTES -->
+
+      <section id="notes" class="page">
+
+        <h1 class="page-title">Notes</h1>
+
+        <p class="page-subtitle">
+          Gardez vos idées importantes.
+        </p>
+
+        <div class="add-form">
+
+          <div class="field">
+            <input
+              id="noteTitle"
+              placeholder="Titre de la note"
+            >
+          </div>
+
+          <div class="field">
+            <textarea
+              id="noteContent"
+              rows="4"
+              placeholder="Écrivez votre note..."
+            ></textarea>
+          </div>
+
+          <button
+            class="primary"
+            onclick="addNote()"
+          >
+            Enregistrer
+          </button>
+
+        </div>
+
+        <div id="notesList" class="list"></div>
+
+      </section>
+
+
+      <!-- BUDGET -->
+
+      <section id="budget" class="page">
+
+        <h1 class="page-title">Budget</h1>
+
+        <p class="page-subtitle">
+          Suivez vos revenus et dépenses.
+        </p>
+
+        <div class="add-form">
+
+          <div class="add-grid">
+
+            <input
+              id="budgetDescription"
+              placeholder="Description"
+            >
+
+            <input
+              id="budgetAmount"
+              type="number"
+              step="0.01"
+              placeholder="Montant"
+            >
+
+            <select id="budgetType">
+              <option value="income">Revenu</option>
+              <option value="expense">Dépense</option>
+            </select>
+
+          </div>
+
+          <button
+            class="primary"
+            style="margin-top:10px;"
+            onclick="addBudget()"
+          >
+            Ajouter au budget
+          </button>
+
+        </div>
+
+        <div id="budgetList" class="list"></div>
+
+      </section>
+
+
+      <!-- GOALS -->
+
+      <section id="goals" class="page">
+
+        <h1 class="page-title">Objectifs</h1>
+
+        <p class="page-subtitle">
+          Transformez vos projets en objectifs.
+        </p>
+
+        <div class="add-form">
+
+          <div class="add-grid">
+
+            <input
+              id="goalTitle"
+              placeholder="Mon objectif..."
+            >
+
+            <input
+              id="goalTarget"
+              type="number"
+              min="1"
+              placeholder="Cible"
+            >
+
+            <button onclick="addGoal()">
+              Ajouter
+            </button>
+
+          </div>
+
+        </div>
+
+        <div id="goalsList" class="list"></div>
+
+      </section>
+
+
+      <!-- FOCUS -->
+
+      <section id="focus" class="page">
+
+        <h1 class="page-title">Focus</h1>
+
+        <p class="page-subtitle">
+          Concentrez-vous sur une seule chose.
+        </p>
+
+        <div class="card focus-box">
+
+          <h2>Session Focus</h2>
+
+          <div class="timer" id="timer">
+            25:00
+          </div>
+
+          <div class="timer-buttons">
+
+            <button
+              class="primary"
+              style="width:auto;"
+              onclick="startTimer()"
+            >
+              Démarrer
+            </button>
+
+            <button
+              class="secondary"
+              onclick="pauseTimer()"
+            >
+              Pause
+            </button>
+
+            <button
+              class="danger"
+              onclick="resetTimer()"
+            >
+              Réinitialiser
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- PREMIUM -->
+
+      <section id="premium" class="page">
+
+        <h1 class="page-title">Lumio Premium ⭐</h1>
+
+        <p class="page-subtitle">
+          Une expérience plus complète pour Lumio.
+        </p>
+
+        <div class="card premium">
+
+          <h2>Débloquez Premium</h2>
+
+          <p style="margin:12px 0;">
+            Profitez des fonctionnalités Premium de Lumio.
+          </p>
+
+          <div class="field">
+
+            <label style="color:white;">
+              Montant
+            </label>
+
+            <input
+              id="premiumAmount"
+              type="number"
+              min="1"
+              value="250"
+            >
+
+          </div>
+
+          <div class="field">
+
+            <label style="color:white;">
+              Méthode de paiement
+            </label>
+
+            <select id="premiumMethod">
+
+              <option value="moncash">
+                MonCash
+              </option>
+
+              <option value="natcash">
+                NatCash
+              </option>
+
+            </select>
+
+          </div>
+
+          <button
+            class="primary"
+            onclick="createPremiumPayment()"
+          >
+            Continuer vers le paiement
+          </button>
+
+          <div
+            id="paymentResult"
+            style="margin-top:15px;"
+          ></div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+</section>
+
+
+<script>
+
+/* =====================================================
+   CONFIGURATION
+===================================================== */
+
+const API_URL =
+  "https://lumio-backend-1-i6a3.onrender.com";
+
+let token =
+  localStorage.getItem("lumio_token") || "";
+
+let currentUser = null;
+
+
+/* =====================================================
+   API
+===================================================== */
+
+async function api(path, options = {}) {
+
+  const headers = {
+    "Content-Type":"application/json",
+    ...(options.headers || {})
+  };
+
+  if(token){
+    headers.Authorization =
+      "Bearer " + token;
+  }
+
+  const response =
+    await fetch(API_URL + path,{
+      ...options,
+      headers
+    });
+
+  let data;
+
+  try{
+    data = await response.json();
+  }catch{
+    data = {
+      success:false,
+      error:"Réponse serveur invalide."
+    };
+  }
+
+  if(!response.ok){
+    throw new Error(
+      data.error || "Erreur serveur."
+    );
+  }
+
+  return data;
+}
+
+
+/* =====================================================
+   AUTH
+===================================================== */
+
+let registerMode = true;
+
+const authForm =
+  document.getElementById("authForm");
+
+const authTitle =
+  document.getElementById("authTitle");
+
+const authSubmit =
+  document.getElementById("authSubmit");
+
+const switchMode =
+  document.getElementById("switchMode");
+
+const switchText =
+  document.getElementById("switchText");
+
+const errorBox =
+  document.getElementById("error");
+
+
+switchMode.onclick = () => {
+
+  registerMode = !registerMode;
+
+  errorBox.textContent = "";
+
+  if(registerMode){
+
+    authTitle.textContent =
+      "Bienvenue sur Lumio";
+
+    authSubmit.textContent =
+      "Créer mon compte";
+
+    switchText.textContent =
+      "Vous avez déjà un compte ?";
+
+    switchMode.textContent =
+      "Se connecter";
+
+  }else{
+
+    authTitle.textContent =
+      "Connexion à Lumio";
+
+    authSubmit.textContent =
+      "Se connecter";
+
+    switchText.textContent =
+      "Vous n'avez pas encore de compte ?";
+
+    switchMode.textContent =
+      "Créer un compte";
+  }
+};
+
+
+authForm.onsubmit =
+  async(event) => {
+
+    event.preventDefault();
+
+    errorBox.textContent =
+      "Connexion...";
+
+    const email =
+      document.getElementById("email").value;
+
+    const password =
+      document.getElementById("password").value;
+
+    try{
+
+      const endpoint =
+        registerMode
+          ? "/api/auth/register"
+          : "/api/auth/login";
+
+      const data =
+        await api(endpoint,{
+          method:"POST",
+          body:JSON.stringify({
+            email,
+            password
+          })
+        });
+
+      token = data.token;
+
+      localStorage.setItem(
+        "lumio_token",
+        token
+      );
+
+      currentUser =
+        data.user;
+
+      openApp();
+
+    }catch(error){
+
+      errorBox.textContent =
+        error.message;
+    }
+  };
+
+
+/* =====================================================
+   APP
+===================================================== */
+
+function openApp(){
+
+  document
+    .getElementById("auth")
+    .classList.add("hidden");
+
+  document
+    .getElementById("app")
+    .classList.remove("hidden");
+
+  document
+    .getElementById("userEmail")
+    .textContent =
+      currentUser?.email || "";
+
+  updatePremiumBadge();
+
+  loadAll();
+}
+
+
+function logout(){
+
+  token = "";
+
+  currentUser = null;
+
+  localStorage.removeItem(
+    "lumio_token"
+  );
+
+  location.reload();
+}
+
+
+function updatePremiumBadge(){
+
+  const badge =
+    document.getElementById(
+      "premiumBadge"
+    );
+
+  if(currentUser?.premium){<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ff7a00">
+<meta name="description" content="Lumio - Organisez votre vie simplement">
+<title>Lumio</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+  background:#f6f7f9;
+  color:#171717;
+}
+
+button,input,textarea,select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+  border:0;
+}
+
+.hidden{
+  display:none!important;
+}
+
+#auth{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:linear-gradient(135deg,#fff7ef,#f6f7f9);
+}
+
+.auth-card{
+  width:100%;
+  max-width:430px;
+  background:white;
+  padding:30px;
+  border-radius:24px;
+  box-shadow:0 15px 50px rgba(0,0,0,.08);
+}
+
+.logo{
+  width:58px;
+  height:58px;
+  border-radius:18px;
+  background:#ff7a00;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  font-weight:800;
+  margin-bottom:18px;
+}
+
+.auth-card h1{
+  font-size:30px;
+  margin-bottom:8px;
+}
+
+.muted{
+  color:#777;
+}
+
+.form{
+  margin-top:25px;
+}
+
+.field{
+  margin-bottom:15px;
+}
+
+.field label{
+  display:block;
+  font-size:14px;
+  font-weight:700;
+  margin-bottom:7px;
+}
+
+.field input,
+.field textarea,
+.field select{
+  width:100%;
+  padding:13px 14px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  outline:none;
+  background:#fff;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus{
+  border-color:#ff7a00;
+}
+
+.primary{
+  width:100%;
+  padding:14px;
+  border-radius:12px;
+  background:#ff7a00;
+  color:white;
+  font-weight:700;
+}
+
+.secondary{
+  padding:11px 15px;
+  border-radius:11px;
+  background:#f1f1f1;
+}
+
+.auth-switch{
+  text-align:center;
+  margin-top:18px;
+  font-size:14px;
+}
+
+.link{
+  color:#ff7a00;
+  font-weight:700;
+  cursor:pointer;
+}
+
+#error{
+  margin-top:12px;
+  color:#d60000;
+  font-size:14px;
+}
+
+/* APP */
+
+#app{
+  min-height:100vh;
+}
+
+.topbar{
+  height:70px;
+  background:white;
+  border-bottom:1px solid #eee;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 22px;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:22px;
+  font-weight:800;
+}
+
+.brand-logo{
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  background:#ff7a00;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.user-area{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.premium-badge{
+  background:#fff1e5;
+  color:#e86600;
+  padding:7px 10px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:700;
+}
+
+.layout{
+  display:flex;
+  min-height:calc(100vh - 70px);
+}
+
+.sidebar{
+  width:230px;
+  background:white;
+  border-right:1px solid #eee;
+  padding:20px 12px;
+}
+
+.nav-btn{
+  width:100%;
+  padding:13px 14px;
+  background:transparent;
+  text-align:left;
+  border-radius:12px;
+  margin-bottom:5px;
+  font-weight:600;
+}
+
+.nav-btn:hover,
+.nav-btn.active{
+  background:#fff1e5;
+  color:#e86600;
+}
+
+.content{
+  flex:1;
+  padding:25px;
+  max-width:1300px;
+  margin:auto;
+  width:100%;
+}
+
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
+
+.page-title{
+  font-size:28px;
+  margin-bottom:6px;
+}
+
+.page-subtitle{
+  color:#777;
+  margin-bottom:22px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
+}
+
+.card{
+  background:white;
+  border:1px solid #eee;
+  border-radius:18px;
+  padding:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,.03);
+}
+
+.card h3{
+  margin-bottom:8px;
+}
+
+.stat{
+  font-size:30px;
+  font-weight:800;
+  margin-top:8px;
+}
+
+.section{
+  margin-top:22px;
+}
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:14px;
+}
+
+.list{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.item{
+  background:white;
+  border:1px solid #eee;
+  border-radius:14px;
+  padding:14px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.item-main{
+  flex:1;
+}
+
+.item-title{
+  font-weight:700;
+}
+
+.item-small{
+  color:#777;
+  font-size:13px;
+  margin-top:4px;
+}
+
+.item-actions{
+  display:flex;
+  gap:6px;
+}
+
+.danger{
+  background:#ffe8e8;
+  color:#b40000;
+  padding:8px 11px;
+  border-radius:9px;
+}
+
+.success{
+  background:#e9f8ee;
+  color:#18733a;
+  padding:8px 11px;
+  border-radius:9px;
+}
+
+.orange{
+  background:#fff1e5;
+  color:#e86600;
+  padding:8px 11px;
+  border-radius:9px;
+}
+
+.add-form{
+  background:white;
+  border:1px solid #eee;
+  border-radius:18px;
+  padding:18px;
+  margin-bottom:18px;
+}
+
+.add-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr auto;
+  gap:10px;
+}
+
+.add-grid input,
+.add-grid textarea,
+.add-grid select{
+  width:100%;
+  padding:12px;
+  border:1px solid #ddd;
+  border-radius:11px;
+}
+
+.add-grid button{
+  background:#ff7a00;
+  color:white;
+  padding:12px 18px;
+  border-radius:11px;
+  font-weight:700;
+}
+
+.progress{
+  height:10px;
+  background:#eee;
+  border-radius:20px;
+  overflow:hidden;
+  margin-top:12px;
+}
+
+.progress-bar{
+  height:100%;
+  background:#ff7a00;
+  width:0%;
+}
+
+.focus-box{
+  max-width:550px;
+  margin:30px auto;
+  text-align:center;
+  padding:35px;
+}
+
+.timer{
+  font-size:70px;
+  font-weight:800;
+  margin:25px 0;
+}
+
+.timer-buttons{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.premium{
+  background:linear-gradient(135deg,#ff7a00,#ff9b45);
+  color:white;
+}
+
+.premium .primary{
+  background:white;
+  color:#e86600;
+}
+
+.message{
+  padding:12px;
+  border-radius:10px;
+  margin-bottom:15px;
+  display:none;
+}
+
+.message.show{
+  display:block;
+}
+
+.message.ok{
+  background:#e9f8ee;
+  color:#18733a;
+}
+
+.message.bad{
+  background:#ffe8e8;
+  color:#b40000;
+}
+
+@media(max-width:750px){
+
+  .layout{
+    display:block;
+  }
+
+  .sidebar{
+    width:100%;
+    display:flex;
+    overflow-x:auto;
+    padding:10px;
+    border-right:0;
+    border-bottom:1px solid #eee;
+  }
+
+  .nav-btn{
+    min-width:max-content;
+    width:auto;
+    margin-right:5px;
+  }
+
+  .content{
+    padding:17px;
+  }
+
+  .add-grid{
+    grid-template-columns:1fr;
+  }
+
+  .topbar{
+    padding:0 14px;
+  }
+
+  .topbar .muted{
+    display:none;
+  }
+
+  .page-title{
+    font-size:24px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= AUTH ================= -->
+
+<section id="auth">
+
+  <div class="auth-card">
+
+    <div class="logo">L</div>
+
+    <h1 id="authTitle">Bienvenue sur Lumio</h1>
+
+    <p class="muted">
+      Organisez vos tâches, votre temps et vos objectifs.
+    </p>
+
+    <div id="error"></div>
+
+    <form class="form" id="authForm">
+
+      <div class="field">
+        <label>Email</label>
+        <input
+          id="email"
+          type="email"
+          placeholder="vous@email.com"
+          required
+        >
+      </div>
+
+      <div class="field">
+        <label>Mot de passe</label>
+        <input
+          id="password"
+          type="password"
+          placeholder="Minimum 6 caractères"
+          required
+        >
+      </div>
+
+      <button class="primary" id="authSubmit">
+        Créer mon compte
+      </button>
+
+    </form>
+
+    <div class="auth-switch">
+      <span id="switchText">
+        Vous avez déjà un compte ?
+      </span>
+
+      <span class="link" id="switchMode">
+        Se connecter
+      </span>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= APP ================= -->
+
+<section id="app" class="hidden">
+
+  <header class="topbar">
+
+    <div class="brand">
+      <div class="brand-logo">L</div>
+      Lumio
+    </div>
+
+    <div class="user-area">
+
+      <span id="premiumBadge" class="premium-badge hidden">
+        PREMIUM
+      </span>
+
+      <span id="userEmail" class="muted"></span>
+
+      <button class="secondary" onclick="logout()">
+        Déconnexion
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+
+    <nav class="sidebar">
+
+      <button class="nav-btn active" onclick="showPage('dashboard',this)">
+        🏠 Dashboard
+      </button>
+
+      <button class="nav-btn" onclick="showPage('tasks',this)">
+        ✅ Tâches
+      </button>
+
+      <button class="nav-btn" onclick="showPage('planning',this)">
+        📅 Planning
+      </button>
+
+      <button class="nav-btn" onclick="showPage('notes',this)">
+        📝 Notes
+      </button>
+
+      <button class="nav-btn" onclick="showPage('budget',this)">
+        💰 Budget
+      </button>
+
+      <button class="nav-btn" onclick="showPage('goals',this)">
+        🎯 Objectifs
+      </button>
+
+      <button class="nav-btn" onclick="showPage('focus',this)">
+        ⏱️ Focus
+      </button>
+
+      <button class="nav-btn" onclick="showPage('premium',this)">
+        ⭐ Premium
+      </button>
+
+    </nav>
+
+
+    <main class="content">
+
+      <!-- DASHBOARD -->
+
+      <section id="dashboard" class="page active">
+
+        <h1 class="page-title">Bonjour 👋</h1>
+
+        <p class="page-subtitle">
+          Voici votre espace Lumio.
+        </p>
+
+        <div class="grid">
+
+          <div class="card">
+            <h3>Tâches</h3>
+            <div class="stat" id="statTasks">0</div>
+            <p class="muted">Tâches enregistrées</p>
+          </div>
+
+          <div class="card">
+            <h3>Planning</h3>
+            <div class="stat" id="statEvents">0</div>
+            <p class="muted">Événements</p>
+          </div>
+
+          <div class="card">
+            <h3>Notes</h3>
+            <div class="stat" id="statNotes">0</div>
+            <p class="muted">Notes enregistrées</p>
+          </div>
+
+          <div class="card">
+            <h3>Objectifs</h3>
+            <div class="stat" id="statGoals">0</div>
+            <p class="muted">Objectifs</p>
+          </div>
+
+        </div>
+
+        <div class="section">
+
+          <div class="card premium">
+
+            <h2>⭐ Lumio Premium</h2>
+
+            <p style="margin:12px 0 18px;">
+              Débloquez l'expérience Premium de Lumio.
+            </p>
+
+            <button
+              class="primary"
+              onclick="showPage('premium')"
+            >
+              Découvrir Premium
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- TASKS -->
+
+      <section id="tasks" class="page">
+
+        <h1 class="page-title">Tâches</h1>
+
+        <p class="page-subtitle">
+          Organisez ce que vous devez accomplir.
+        </p>
+
+        <div class="add-form">
+
+          <div class="add-grid">
+
+            <input
+              id="taskTitle"
+              placeholder="Nouvelle tâche..."
+            >
+
+            <select id="taskPriority">
+              <option value="low">Faible</option>
+              <option value="medium" selected>Moyenne</option>
+              <option value="high">Haute</option>
+            </select>
+
+            <button onclick="addTask()">
+              Ajouter
+            </button>
+
+          </div>
+
+        </div>
+
+        <div id="tasksList" class="list"></div>
+
+      </section>
+
+
+      <!-- PLANNING -->
+
+      <section id="planning" class="page">
+
+        <h1 class="page-title">Planning</h1>
+
+        <p class="page-subtitle">
+          Planifiez vos journées.
+        </p>
+
+        <div class="add-form">
+
+          <div class="add-grid">
+
+            <input
+              id="eventTitle"
+              placeholder="Événement..."
+            >
+
+            <input
+              id="eventDate"
+              type="date"
+            >
+
+            <button onclick="addEvent()">
+              Ajouter
+            </button>
+
+          </div>
+
+        </div>
+
+        <div id="eventsList" class="list"></div>
+
+      </section>
+
+
+      <!-- NOTES -->
+
+      <section id="notes" class="page">
+
+        <h1 class="page-title">Notes</h1>
+
+        <p class="page-subtitle">
+          Gardez vos idées importantes.
+        </p>
+
+        <div class="add-form">
+
+          <div class="field">
+            <input
+              id="noteTitle"
+              placeholder="Titre de la note"
+            >
+          </div>
+
+          <div class="field">
+            <textarea
+              id="noteContent"
+              rows="4"
+              placeholder="Écrivez votre note..."
+            ></textarea>
+          </div>
+
+          <button
+            class="primary"
+            onclick="addNote()"
+          >
+            Enregistrer
+          </button>
+
+        </div>
+
+        <div id="notesList" class="list"></div>
+
+      </section>
+
+
+      <!-- BUDGET -->
+
+      <section id="budget" class="page">
+
+        <h1 class="page-title">Budget</h1>
+
+        <p class="page-subtitle">
+          Suivez vos revenus et dépenses.
+        </p>
+
+        <div class="add-form">
+
+          <div class="add-grid">
+
+            <input
+              id="budgetDescription"
+              placeholder="Description"
+            >
+
+            <input
+              id="budgetAmount"
+              type="number"
+              step="0.01"
+              placeholder="Montant"
+            >
+
+            <select id="budgetType">
+              <option value="income">Revenu</option>
+              <option value="expense">Dépense</option>
+            </select>
+
+          </div>
+
+          <button
+            class="primary"
+            style="margin-top:10px;"
+            onclick="addBudget()"
+          >
+            Ajouter au budget
+          </button>
+
+        </div>
+
+        <div id="budgetList" class="list"></div>
+
+      </section>
+
+
+      <!-- GOALS -->
+
+      <section id="goals" class="page">
+
+        <h1 class="page-title">Objectifs</h1>
+
+        <p class="page-subtitle">
+          Transformez vos projets en objectifs.
+        </p>
+
+        <div class="add-form">
+
+          <div class="add-grid">
+
+            <input
+              id="goalTitle"
+              placeholder="Mon objectif..."
+            >
+
+            <input
+              id="goalTarget"
+              type="number"
+              min="1"
+              placeholder="Cible"
+            >
+
+            <button onclick="addGoal()">
+              Ajouter
+            </button>
+
+          </div>
+
+        </div>
+
+        <div id="goalsList" class="list"></div>
+
+      </section>
+
+
+      <!-- FOCUS -->
+
+      <section id="focus" class="page">
+
+        <h1 class="page-title">Focus</h1>
+
+        <p class="page-subtitle">
+          Concentrez-vous sur une seule chose.
+        </p>
+
+        <div class="card focus-box">
+
+          <h2>Session Focus</h2>
+
+          <div class="timer" id="timer">
+            25:00
+          </div>
+
+          <div class="timer-buttons">
+
+            <button
+              class="primary"
+              style="width:auto;"
+              onclick="startTimer()"
+            >
+              Démarrer
+            </button>
+
+            <button
+              class="secondary"
+              onclick="pauseTimer()"
+            >
+              Pause
+            </button>
+
+            <button
+              class="danger"
+              onclick="resetTimer()"
+            >
+              Réinitialiser
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- PREMIUM -->
+
+      <section id="premium" class="page">
+
+        <h1 class="page-title">Lumio Premium ⭐</h1>
+
+        <p class="page-subtitle">
+          Une expérience plus complète pour Lumio.
+        </p>
+
+        <div class="card premium">
+
+          <h2>Débloquez Premium</h2>
+
+          <p style="margin:12px 0;">
+            Profitez des fonctionnalités Premium de Lumio.
+          </p>
+
+          <div class="field">
+
+            <label style="color:white;">
+              Montant
+            </label>
+
+            <input
+              id="premiumAmount"
+              type="number"
+              min="1"
+              value="250"
+            >
+
+          </div>
+
+          <div class="field">
+
+            <label style="color:white;">
+              Méthode de paiement
+            </label>
+
+            <select id="premiumMethod">
+
+              <option value="moncash">
+                MonCash
+              </option>
+
+              <option value="natcash">
+                NatCash
+              </option>
+
+            </select>
+
+          </div>
+
+          <button
+            class="primary"
+            onclick="createPremiumPayment()"
+          >
+            Continuer vers le paiement
+          </button>
+
+          <div
+            id="paymentResult"
+            style="margin-top:15px;"
+          ></div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+</section>
+
+
+<script>
+
+/* =====================================================
+   CONFIGURATION
+===================================================== */
+
+const API_URL =
+  "https://lumio-backend-1-i6a3.onrender.com";
+
+let token =
+  localStorage.getItem("lumio_token") || "";
+
+let currentUser = null;
+
+
+/* =====================================================
+   API
+===================================================== */
+
+async function api(path, options = {}) {
+
+  const headers = {
+    "Content-Type":"application/json",
+    ...(options.headers || {})
+  };
+
+  if(token){
+    headers.Authorization =
+      "Bearer " + token;
+  }
+
+  const response =
+    await fetch(API_URL + path,{
+      ...options,
+      headers
+    });
+
+  let data;
+
+  try{
+    data = await response.json();
+  }catch{
+    data = {
+      success:false,
+      error:"Réponse serveur invalide."
+    };
+  }
+
+  if(!response.ok){
+    throw new Error(
+      data.error || "Erreur serveur."
+    );
+  }
+
+  return data;
+}
+
+
+/* =====================================================
+   AUTH
+===================================================== */
+
+let registerMode = true;
+
+const authForm =
+  document.getElementById("authForm");
+
+const authTitle =
+  document.getElementById("authTitle");
+
+const authSubmit =
+  document.getElementById("authSubmit");
+
+const switchMode =
+  document.getElementById("switchMode");
+
+const switchText =
+  document.getElementById("switchText");
+
+const errorBox =
+  document.getElementById("error");
+
+
+switchMode.onclick = () => {
+
+  registerMode = !registerMode;
+
+  errorBox.textContent = "";
+
+  if(registerMode){
+
+    authTitle.textContent =
+      "Bienvenue sur Lumio";
+
+    authSubmit.textContent =
+      "Créer mon compte";
+
+    switchText.textContent =
+      "Vous avez déjà un compte ?";
+
+    switchMode.textContent =
+      "Se connecter";
+
+  }else{
+
+    authTitle.textContent =
+      "Connexion à Lumio";
+
+    authSubmit.textContent =
+      "Se connecter";
+
+    switchText.textContent =
+      "Vous n'avez pas encore de compte ?";
+
+    switchMode.textContent =
+      "Créer un compte";
+  }
+};
+
+
+authForm.onsubmit =
+  async(event) => {
+
+    event.preventDefault();
+
+    errorBox.textContent =
+      "Connexion...";
+
+    const email =
+      document.getElementById("email").value;
+
+    const password =
+      document.getElementById("password").value;
+
+    try{
+
+      const endpoint =
+        registerMode
+          ? "/api/auth/register"
+          : "/api/auth/login";
+
+      const data =
+        await api(endpoint,{
+          method:"POST",
+          body:JSON.stringify({
+            email,
+            password
+          })
+        });
+
+      token = data.token;
+
+      localStorage.setItem(
+        "lumio_token",
+        token
+      );
+
+      currentUser =
+        data.user;
+
+      openApp();
+
+    }catch(error){
+
+      errorBox.textContent =
+        error.message;
+    }
+  };
+
+
+/* =====================================================
+   APP
+===================================================== */
+
+function openApp(){
+
+  document
+    .getElementById("auth")
+    .classList.add("hidden");
+
+  document
+    .getElementById("app")
+    .classList.remove("hidden");
+
+  document
+    .getElementById("userEmail")
+    .textContent =
+      currentUser?.email || "";
+
+  updatePremiumBadge();
+
+  loadAll();
+}
+
+
+function logout(){
+
+  token = "";
+
+  currentUser = null;
+
+  localStorage.removeItem(
+    "lumio_token"
+  );
+
+  location.reload();
+}
+
+
+function updatePremiumBadge(){
+
+  const badge =
+    document.getElementById(
+      "premiumBadge"
+    );
+
+  if(currentUser?.premium){.<script>
+
+/* =====================================================
+   SUITE DU SYSTÈME PREMIUM
+===================================================== */
+
+    badge.classList.remove("hidden");
+
+  }else{
+
+    badge.classList.add("hidden");
+
+  }
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+function showPage(pageId, button){
+
+  document
+    .querySelectorAll(".page")
+    .forEach(page => {
+      page.classList.remove("active");
+    });
+
+  const page =
+    document.getElementById(pageId);
+
+  if(page){
+    page.classList.add("active");
+  }
+
+  document
+    .querySelectorAll(".nav-btn")
+    .forEach(btn => {
+      btn.classList.remove("active");
+    });
+
+  if(button){
+    button.classList.add("active");
+  }
+
+  if(pageId === "dashboard"){
+    loadDashboard();
+  }
+
+  if(pageId === "tasks"){
+    loadTasks();
+  }
+
+  if(pageId === "planning"){
+    loadEvents();
+  }
+
+  if(pageId === "notes"){
+    loadNotes();
+  }
+
+  if(pageId === "budget"){
+    loadBudget();
+  }
+
+  if(pageId === "goals"){
+    loadGoals();
+  }
+
+  if(pageId === "premium"){
+    checkPremiumStatus();
+  }
+}
+
+
+/* =====================================================
+   CHARGEMENT GLOBAL
+===================================================== */
+
+async function loadAll(){
+
+  try{
+
+    await loadDashboard();
+
+    await loadTasks();
+
+    await loadEvents();
+
+    await loadNotes();
+
+    await loadBudget();
+
+    await loadGoals();
+
+    await checkPremiumStatus();
+
+  }catch(error){
+
+    console.error(
+      "Erreur chargement Lumio:",
+      error
+    );
+
+  }
+}
+
+
+/* =====================================================
+   DASHBOARD
+===================================================== */
+
+async function loadDashboard(){
+
+  try{
+
+    const [
+      tasks,
+      events,
+      notes,
+      goals
+    ] = await Promise.all([
+
+      api("/api/tasks"),
+      api("/api/events"),
+      api("/api/notes"),
+      api("/api/goals")
+
+    ]);
+
+    document.getElementById(
+      "statTasks"
+    ).textContent =
+      tasks.tasks?.length || 0;
+
+    document.getElementById(
+      "statEvents"
+    ).textContent =
+      events.events?.length || 0;
+
+    document.getElementById(
+      "statNotes"
+    ).textContent =
+      notes.notes?.length || 0;
+
+    document.getElementById(
+      "statGoals"
+    ).textContent =
+      goals.goals?.length || 0;
+
+  }catch(error){
+
+    console.error(error);
+
+  }
+}
+
+
+/* =====================================================
+   TÂCHES
+===================================================== */
+
+async function loadTasks(){
+
+  try{
+
+    const data =
+      await api("/api/tasks");
+
+    const list =
+      document.getElementById(
+        "tasksList"
+      );
+
+    list.innerHTML = "";
+
+    if(!data.tasks?.length){
+
+      list.innerHTML = `
+        <div class="card">
+          <p class="muted">
+            Aucune tâche pour le moment.
+          </p>
+        </div>
+      `;
+
+      return;
+    }
+
+    data.tasks.forEach(task => {
+
+      const item =
+        document.createElement("div");
+
+      item.className = "item";
+
+      item.innerHTML = `
+
+        <div class="item-main">
+
+          <div class="item-title"
+            style="${
+              task.completed
+                ? "text-decoration:line-through;color:#888;"
+                : ""
+            }">
+
+            ${escapeHtml(task.title)}
+
+          </div>
+
+          <div class="item-small">
+            Priorité :
+            ${escapeHtml(task.priority)}
+          </div>
+
+        </div>
+
+        <div class="item-actions">
+
+          <button
+            class="${
+              task.completed
+                ? "orange"
+                : "success"
+            }"
+            onclick="toggleTask(
+              ${task.id},
+              ${!task.completed}
+            )"
+          >
+            ${
+              task.completed
+                ? "Annuler"
+                : "Terminer"
+            }
+          </button>
+
+          <button
+            class="danger"
+            onclick="deleteTask(${task.id})"
+          >
+            Supprimer
+          </button>
+
+        </div>
+
+      `;
+
+      list.appendChild(item);
+
+    });
+
+  }catch(error){
+
+    console.error(error);
+
+  }
+}
+
+
+async function addTask(){
+
+  const title =
+    document.getElementById(
+      "taskTitle"
+    ).value.trim();
+
+  const priority =
+    document.getElementById(
+      "taskPriority"
+    ).value;
+
+  if(!title){
+
+    alert("Écris le titre de la tâche.");
+
+    return;
+  }
+
+  try{
+
+    await api("/api/tasks",{
+
+      method:"POST",
+
+      body:JSON.stringify({
+        title,
+        priority
+      })
+
+    });
+
+    document.getElementById(
+      "taskTitle"
+    ).value = "";
+
+    await loadTasks();
+
+    await loadDashboard();
+
+  }catch(error){
+
+    alert(error.message);
+
+  }
+}
+
+
+async function toggleTask(id, completed){
+
+  try{
+
+    await api(
+      `/api/tasks/${id}`,
+      {
+        method:"PATCH",
+        body:JSON.stringify({
+          completed
+        })
+      }
+    );
+
+    await loadTasks();
+
+    await loadDashboard();
+
+  }catch(error){
+
+    alert(error.message);
+
+  }
+}
+
+
+async function deleteTask(id){
+
+  if(!confirm(
+    "Supprimer cette tâche ?"
+  )){
+    return;
+  }
+
+  try{
+
+    await api(
+      `/api/tasks/${id}`,
+      {
+        method:"DELETE"
+      }
+    );
+
+    await loadTasks();
+
+    await loadDashboard();
+
+  }catch(error){
+
+    alert(error.message);
+
+  }
+}
+
+
+/* =====================================================
+   PLANNING
+===================================================== */
+
+async function loadEvents(){
+
+  try{
+
+    const data =
+      await api("/api/events");
+
+    const list =
+      document.getElementById(
+        "eventsList"
+      );
+
+    list.innerHTML = "";
+
+    if(!data.events?.length){
+
+      list.innerHTML = `
+        <div class="card">
+          <p class="muted">
+            Aucun événement.
+          </p>
+        </div>
+      `;
+
+      return;
+    }
+
+    data.events.forEach(event => {
+
+      const item =
+        document.createElement("div");
+
+      item.className = "item";
+
+      item.innerHTML = `
+
+        <div class="item-main">
+
+          <div class="item-title">
+            ${escapeHtml(event.title)}
+          </div>
+
+          <div class="item-small">
+            ${
+              event.event_date
+                ? event.event_date
+                : "Date non définie"
+            }
+          </div>
+
+        </div>
+
+        <div class="item-actions">
+
+          <button
+            class="danger"
+            onclick="deleteEvent(${event.id})"
+          >
+            Supprimer
+          </button>
+
+        </div>
+
+      `;
+
+      list.appendChild(item);
+
+    });
+
+  }catch(error){
+
+    console.error(error);
+
+  }
+}
+
+
+async function addEvent(){
+
+  const title =
+    document.getElementById(
+      "eventTitle"
+    ).value.trim();
+
+  const eventDate =
+    document.getElementById(
+      "eventDate"
+    ).value;
+
+  if(!title){
+
+    alert("Écris le nom de l'événement.");
+
+    return;
+  }
+
+  try{
+
+    await api("/api/events",{
+
+      method:"POST",
+
+      body:JSON.stringify({
+
+        title,
+        eventDate
+
+      })
+
+    });
+
+    document.getElementById(
+      "eventTitle"
+    ).value = "";
+
+    document.getElementById(
+      "eventDate"
+    ).value = "";
+
+    await loadEvents();
+
+    await loadDashboard();
+
+  }catch(error){
+
+    alert(error.message);
+
+  }
+}
+
+
+async function deleteEvent(id){
+
+  if(!confirm(
+    "Supprimer cet événement ?"
+  )){
+    return;
+  }
+
+  try{
+
+    await api(
+      `/api/events/${id}`,
+      {
+        method:"DELETE"
+      }
+    );
+
+    await loadEvents();
+
+    await loadDashboard();
+
+  }catch(error){
+
+    alert(error.message);
+
+  }
+}
+
+
+/* =====================================================
+   NOTES
+===================================================== */
+
+async function loadNotes(){
+
+  try{
+
+    const data =
+      await api("/api/notes");
+
+    const list =
+      document.getElementById(
+        "notesList"
+      );
+
+    list.innerHTML = "";
+
+    if(!data.notes?.length){
+
+      list.innerHTML = `
+        <div class="card">
+          <p class="muted">
+            Aucune note.
+          </p>
+        </div>
+      `;
+
+      return;
+    }
+
+    data.notes.forEach(note => {
+
+      const item =
+        document.createElement("div");
+
+      item.className = "item";
+
+      item.innerHTML = `
+
+        <div class="item-main">
+
+          <div class="item-title">
+            ${escapeHtml(note.title)}
+          </div>
+
+          <div class="item-small">
+            ${escapeHtml(note.content)}
+          </div>
+
+        </div>
+
+        <div class="item-actions">
+
+          <button
+            class="danger"
+            onclick="deleteNote(${note.id})"
+          >
+            Supprimer
+          </button>
+
+        </div>
+
+      `;
+
+      list.appendChild(item);
+
+    });
+
+  }catch(error){
+
+    console.error(error);
+
+  }
+}
+
+
+async function addNote(){
+
+  const title =
+    document.getElementById(
+      "noteTitle"
+    ).value.trim();
+
+  const content =
+    document.getElementById(
+      "noteContent"
+    ).value.trim();
+
+  if(!title){
+
+    alert("Écris un titre.");
+
+    return;
+  }
+
+  try{
+
+    await api("/api/notes",{
+
+      method:"POST",
+
+      body:JSON.stringify({
+        title,
+        content
+      })
+
+    });
+
+    document.getElementById(
+      "noteTitle"
+    ).value = "";
+
+    document.getElementById(
+      "noteContent"
+    ).value = "";
+
+    await loadNotes();
+
+    await loadDashboard();
+
+  }catch(error){
+
+    alert(error.message);
+
+  }
+}
+
+
+async function deleteNote(id){
+
+  if(!confirm(
+    "Supprimer cette note ?"
+  )){
+    return;
+  }
+
+  try{
+
+    await api(
+      `/api/notes/${id}`,
+      {
+        method:"DELETE"
+      }
+    );
+
+    await loadNotes();
+
+    await loadDashboard();
+
+  }catch(error){
+
+    alert(error.message);
+
+  }
+}
+
+
+/* =====================================================
+   BUDGET
+===================================================== */
+
+async function loadBudget(){
+
+  try{
+
+    const data =
+      await api("/api/budget");
+
+    const list =
+      document.getElementById(
+        "budgetList"
+      );
+
+    list.innerHTML = "";
+
+    if(!data.budgets?.length){
+
+      list.innerHTML = `
+        <div class="card">
+          <p class="muted">
+            Aucun mouvement financier.
+          </p>
+        </div>
+      `;
+
+      return;
+    }
+
+    data.budgets.forEach(budget => {
+
+      const item =
+        document.createElement("div");
+
+      item.className = "item";
+
+      const sign =
+        budget.type === "income"
+          ? "+"
+          : "-";
+
+      item.innerHTML = `
+
+        <div class="item-main">
+
+          <div class="item-title">
+            ${escapeHtml(
+              budget.description
+            )}
+          </div>
+
+          <div class="item-small">
+            ${
+              budget.type === "income"
+                ? "Revenu"
+                : "Dépense"
+            }
+          </div>
+
+        </div>
+
+        <div class="item-actions">
+
+          <strong>
+            ${sign}${budget.amount} HTG
+          </strong>
+
+          <button
+            class="danger"
+            onclick="deleteBudget(${budget.id})"
+          >
+            Supprimer
+          </button>
+
+        </div>
+
+      `;
+
+      list.appendChild(item);
+
+    });
+
+  }catch(error){
+
+    console.error(error);
+
+  }
+}
+
+
+async function addBudget(){
+
+  const description =
+    document.getElementById(
+      "budgetDescription"
+    ).value.trim();
+
+  const amount =
+    Number(
+      document.getElementById(
+        "budgetAmount"
+      ).value
+    );
+
+  const type =
+    document.getElementById(
+      "budgetType"
+    ).value;
+
+  if(!description ||
+     !Number.isFinite(amount) ||
+     amount <= 0){
+
+    alert(
+      "Entre une description et un montant valide."
+    );
+
+    return;
+  }
+
+  try{
+
+    await api("/api/budget",{
+
+      method:"POST",
+
+      body:JSON.stringify({
+
+        description,
+        amount,
+        type
+
+      })
+
+    });
+
+    document.getElementById(
+      "budgetDescription"
+    ).value = "";
+
+    document.getElementById(
+      "budgetAmount"
+    ).value = "";
+
+    await loadBudget();
+
+  }catch(error){
+
+    alert(error.message);
+
+  }
+}
+
+
+async function deleteBudget(id){
+
+  if(!confirm(
+    "Supprimer cette opération ?"
+  )){
+    return;
+  }
+
+  try{
+
+    await api(
+      `/api/budget/${id}`,
+      {
+        method:"DELETE"
+      }
+    );
+
+    await loadBudget();
+
+  }catch(error){
+
+    alert(error.message);
+
+  }
+}
+
+
+/* =====================================================
+   OBJECTIFS
+===================================================== */
+
+async function loadGoals(){
+
+  try{
+
+    const data =
+      await api("/api/goals");
+
+    const list =
+      document.getElementById(
+        "goalsList"
+      );
+
+    list.innerHTML = "";
+
+    if(!data.goals?.length){
+
+      list.innerHTML = `
+        <div class="card">
+          <p class="muted">
+            Aucun objectif.
+          </p>
+        </div>
+      `;
+
+      return;
+    }
+
+    data.goals.forEach(goal => {
+
+      const target =
+        Number(goal.target) || 1;
+
+      const progress =
+        Math.min(
+          100,
+          Math.max(
+            0,
+            Number(goal.progress) || 0
+          ) / target * 100
+        );
+
+      const item =
+        document.createElement("div");
+
+      item.className = "card";
+
+      item.innerHTML = `
+
+        <div class="section-head">
+
+          <div>
+
+            <h3>
+              ${escapeHtml(goal.title)}
+            </h3>
+
+            <p class="muted">
+              ${goal.progress} / ${goal.target}
+            </p>
+
+          </div>
+
+          <button
+            class="danger"
+            onclick="deleteGoal(${goal.id})"
+          >
+            Supprimer
+          </button>
+
+        </div>
+
+        <div class="progress">
+
+          <div
+            class="progress-bar"
+            style="width:${progress}%"
+          ></div>
+
+        </div>
+
+        <div style="margin-top:12px;">
+
+          <input
+            type="number"
+            min="0"
+            value="${goal.progress}"
+            style="
+              padding:10px;
+              border:1px solid #ddd;
+              border-radius:10px;
+              width:120px;
+            "
+            onchange="
+              updateGoal(
+                ${goal.id},
+                this.value
+              )
+            "
+          >
+
+          <span class="muted">
+            progression
+          </span>
+
+        </div>
+
+      `;
+
+      list.appendChild(item);
+
+    });
+
+  }catch(error){
+
+    console.error(error);
+
+  }
+}
+
+
+async function addGoal(){
+
+  const title =
+    document.getElementById(
+      "goalTitle"
+    ).value.trim();
+
+  const target =
+    Number(
+      document.getElementById(
+        "goalTarget"
+      ).value
+    );
+
+  if(!title ||
+     !Number.isFinite(target) ||
+     target < 1){
+
+    alert(
+      "Entre un objectif et une cible valide."
+    );
+
+    return;
+  }
+
+  try{
+
+    await api("/api/goals",{
+
+      method:"POST",
+
+      body:JSON.stringify({
+        title,
+        target
+      })
+
+    });
+
+    document.getElementById(
+      "goalTitle"
+    ).value = "";
+
+    document.getElementById(
+      "goalTarget"
+    ).value = "";
+
+    await loadGoals();
+
+    await loadDashboard();
+
+  }catch(error){
+
+    alert(error.message);
+
+  }
+}
+
+
+async function updateGoal(
+  id,
+  progress
+){
+
+  try{
+
+    await api(
+      `/api/goals/${id}`,
+      {
+        method:"PATCH",
+        body:JSON.stringify({
+          progress:Number(progress)
+        })
+      }
+    );
+
+    await loadGoals();
+
+  }catch(error){
+
+    alert(error.message);
+
+  }
+}
+
+
+async function deleteGoal(id){
+
+  if(!confirm(
+    "Supprimer cet objectif ?"
+  )){
+    return;
+  }
+
+  try{
+
+    await api(
+      `/api/goals/${id}`,
+      {
+        method:"DELETE"
+      }
+    );
+
+    await loadGoals();
+
+    await loadDashboard();
+
+  }catch(error){
+
+    alert(error.message);
+
+  }
+}
+
+
+/* =====================================================
+   PREMIUM
+===================================================== */
+
+async function checkPremiumStatus(){
+
+  if(!token){
+    return;
+  }
+
+  try{
+
+    const data =
+      await api(
+        "/api/subscription/status"
+      );
+
+    if(currentUser){
+
+      currentUser.premium =
+        data.premium === true;
+
+    }
+
+    updatePremiumBadge();
+
+  }catch(error){
+
+    console.error(
+      "Premium:",
+      error
+    );
+
+  }
+}
+
+
+async function createPremiumPayment(){
+
+  const amount =
+    Number(
+      document.getElementById(
+        "premiumAmount"
+      ).value
+    );
+
+  const paymentMethod =
+    document.getElementById(
+      "premiumMethod"
+    ).value;
+
+  const result =
+    document.getElementById(
+      "paymentResult"
+    );
+
+  if(!Number.isFinite(amount) ||
+     amount <= 0){
+
+    result.innerHTML = `
+      <div class="message show bad">
+        Montant Premium invalide.
+      </div>
+    `;
+
+    return;
+  }
+
+  result.innerHTML = `
+    <div class="message show">
+      Création du paiement...
+    </div>
+  `;
+
+  try{
+
+    const data =
+      await api(
+        "/api/subscription/create",
+        {
+          method:"POST",
+
+          body:JSON.stringify({
+
+            amount,
+
+            currency:"HTG",
+
+            paymentMethod
+
+          })
+
+        }
+      );
+
+    result.innerHTML = `
+
+      <div class="message show ok">
+
+        Paiement créé avec succès.<br>
+
+        Référence :
+        <strong>
+          ${escapeHtml(
+            data.payment?.reference || "N/A"
+          )}
+        </strong>
+
+        <br><br>
+
+        Statut :
+        ${escapeHtml(
+          data.payment?.status || "pending"
+        )}
+
+      </div>
+
+    `;
+
+  }catch(error){
+
+    result.innerHTML = `
+
+      <div class="message show bad">
+
+        ${escapeHtml(
+          error.message
+        )}
+
+      </div>
+
+    `;
+
+  }
+}
+
+
+/* =====================================================
+   FOCUS TIMER
+===================================================== */
+
+let timerSeconds = 25 * 60;
+
+let timerInterval = null;
+
+
+function updateTimer(){
+
+  const minutes =
+    Math.floor(
+      timerSeconds / 60
+    );
+
+  const seconds =
+    timerSeconds % 60;
+
+  document.getElementById(
+    "timer"
+  ).textContent =
+    `${String(minutes).padStart(2,"0")}:${String(seconds).padStart(2,"0")}`;
+}
+
+
+function startTimer(){
+
+  if(timerInterval){
+    return;
+  }
+
+  timerInterval =
+    setInterval(() => {
+
+      if(timerSeconds <= 0){
+
+        clearInterval(
+          timerInterval
+        );
+
+        timerInterval = null;
+
+        alert(
+          "Session Focus terminée !"
+        );
+
+        return;
+      }
+
+      timerSeconds--;
+
+      updateTimer();
+
+    },1000);
+}
+
+
+function pauseTimer(){
+
+  if(timerInterval){
+
+    clearInterval(
+      timerInterval
+    );
+
+    timerInterval = null;
+
+  }
+}
+
+
+function resetTimer(){
+
+  pauseTimer();
+
+  timerSeconds =
+    25 * 60;
+
+  updateTimer();
+}
+
+
+/* =====================================================
+   SÉCURITÉ AFFICHAGE
+===================================================== */
+
+function escapeHtml(value){
+
+  return String(
+    value ?? ""
+  )
+  .replace(/&/g,"&amp;")
+  .replace(/</g,"&lt;")
+  .replace(/>/g,"&gt;")
+  .replace(/"/g,"&quot;")
+  .replace(/'/g,"&#039;");
+}
+
+
+/* =====================================================
+   SESSION AUTOMATIQUE
+===================================================== */
+
+async function restoreSession(){
+
+  if(!token){
+
+    return;
+
+  }
+
+  try{
+
+    const data =
+      await api(
+        "/api/auth/me"
+      );
+
+    currentUser =
+      data.user;
+
+    openApp();
+
+  }catch(error){
+
+    console.log(
+      "Session expirée."
+    );
+
+    token = "";
+
+    localStorage.removeItem(
+      "lumio_token"
+    );
+
+  }
+}
+
+
+/* =====================================================
+   INITIALISATION
+===================================================== */
+
+updateTimer();
+
+restoreSession();
+
+</script>
+
+</body>
+</html>
+
+ 
+
+ 
