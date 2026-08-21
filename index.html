@@ -24,10 +24,7 @@ body{
   color:#171717;
 }
 
-button,
-input,
-textarea,
-select{
+button,input,textarea,select{
   font:inherit;
 }
 
@@ -402,6 +399,7 @@ button{
   height:100%;
   background:#ff7a00;
   width:0%;
+  transition:width .3s ease;
 }
 
 .focus-box{
@@ -452,6 +450,41 @@ button{
 
 .message.bad{
   background:#ffe8e8;
+  color:#b40000;
+}
+
+.premium-status{
+  margin-top:15px;
+  padding:14px;
+  background:rgba(255,255,255,.18);
+  border-radius:12px;
+}
+
+.payment-link{
+  display:inline-block;
+  margin-top:12px;
+  background:#fff;
+  color:#e86600;
+  padding:12px 16px;
+  border-radius:10px;
+  font-weight:700;
+  text-decoration:none;
+}
+
+.balance-box{
+  margin-bottom:18px;
+}
+
+.balance{
+  font-size:34px;
+  font-weight:800;
+}
+
+.income{
+  color:#18733a;
+}
+
+.expense{
   color:#b40000;
 }
 
@@ -508,6 +541,11 @@ button{
   .timer{
     font-size:55px;
   }
+
+  .item{
+    align-items:flex-start;
+    flex-direction:column;
+  }
 }
 </style>
 </head>
@@ -515,7 +553,7 @@ button{
 <body>
 
 <!-- =====================================================
-     AUTHENTIFICATION
+AUTH
 ===================================================== -->
 
 <section id="auth">
@@ -524,7 +562,9 @@ button{
 
     <div class="logo">L</div>
 
-    <h1 id="authTitle">Bienvenue sur Lumio</h1>
+    <h1 id="authTitle">
+      Bienvenue sur Lumio
+    </h1>
 
     <p class="muted">
       Organisez vos tâches, votre temps et vos objectifs.
@@ -535,7 +575,10 @@ button{
     <form id="authForm" class="form">
 
       <div class="field">
-        <label for="email">Email</label>
+
+        <label for="email">
+          Email
+        </label>
 
         <input
           id="email"
@@ -544,10 +587,14 @@ button{
           autocomplete="email"
           required
         >
+
       </div>
 
       <div class="field">
-        <label for="password">Mot de passe</label>
+
+        <label for="password">
+          Mot de passe
+        </label>
 
         <input
           id="password"
@@ -557,6 +604,7 @@ button{
           minlength="6"
           required
         >
+
       </div>
 
       <button
@@ -590,7 +638,7 @@ button{
 
 
 <!-- =====================================================
-     APPLICATION
+APPLICATION
 ===================================================== -->
 
 <section id="app" class="hidden">
@@ -599,7 +647,9 @@ button{
 
   <div class="brand">
 
-    <div class="brand-logo">L</div>
+    <div class="brand-logo">
+      L
+    </div>
 
     Lumio
 
@@ -636,68 +686,44 @@ button{
 
 <nav class="sidebar">
 
-  <button
-    class="nav-btn active"
-    type="button"
-    onclick="showPage('dashboard',this)"
-  >
-    🏠 Dashboard
+  <button class="nav-btn active"
+    onclick="showPage('dashboard',this)">
+    Dashboard
   </button>
 
-  <button
-    class="nav-btn"
-    type="button"
-    onclick="showPage('tasks',this)"
-  >
-    ✅ Tâches
+  <button class="nav-btn"
+    onclick="showPage('tasks',this)">
+    Tâches
   </button>
 
-  <button
-    class="nav-btn"
-    type="button"
-    onclick="showPage('planning',this)"
-  >
-    📅 Planning
+  <button class="nav-btn"
+    onclick="showPage('planning',this)">
+    Planning
   </button>
 
-  <button
-    class="nav-btn"
-    type="button"
-    onclick="showPage('notes',this)"
-  >
-    📝 Notes
+  <button class="nav-btn"
+    onclick="showPage('notes',this)">
+    Notes
   </button>
 
-  <button
-    class="nav-btn"
-    type="button"
-    onclick="showPage('budget',this)"
-  >
-    💰 Budget
+  <button class="nav-btn"
+    onclick="showPage('budget',this)">
+    Budget
   </button>
 
-  <button
-    class="nav-btn"
-    type="button"
-    onclick="showPage('goals',this)"
-  >
-    🎯 Objectifs
+  <button class="nav-btn"
+    onclick="showPage('goals',this)">
+    Objectifs
   </button>
 
-  <button
-    class="nav-btn"
-    type="button"
-    onclick="showPage('focus',this)"
-  >
-    ⏱️ Focus
+  <button class="nav-btn"
+    onclick="showPage('focus',this)">
+    Focus
   </button>
 
-  <button
-    class="nav-btn"
-    type="button"
-    onclick="showPage('premium',this)"
-  >
-    ⭐ Premium
+  <button class="nav-btn"
+    onclick="showPage('premium',this)">
+    Premium
   </button>
 
 </nav>
@@ -707,16 +733,13 @@ button{
 
 
 <!-- =====================================================
-     DASHBOARD
+DASHBOARD
 ===================================================== -->
 
-<section
-  id="dashboard"
-  class="page active"
->
+<section id="dashboard" class="page active">
 
   <h1 class="page-title">
-    Bonjour 👋
+    Bonjour
   </h1>
 
   <p class="page-subtitle">
@@ -727,12 +750,7 @@ button{
 
     <div class="card">
       <h3>Tâches</h3>
-      <div
-        class="stat"
-        id="statTasks"
-      >
-        0
-      </div>
+      <div class="stat" id="statTasks">0</div>
       <p class="muted">
         Tâches enregistrées
       </p>
@@ -740,12 +758,7 @@ button{
 
     <div class="card">
       <h3>Planning</h3>
-      <div
-        class="stat"
-        id="statEvents"
-      >
-        0
-      </div>
+      <div class="stat" id="statEvents">0</div>
       <p class="muted">
         Événements
       </p>
@@ -753,12 +766,7 @@ button{
 
     <div class="card">
       <h3>Notes</h3>
-      <div
-        class="stat"
-        id="statNotes"
-      >
-        0
-      </div>
+      <div class="stat" id="statNotes">0</div>
       <p class="muted">
         Notes enregistrées
       </p>
@@ -766,12 +774,7 @@ button{
 
     <div class="card">
       <h3>Objectifs</h3>
-      <div
-        class="stat"
-        id="statGoals"
-      >
-        0
-      </div>
+      <div class="stat" id="statGoals">0</div>
       <p class="muted">
         Objectifs
       </p>
@@ -784,7 +787,7 @@ button{
     <div class="card premium">
 
       <h2>
-        ⭐ Lumio Premium
+        Lumio Premium
       </h2>
 
       <p style="margin:12px 0 18px;">
@@ -793,7 +796,6 @@ button{
 
       <button
         class="primary"
-        type="button"
         onclick="showPage('premium')"
       >
         Découvrir Premium
@@ -807,13 +809,10 @@ button{
 
 
 <!-- =====================================================
-     TACHES
+TACHES
 ===================================================== -->
 
-<section
-  id="tasks"
-  class="page"
->
+<section id="tasks" class="page">
 
   <h1 class="page-title">
     Tâches
@@ -838,10 +837,7 @@ button{
           Faible
         </option>
 
-        <option
-          value="medium"
-          selected
-        >
+        <option value="medium" selected>
           Moyenne
         </option>
 
@@ -851,10 +847,7 @@ button{
 
       </select>
 
-      <button
-        type="button"
-        onclick="addTask()"
-      >
+      <button onclick="addTask()">
         Ajouter
       </button>
 
@@ -862,22 +855,16 @@ button{
 
   </div>
 
-  <div
-    id="tasksList"
-    class="list"
-  ></div>
+  <div id="tasksList" class="list"></div>
 
 </section>
 
 
 <!-- =====================================================
-     PLANNING
+PLANNING
 ===================================================== -->
 
-<section
-  id="planning"
-  class="page"
->
+<section id="planning" class="page">
 
   <h1 class="page-title">
     Planning
@@ -901,10 +888,7 @@ button{
         type="date"
       >
 
-      <button
-        type="button"
-        onclick="addEvent()"
-      >
+      <button onclick="addEvent()">
         Ajouter
       </button>
 
@@ -912,22 +896,16 @@ button{
 
   </div>
 
-  <div
-    id="eventsList"
-    class="list"
-  ></div>
+  <div id="eventsList" class="list"></div>
 
 </section>
 
 
 <!-- =====================================================
-     NOTES
+NOTES
 ===================================================== -->
 
-<section
-  id="notes"
-  class="page"
->
+<section id="notes" class="page">
 
   <h1 class="page-title">
     Notes
@@ -960,7 +938,6 @@ button{
 
     <button
       class="primary"
-      type="button"
       onclick="addNote()"
     >
       Enregistrer
@@ -968,22 +945,16 @@ button{
 
   </div>
 
-  <div
-    id="notesList"
-    class="list"
-  ></div>
+  <div id="notesList" class="list"></div>
 
 </section>
 
 
 <!-- =====================================================
-     BUDGET
+BUDGET
 ===================================================== -->
 
-<section
-  id="budget"
-  class="page"
->
+<section id="budget" class="page">
 
   <h1 class="page-title">
     Budget
@@ -992,6 +963,28 @@ button{
   <p class="page-subtitle">
     Suivez vos revenus et dépenses.
   </p>
+
+  <div class="card balance-box">
+
+    <p class="muted">
+      Solde
+    </p>
+
+    <div
+      id="budgetBalance"
+      class="balance"
+    >
+      0.00 HTG
+    </div>
+
+    <div
+      id="budgetSummary"
+      class="item-small"
+    >
+      Revenus : 0.00 HTG — Dépenses : 0.00 HTG
+    </div>
+
+  </div>
 
   <div class="add-form">
 
@@ -1034,7 +1027,6 @@ button{
 
     <button
       class="primary"
-      type="button"
       onclick="addBudget()"
     >
       Ajouter au budget
@@ -1042,22 +1034,16 @@ button{
 
   </div>
 
-  <div
-    id="budgetList"
-    class="list"
-  ></div>
+  <div id="budgetList" class="list"></div>
 
 </section>
 
 
 <!-- =====================================================
-     OBJECTIFS
+OBJECTIFS
 ===================================================== -->
 
-<section
-  id="goals"
-  class="page"
->
+<section id="goals" class="page">
 
   <h1 class="page-title">
     Objectifs
@@ -1091,7 +1077,6 @@ button{
 
     <button
       class="primary"
-      type="button"
       onclick="addGoal()"
     >
       Ajouter
@@ -1099,22 +1084,16 @@ button{
 
   </div>
 
-  <div
-    id="goalsList"
-    class="list"
-  ></div>
+  <div id="goalsList" class="list"></div>
 
 </section>
 
 
 <!-- =====================================================
-     FOCUS
+FOCUS
 ===================================================== -->
 
-<section
-  id="focus"
-  class="page"
->
+<section id="focus" class="page">
 
   <h1 class="page-title">
     Focus
@@ -1141,8 +1120,7 @@ button{
 
       <button
         class="primary"
-        style="width:auto;"
-        type="button"
+        style="width:auto"
         onclick="startTimer()"
       >
         Démarrer
@@ -1150,7 +1128,6 @@ button{
 
       <button
         class="secondary"
-        type="button"
         onclick="pauseTimer()"
       >
         Pause
@@ -1158,7 +1135,6 @@ button{
 
       <button
         class="danger"
-        type="button"
         onclick="resetTimer()"
       >
         Réinitialiser
@@ -1172,16 +1148,13 @@ button{
 
 
 <!-- =====================================================
-     PREMIUM
+PREMIUM
 ===================================================== -->
 
-<section
-  id="premium"
-  class="page"
->
+<section id="premium" class="page">
 
   <h1 class="page-title">
-    Lumio Premium ⭐
+    Lumio Premium
   </h1>
 
   <p class="page-subtitle">
@@ -1198,7 +1171,14 @@ button{
       Choisissez votre montant et votre méthode de paiement.
     </p>
 
-    <div class="field">
+    <div
+      id="premiumStatus"
+      class="premium-status"
+    >
+      Vérification du statut...
+    </div>
+
+    <div class="field" style="margin-top:18px;">
 
       <label>
         Montant
@@ -1225,8 +1205,8 @@ button{
           MonCash
         </option>
 
-        <option value="natcash">
-          NatCash
+        <option value="tchotchom">
+          Tchotchom
         </option>
 
       </select>
@@ -1235,7 +1215,6 @@ button{
 
     <button
       class="primary"
-      type="button"
       id="premiumButton"
       onclick="createPremiumPayment()"
     >
@@ -1251,6 +1230,7 @@ button{
 
 </section>
 
+
 </main>
 </div>
 </section>
@@ -1259,7 +1239,7 @@ button{
 <script>
 
 /* =====================================================
-   CONFIGURATION
+CONFIGURATION
 ===================================================== */
 
 const API_URL =
@@ -1270,9 +1250,15 @@ let token =
 
 let currentUser = null;
 
+let tasksData = [];
+let eventsData = [];
+let notesData = [];
+let budgetData = [];
+let goalsData = [];
+
 
 /* =====================================================
-   OUTILS
+UTILITAIRES
 ===================================================== */
 
 function escapeHTML(value){
@@ -1288,16 +1274,12 @@ function escapeHTML(value){
 
 function showError(message){
 
-  const box =
-    document.getElementById("error");
-
-  box.textContent =
+  document.getElementById("error").textContent =
     message || "";
-
 }
 
 
-function showPaymentMessage(message, ok){
+function showPaymentMessage(message,ok){
 
   const box =
     document.getElementById("paymentResult");
@@ -1311,11 +1293,21 @@ function showPaymentMessage(message, ok){
 }
 
 
+function formatMoney(value){
+
+  return Number(value || 0)
+    .toLocaleString("fr-FR",{
+      minimumFractionDigits:2,
+      maximumFractionDigits:2
+    }) + " HTG";
+}
+
+
 /* =====================================================
-   API
+API
 ===================================================== */
 
-async function api(path, options = {}){
+async function api(path,options={}){
 
   const headers = {
     "Content-Type":"application/json",
@@ -1326,7 +1318,6 @@ async function api(path, options = {}){
 
     headers.Authorization =
       "Bearer " + token;
-
   }
 
   let response;
@@ -1347,10 +1338,9 @@ async function api(path, options = {}){
     throw new Error(
       "Impossible de contacter le serveur Lumio."
     );
-
   }
 
-  let data = null;
+  let data;
 
   try{
 
@@ -1363,17 +1353,1394 @@ async function api(path, options = {}){
       success:false,
       error:"Réponse serveur invalide."
     };
+  }
 
+  if(response.status === 401){
+
+    logout(false);
+
+    throw new Error(
+      "Votre session a expiré. Connectez-vous à nouveau."
+    );
   }
 
   if(!response.ok){
 
     throw new Error(
       data?.error ||
-      data?.message ||
+      <!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ff7a00">
+<meta name="description" content="Lumio - Organisez votre vie simplement">
+<title>Lumio</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f6f7f9;
+  color:#171717;
+}
+
+button,input,textarea,select{
+  font:inherit;
+}
+
+button{
+  border:0;
+  cursor:pointer;
+}
+
+.hidden{
+  display:none!important;
+}
+
+.muted{
+  color:#777;
+}
+
+/* ================= AUTH ================= */
+
+#auth{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:linear-gradient(135deg,#fff7ef,#f6f7f9);
+}
+
+.auth-card{
+  width:100%;
+  max-width:430px;
+  background:#fff;
+  padding:30px;
+  border-radius:24px;
+  box-shadow:0 15px 50px rgba(0,0,0,.08);
+}
+
+.logo{
+  width:60px;
+  height:60px;
+  border-radius:18px;
+  background:#ff7a00;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:32px;
+  font-weight:800;
+  margin-bottom:18px;
+}
+
+.auth-card h1{
+  font-size:30px;
+  margin-bottom:8px;
+}
+
+.form{
+  margin-top:24px;
+}
+
+.field{
+  margin-bottom:15px;
+}
+
+.field label{
+  display:block;
+  font-size:14px;
+  font-weight:700;
+  margin-bottom:7px;
+}
+
+.field input,
+.field textarea,
+.field select{
+  width:100%;
+  padding:13px 14px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  outline:none;
+  background:#fff;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus{
+  border-color:#ff7a00;
+}
+
+.primary{
+  width:100%;
+  padding:14px;
+  border-radius:12px;
+  background:#ff7a00;
+  color:#fff;
+  font-weight:700;
+}
+
+.primary:disabled{
+  opacity:.6;
+  cursor:not-allowed;
+}
+
+.secondary{
+  padding:11px 15px;
+  border-radius:11px;
+  background:#f1f1f1;
+  color:#222;
+}
+
+.auth-switch{
+  text-align:center;
+  margin-top:18px;
+  font-size:14px;
+}
+
+.link{
+  color:#ff7a00;
+  font-weight:700;
+  cursor:pointer;
+}
+
+#error{
+  min-height:20px;
+  margin-top:12px;
+  color:#c40000;
+  font-size:14px;
+}
+
+/* ================= APP ================= */
+
+#app{
+  min-height:100vh;
+}
+
+.topbar{
+  height:70px;
+  background:#fff;
+  border-bottom:1px solid #eee;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 22px;
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:22px;
+  font-weight:800;
+}
+
+.brand-logo{
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  background:#ff7a00;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+}
+
+.user-area{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.premium-badge{
+  background:#fff1e5;
+  color:#e86600;
+  padding:7px 10px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:700;
+}
+
+.layout{
+  display:flex;
+  min-height:calc(100vh - 70px);
+}
+
+.sidebar{
+  width:230px;
+  background:#fff;
+  border-right:1px solid #eee;
+  padding:20px 12px;
+}
+
+.nav-btn{
+  width:100%;
+  padding:13px 14px;
+  background:transparent;
+  text-align:left;
+  border-radius:12px;
+  margin-bottom:5px;
+  font-weight:600;
+}
+
+.nav-btn:hover,
+.nav-btn.active{
+  background:#fff1e5;
+  color:#e86600;
+}
+
+.content{
+  flex:1;
+  width:100%;
+  max-width:1300px;
+  margin:auto;
+  padding:25px;
+}
+
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
+
+.page-title{
+  font-size:28px;
+  margin-bottom:6px;
+}
+
+.page-subtitle{
+  color:#777;
+  margin-bottom:22px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
+}
+
+.card{
+  background:#fff;
+  border:1px solid #eee;
+  border-radius:18px;
+  padding:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,.03);
+}
+
+.card h3{
+  margin-bottom:8px;
+}
+
+.stat{
+  font-size:30px;
+  font-weight:800;
+  margin-top:8px;
+}
+
+.section{
+  margin-top:22px;
+}
+
+.add-form{
+  background:#fff;
+  border:1px solid #eee;
+  border-radius:18px;
+  padding:18px;
+  margin-bottom:18px;
+}
+
+.add-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr auto;
+  gap:10px;
+}
+
+.add-grid input,
+.add-grid textarea,
+.add-grid select{
+  width:100%;
+  padding:12px;
+  border:1px solid #ddd;
+  border-radius:11px;
+  background:#fff;
+}
+
+.add-grid button{
+  background:#ff7a00;
+  color:#fff;
+  padding:12px 18px;
+  border-radius:11px;
+  font-weight:700;
+}
+
+.list{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.item{
+  background:#fff;
+  border:1px solid #eee;
+  border-radius:14px;
+  padding:14px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+}
+
+.item-main{
+  flex:1;
+}
+
+.item-title{
+  font-weight:700;
+}
+
+.item-small{
+  color:#777;
+  font-size:13px;
+  margin-top:5px;
+}
+
+.item-actions{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+}
+
+.danger{
+  background:#ffe8e8;
+  color:#b40000;
+  padding:8px 11px;
+  border-radius:9px;
+}
+
+.success{
+  background:#e9f8ee;
+  color:#18733a;
+  padding:8px 11px;
+  border-radius:9px;
+}
+
+.orange{
+  background:#fff1e5;
+  color:#e86600;
+  padding:8px 11px;
+  border-radius:9px;
+}
+
+.empty{
+  text-align:center;
+  padding:30px;
+  color:#888;
+  background:#fff;
+  border-radius:15px;
+  border:1px solid #eee;
+}
+
+.progress{
+  height:10px;
+  background:#eee;
+  border-radius:20px;
+  overflow:hidden;
+  margin-top:12px;
+}
+
+.progress-bar{
+  height:100%;
+  background:#ff7a00;
+  width:0%;
+  transition:width .3s ease;
+}
+
+.focus-box{
+  max-width:550px;
+  margin:30px auto;
+  text-align:center;
+  padding:35px;
+}
+
+.timer{
+  font-size:70px;
+  font-weight:800;
+  margin:25px 0;
+}
+
+.timer-buttons{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.premium{
+  background:linear-gradient(135deg,#ff7a00,#ff9b45);
+  color:#fff;
+}
+
+.premium .primary{
+  background:#fff;
+  color:#e86600;
+}
+
+.message{
+  padding:12px;
+  border-radius:10px;
+  margin-top:12px;
+  display:none;
+}
+
+.message.show{
+  display:block;
+}
+
+.message.ok{
+  background:#e9f8ee;
+  color:#18733a;
+}
+
+.message.bad{
+  background:#ffe8e8;
+  color:#b40000;
+}
+
+.premium-status{
+  margin-top:15px;
+  padding:14px;
+  background:rgba(255,255,255,.18);
+  border-radius:12px;
+}
+
+.payment-link{
+  display:inline-block;
+  margin-top:12px;
+  background:#fff;
+  color:#e86600;
+  padding:12px 16px;
+  border-radius:10px;
+  font-weight:700;
+  text-decoration:none;
+}
+
+.balance-box{
+  margin-bottom:18px;
+}
+
+.balance{
+  font-size:34px;
+  font-weight:800;
+}
+
+.income{
+  color:#18733a;
+}
+
+.expense{
+  color:#b40000;
+}
+
+@media(max-width:750px){
+
+  .layout{
+    display:block;
+  }
+
+  .sidebar{
+    width:100%;
+    display:flex;
+    overflow-x:auto;
+    padding:10px;
+    border-right:0;
+    border-bottom:1px solid #eee;
+  }
+
+  .nav-btn{
+    min-width:max-content;
+    width:auto;
+    margin-right:5px;
+  }
+
+  .content{
+    padding:17px;
+  }
+
+  .add-grid{
+    grid-template-columns:1fr;
+  }
+
+  .topbar{
+    padding:0 14px;
+  }
+
+  .topbar .muted{
+    display:none;
+  }
+
+  .page-title{
+    font-size:24px;
+  }
+
+  .user-area{
+    gap:5px;
+  }
+
+  .user-area .secondary{
+    padding:8px;
+    font-size:12px;
+  }
+
+  .timer{
+    font-size:55px;
+  }
+
+  .item{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
+AUTH
+===================================================== -->
+
+<section id="auth">
+
+  <div class="auth-card">
+
+    <div class="logo">L</div>
+
+    <h1 id="authTitle">
+      Bienvenue sur Lumio
+    </h1>
+
+    <p class="muted">
+      Organisez vos tâches, votre temps et vos objectifs.
+    </p>
+
+    <div id="error"></div>
+
+    <form id="authForm" class="form">
+
+      <div class="field">
+
+        <label for="email">
+          Email
+        </label>
+
+        <input
+          id="email"
+          type="email"
+          placeholder="vous@email.com"
+          autocomplete="email"
+          required
+        >
+
+      </div>
+
+      <div class="field">
+
+        <label for="password">
+          Mot de passe
+        </label>
+
+        <input
+          id="password"
+          type="password"
+          placeholder="Minimum 6 caractères"
+          autocomplete="current-password"
+          minlength="6"
+          required
+        >
+
+      </div>
+
+      <button
+        type="submit"
+        class="primary"
+        id="authSubmit"
+      >
+        Créer mon compte
+      </button>
+
+    </form>
+
+    <div class="auth-switch">
+
+      <span id="switchText">
+        Vous avez déjà un compte ?
+      </span>
+
+      <span
+        class="link"
+        id="switchMode"
+      >
+        Se connecter
+      </span>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+APPLICATION
+===================================================== -->
+
+<section id="app" class="hidden">
+
+<header class="topbar">
+
+  <div class="brand">
+
+    <div class="brand-logo">
+      L
+    </div>
+
+    Lumio
+
+  </div>
+
+  <div class="user-area">
+
+    <span
+      id="premiumBadge"
+      class="premium-badge hidden"
+    >
+      PREMIUM
+    </span>
+
+    <span
+      id="userEmail"
+      class="muted"
+    ></span>
+
+    <button
+      class="secondary"
+      id="logoutButton"
+      type="button"
+    >
+      Déconnexion
+    </button>
+
+  </div>
+
+</header>
+
+
+<div class="layout">
+
+<nav class="sidebar">
+
+  <button class="nav-btn active"
+    onclick="showPage('dashboard',this)">
+    Dashboard
+  </button>
+
+  <button class="nav-btn"
+    onclick="showPage('tasks',this)">
+    Tâches
+  </button>
+
+  <button class="nav-btn"
+    onclick="showPage('planning',this)">
+    Planning
+  </button>
+
+  <button class="nav-btn"
+    onclick="showPage('notes',this)">
+    Notes
+  </button>
+
+  <button class="nav-btn"
+    onclick="showPage('budget',this)">
+    Budget
+  </button>
+
+  <button class="nav-btn"
+    onclick="showPage('goals',this)">
+    Objectifs
+  </button>
+
+  <button class="nav-btn"
+    onclick="showPage('focus',this)">
+    Focus
+  </button>
+
+  <button class="nav-btn"
+    onclick="showPage('premium',this)">
+    Premium
+  </button>
+
+</nav>
+
+
+<main class="content">
+
+
+<!-- =====================================================
+DASHBOARD
+===================================================== -->
+
+<section id="dashboard" class="page active">
+
+  <h1 class="page-title">
+    Bonjour
+  </h1>
+
+  <p class="page-subtitle">
+    Voici votre espace Lumio.
+  </p>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>Tâches</h3>
+      <div class="stat" id="statTasks">0</div>
+      <p class="muted">
+        Tâches enregistrées
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Planning</h3>
+      <div class="stat" id="statEvents">0</div>
+      <p class="muted">
+        Événements
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Notes</h3>
+      <div class="stat" id="statNotes">0</div>
+      <p class="muted">
+        Notes enregistrées
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Objectifs</h3>
+      <div class="stat" id="statGoals">0</div>
+      <p class="muted">
+        Objectifs
+      </p>
+    </div>
+
+  </div>
+
+  <div class="section">
+
+    <div class="card premium">
+
+      <h2>
+        Lumio Premium
+      </h2>
+
+      <p style="margin:12px 0 18px;">
+        Débloquez l'expérience Premium de Lumio.
+      </p>
+
+      <button
+        class="primary"
+        onclick="showPage('premium')"
+      >
+        Découvrir Premium
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+TACHES
+===================================================== -->
+
+<section id="tasks" class="page">
+
+  <h1 class="page-title">
+    Tâches
+  </h1>
+
+  <p class="page-subtitle">
+    Organisez ce que vous devez accomplir.
+  </p>
+
+  <div class="add-form">
+
+    <div class="add-grid">
+
+      <input
+        id="taskTitle"
+        placeholder="Nouvelle tâche..."
+      >
+
+      <select id="taskPriority">
+
+        <option value="low">
+          Faible
+        </option>
+
+        <option value="medium" selected>
+          Moyenne
+        </option>
+
+        <option value="high">
+          Haute
+        </option>
+
+      </select>
+
+      <button onclick="addTask()">
+        Ajouter
+      </button>
+
+    </div>
+
+  </div>
+
+  <div id="tasksList" class="list"></div>
+
+</section>
+
+
+<!-- =====================================================
+PLANNING
+===================================================== -->
+
+<section id="planning" class="page">
+
+  <h1 class="page-title">
+    Planning
+  </h1>
+
+  <p class="page-subtitle">
+    Planifiez vos journées.
+  </p>
+
+  <div class="add-form">
+
+    <div class="add-grid">
+
+      <input
+        id="eventTitle"
+        placeholder="Événement..."
+      >
+
+      <input
+        id="eventDate"
+        type="date"
+      >
+
+      <button onclick="addEvent()">
+        Ajouter
+      </button>
+
+    </div>
+
+  </div>
+
+  <div id="eventsList" class="list"></div>
+
+</section>
+
+
+<!-- =====================================================
+NOTES
+===================================================== -->
+
+<section id="notes" class="page">
+
+  <h1 class="page-title">
+    Notes
+  </h1>
+
+  <p class="page-subtitle">
+    Gardez vos idées importantes.
+  </p>
+
+  <div class="add-form">
+
+    <div class="field">
+
+      <input
+        id="noteTitle"
+        placeholder="Titre de la note"
+      >
+
+    </div>
+
+    <div class="field">
+
+      <textarea
+        id="noteContent"
+        rows="4"
+        placeholder="Écrivez votre note..."
+      ></textarea>
+
+    </div>
+
+    <button
+      class="primary"
+      onclick="addNote()"
+    >
+      Enregistrer
+    </button>
+
+  </div>
+
+  <div id="notesList" class="list"></div>
+
+</section>
+
+
+<!-- =====================================================
+BUDGET
+===================================================== -->
+
+<section id="budget" class="page">
+
+  <h1 class="page-title">
+    Budget
+  </h1>
+
+  <p class="page-subtitle">
+    Suivez vos revenus et dépenses.
+  </p>
+
+  <div class="card balance-box">
+
+    <p class="muted">
+      Solde
+    </p>
+
+    <div
+      id="budgetBalance"
+      class="balance"
+    >
+      0.00 HTG
+    </div>
+
+    <div
+      id="budgetSummary"
+      class="item-small"
+    >
+      Revenus : 0.00 HTG — Dépenses : 0.00 HTG
+    </div>
+
+  </div>
+
+  <div class="add-form">
+
+    <div class="field">
+
+      <input
+        id="budgetDescription"
+        placeholder="Description"
+      >
+
+    </div>
+
+    <div class="field">
+
+      <input
+        id="budgetAmount"
+        type="number"
+        step="0.01"
+        min="0"
+        placeholder="Montant"
+      >
+
+    </div>
+
+    <div class="field">
+
+      <select id="budgetType">
+
+        <option value="income">
+          Revenu
+        </option>
+
+        <option value="expense">
+          Dépense
+        </option>
+
+      </select>
+
+    </div>
+
+    <button
+      class="primary"
+      onclick="addBudget()"
+    >
+      Ajouter au budget
+    </button>
+
+  </div>
+
+  <div id="budgetList" class="list"></div>
+
+</section>
+
+
+<!-- =====================================================
+OBJECTIFS
+===================================================== -->
+
+<section id="goals" class="page">
+
+  <h1 class="page-title">
+    Objectifs
+  </h1>
+
+  <p class="page-subtitle">
+    Transformez vos projets en objectifs.
+  </p>
+
+  <div class="add-form">
+
+    <div class="field">
+
+      <input
+        id="goalTitle"
+        placeholder="Mon objectif..."
+      >
+
+    </div>
+
+    <div class="field">
+
+      <input
+        id="goalTarget"
+        type="number"
+        min="1"
+        placeholder="Cible"
+      >
+
+    </div>
+
+    <button
+      class="primary"
+      onclick="addGoal()"
+    >
+      Ajouter
+    </button>
+
+  </div>
+
+  <div id="goalsList" class="list"></div>
+
+</section>
+
+
+<!-- =====================================================
+FOCUS
+===================================================== -->
+
+<section id="focus" class="page">
+
+  <h1 class="page-title">
+    Focus
+  </h1>
+
+  <p class="page-subtitle">
+    Concentrez-vous sur une seule chose.
+  </p>
+
+  <div class="card focus-box">
+
+    <h2>
+      Session Focus
+    </h2>
+
+    <div
+      class="timer"
+      id="timer"
+    >
+      25:00
+    </div>
+
+    <div class="timer-buttons">
+
+      <button
+        class="primary"
+        style="width:auto"
+        onclick="startTimer()"
+      >
+        Démarrer
+      </button>
+
+      <button
+        class="secondary"
+        onclick="pauseTimer()"
+      >
+        Pause
+      </button>
+
+      <button
+        class="danger"
+        onclick="resetTimer()"
+      >
+        Réinitialiser
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+PREMIUM
+===================================================== -->
+
+<section id="premium" class="page">
+
+  <h1 class="page-title">
+    Lumio Premium
+  </h1>
+
+  <p class="page-subtitle">
+    Une expérience plus complète pour Lumio.
+  </p>
+
+  <div class="card premium">
+
+    <h2>
+      Débloquez Premium
+    </h2>
+
+    <p style="margin:12px 0 20px;">
+      Choisissez votre montant et votre méthode de paiement.
+    </p>
+
+    <div
+      id="premiumStatus"
+      class="premium-status"
+    >
+      Vérification du statut...
+    </div>
+
+    <div class="field" style="margin-top:18px;">
+
+      <label>
+        Montant
+      </label>
+
+      <input
+        id="premiumAmount"
+        type="number"
+        min="1"
+        value="250"
+      >
+
+    </div>
+
+    <div class="field">
+
+      <label>
+        Méthode de paiement
+      </label>
+
+      <select id="premiumMethod">
+
+        <option value="moncash">
+          MonCash
+        </option>
+
+        <option value="tchotchom">
+          Tchotchom
+        </option>
+
+      </select>
+
+    </div>
+
+    <button
+      class="primary"
+      id="premiumButton"
+      onclick="createPremiumPayment()"
+    >
+      Continuer vers le paiement
+    </button>
+
+    <div
+      id="paymentResult"
+      class="message"
+    ></div>
+
+  </div>
+
+</section>
+
+
+</main>
+</div>
+</section>
+
+
+<script>
+
+/* =====================================================
+CONFIGURATION
+===================================================== */
+
+const API_URL =
+  "https://lumio-backend-1-i6a3.onrender.com";
+
+let token =
+  localStorage.getItem("lumio_token") || "";
+
+let currentUser = null;
+
+let tasksData = [];
+let eventsData = [];
+let notesData = [];
+let budgetData = [];
+let goalsData = [];
+
+
+/* =====================================================
+UTILITAIRES
+===================================================== */
+
+function escapeHTML(value){
+
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+
+function showError(message){
+
+  document.getElementById("error").textContent =
+    message || "";
+}
+
+
+function showPaymentMessage(message,ok){
+
+  const box =
+    document.getElementById("paymentResult");
+
+  box.textContent =
+    message;
+
+  box.className =
+    "message show " +
+    (ok ? "ok" : "bad");
+}
+
+
+function formatMoney(value){
+
+  return Number(value || 0)
+    .toLocaleString("fr-FR",{
+      minimumFractionDigits:2,
+      maximumFractionDigits:2
+    }) + " HTG";
+}
+
+
+/* =====================================================
+API
+===================================================== */
+
+async function api(path,options={}){
+
+  const headers = {
+    "Content-Type":"application/json",
+    ...(options.headers || {})
+  };
+
+  if(token){
+
+    headers.Authorization =
+      "Bearer " + token;
+  }
+
+  let response;
+
+  try{
+
+    response =
+      await fetch(
+        API_URL + path,
+        {
+          ...options,
+          headers
+        }
+      );
+
+  }catch(error){
+
+    throw new Error(
+      "Impossible de contacter le serveur Lumio."
+    );
+  }
+
+  let data;
+
+  try{
+
+    data =
+      await response.json();
+
+  }catch{
+
+    data = {
+      success:false,
+      error:"Réponse serveur invalide."
+    };
+  }
+
+  if(response.status === 401){
+
+    logout(false);
+
+    throw new Error(
+      "Votre session a expiré. Connectez-vous à nouveau."
+    );
+  }
+
+  if(!response.ok){
+
+    throw new Error(
+      data?.error ||
+            data?.message ||
       "Erreur serveur."
     );
-
   }
 
   return data;
@@ -1406,7 +2773,7 @@ switchMode.addEventListener(
   "click",
   function(){
 
-    registerMode =    !registerMode;
+    registerMode = !registerMode;
 
     showError("");
 
@@ -1424,10 +2791,15 @@ switchMode.addEventListener(
       switchMode.textContent =
         "Se connecter";
 
+      document
+        .getElementById("password")
+        .autocomplete =
+        "new-password";
+
     }else{
 
       authTitle.textContent =
-        "Connexion à Lumio";
+        "Bon retour sur Lumio";
 
       authSubmit.textContent =
         "Se connecter";
@@ -1438,15 +2810,15 @@ switchMode.addEventListener(
       switchMode.textContent =
         "Créer un compte";
 
+      document
+        .getElementById("password")
+        .autocomplete =
+        "current-password";
     }
 
   }
 );
 
-
-/* =====================================================
-   INSCRIPTION / CONNEXION
-===================================================== */
 
 authForm.addEventListener(
   "submit",
@@ -1457,28 +2829,20 @@ authForm.addEventListener(
     showError("");
 
     const email =
-      document.getElementById("email")
+      document
+        .getElementById("email")
         .value
-        .trim()
-        .toLowerCase();
+        .trim();
 
     const password =
-      document.getElementById("password")
+      document
+        .getElementById("password")
         .value;
 
-    if(!email){
+    if(!email || !password){
 
       showError(
-        "Veuillez entrer votre email."
-      );
-
-      return;
-    }
-
-    if(password.length < 6){
-
-      showError(
-        "Le mot de passe doit contenir au moins 6 caractères."
+        "Veuillez remplir tous les champs."
       );
 
       return;
@@ -1503,32 +2867,22 @@ authForm.addEventListener(
           endpoint,
           {
             method:"POST",
-
             body:JSON.stringify({
-              email:email,
-              password:password
+              email,
+              password
             })
           }
         );
 
-      const receivedToken =
-        data?.token ||
-        data?.data?.token ||
-        data?.accessToken ||
-        data?.data?.accessToken;
-
-      if(!receivedToken){
+      if(!data.token){
 
         throw new Error(
-          data?.error ||
-          data?.message ||
-          "Le serveur n'a pas retourné de token."
+          "Le serveur n'a pas envoyé de token."
         );
-
       }
 
       token =
-        receivedToken;
+        data.token;
 
       localStorage.setItem(
         "lumio_token",
@@ -1536,30 +2890,18 @@ authForm.addEventListener(
       );
 
       currentUser =
-        data?.user ||
-        data?.data?.user ||
-        null;
+        data.user || null;
 
-      authSubmit.disabled = false;
-
-      authSubmit.textContent =
-        registerMode
-          ? "Créer mon compte"
-          : "Se connecter";
-
-      openApp();
+      await openApp();
 
     }catch(error){
 
-      console.error(
-        "Erreur authentification:",
-        error
-      );
-
       showError(
         error.message ||
-        "Impossible de continuer."
+        "Une erreur est survenue."
       );
+
+    }finally{
 
       authSubmit.disabled = false;
 
@@ -1567,7 +2909,6 @@ authForm.addEventListener(
         registerMode
           ? "Créer mon compte"
           : "Se connecter";
-
     }
 
   }
@@ -1578,15 +2919,37 @@ authForm.addEventListener(
    OUVRIR L'APPLICATION
 ===================================================== */
 
-function openApp(){
+async function openApp(){
 
   document
     .getElementById("auth")
-    .classList.add("hidden");
+    .classList
+    .add("hidden");
 
   document
     .getElementById("app")
-    .classList.remove("hidden");
+    .classList
+    .remove("hidden");
+
+  if(!currentUser){
+
+    try{
+
+      const data =
+        await api(
+          "/api/auth/me"
+        );
+
+      currentUser =
+        data.user ||
+        data.data ||
+        data;
+
+    }catch(error){
+
+      console.error(error);
+    }
+  }
 
   document
     .getElementById("userEmail")
@@ -1594,9 +2957,7 @@ function openApp(){
       currentUser?.email ||
       "";
 
-  updatePremiumBadge();
-
-  loadAll();
+  await loadAll();
 
 }
 
@@ -1605,131 +2966,101 @@ function openApp(){
    DECONNEXION
 ===================================================== */
 
+function logout(showMessage = true){
+
+  token = "";
+
+  currentUser = null;
+
+  localStorage.removeItem(
+    "lumio_token"
+  );
+
+  document
+    .getElementById("app")
+    .classList
+    .add("hidden");
+
+  document
+    .getElementById("auth")
+    .classList
+    .remove("hidden");
+
+  document
+    .getElementById("email")
+    .value = "";
+
+  document
+    .getElementById("password")
+    .value = "";
+
+  showError(
+    showMessage
+      ? "Vous êtes déconnecté."
+      : ""
+  );
+}
+
+
 document
   .getElementById("logoutButton")
   .addEventListener(
     "click",
     function(){
 
-      token = "";
-
-      currentUser = null;
-
-      localStorage.removeItem(
-        "lumio_token"
-      );
-
-      location.reload();
+      logout(true);
 
     }
   );
 
 
 /* =====================================================
-   PREMIUM BADGE
-===================================================== */
-
-function updatePremiumBadge(){
-
-  const badge =
-    document.getElementById(
-      "premiumBadge"
-    );
-
-  if(
-    currentUser?.premium === true ||
-    currentUser?.isPremium === true
-  ){
-
-    badge.classList.remove(
-      "hidden"
-    );
-
-  }else{
-
-    badge.classList.add(
-      "hidden"
-    );
-
-  }
-
-}
-
-
-/* =====================================================
    NAVIGATION
 ===================================================== */
 
-function showPage(
-  pageId,
-  button = null
-){
+function showPage(pageId, button){
 
   document
     .querySelectorAll(".page")
-    .forEach(
-      page => {
-        page.classList.remove(
-          "active"
-        );
-      }
-    );
+    .forEach(function(page){
+
+      page.classList.remove("active");
+
+    });
 
   const page =
-    document.getElementById(
-      pageId
-    );
+    document.getElementById(pageId);
 
   if(page){
 
-    page.classList.add(
-      "active"
-    );
+    page.classList.add("active");
 
   }
 
   document
     .querySelectorAll(".nav-btn")
-    .forEach(
-      btn => {
-        btn.classList.remove(
-          "active"
-        );
-      }
-    );
+    .forEach(function(btn){
+
+      btn.classList.remove("active");
+
+    });
 
   if(button){
 
-    button.classList.add(
-      "active"
-    );
+    button.classList.add("active");
 
   }else{
 
-    const buttons =
-      document.querySelectorAll(
-        ".nav-btn"
+    const nav =
+      document.querySelector(
+        `.nav-btn[onclick*="'${pageId}'"]`
       );
 
-    buttons.forEach(
-      btn => {
+    if(nav){
 
-        if(
-          btn.getAttribute(
-            "onclick"
-          )?.includes(
-            "'" + pageId + "'"
-          )
-        ){
+      nav.classList.add("active");
 
-          btn.classList.add(
-            "active"
-          );
-
-        }
-
-      }
-    );
+    }
 
   }
 
@@ -1737,31 +3068,23 @@ function showPage(
 
 
 /* =====================================================
-   CHARGEMENT GENERAL
+   CHARGEMENT GLOBAL
 ===================================================== */
 
 async function loadAll(){
 
-  try{
+  await Promise.allSettled([
 
-    await Promise.all([
-      loadTasks(),
-      loadEvents(),
-      loadNotes(),
-      loadBudget(),
-      loadGoals()
-    ]);
+    loadTasks(),
+    loadEvents(),
+    loadNotes(),
+    loadBudget(),
+    loadGoals(),
+    loadSubscription()
 
-    updateStats();
+  ]);
 
-  }catch(error){
-
-    console.error(
-      "Erreur chargement:",
-      error
-    );
-
-  }
+  updateDashboard();
 
 }
 
@@ -1772,96 +3095,17 @@ async function loadAll(){
 
 async function loadTasks(){
 
-  const list =
-    document.getElementById(
-      "tasksList"
-    );
-
   try{
 
     const data =
-      await api(
-        "/api/tasks"
-      );
+      await api("/api/tasks");
 
-    const tasks =
-      data?.tasks ||
-      data?.data ||
+    tasksData =
+      data.tasks ||
+      data.data ||
       [];
 
-    list.innerHTML = "";
-
-    if(!tasks.length){
-
-      list.innerHTML =
-        `<div class="empty">
-          Aucune tâche pour le moment.
-        </div>`;
-
-      return;
-
-    }
-
-    tasks.forEach(
-      task => {
-
-        const item =
-          document.createElement(
-            "div"
-          );
-
-        item.className =
-          "item";
-
-        item.innerHTML = `
-          <div class="item-main">
-
-            <div class="item-title">
-              ${escapeHTML(task.title)}
-            </div>
-
-            <div class="item-small">
-              Priorité :
-              ${escapeHTML(
-                task.priority || "medium"
-              )}
-            </div>
-
-          </div>
-
-          <div class="item-actions">
-
-            <button
-              class="${
-                task.completed
-                  ? "success"
-                  : "orange"
-              }"
-              onclick="toggleTask('${task.id}',${!task.completed})"
-            >
-              ${
-                task.completed
-                  ? "Terminée"
-                  : "Terminer"
-              }
-            </button>
-
-            <button
-              class="danger"
-              onclick="deleteTask('${task.id}')"
-            >
-              Supprimer
-            </button>
-
-          </div>
-        `;
-
-        list.appendChild(
-          item
-        );
-
-      }
-    );
+    renderTasks();
 
   }catch(error){
 
@@ -1870,13 +3114,94 @@ async function loadTasks(){
       error
     );
 
+    tasksData = [];
+
+    renderTasks(
+      "Impossible de charger les tâches."
+    );
+  }
+}
+
+
+function renderTasks(errorMessage = ""){
+
+  const list =
+    document.getElementById(
+      "tasksList"
+    );
+
+  if(errorMessage){
+
     list.innerHTML =
       `<div class="empty">
-        Impossible de charger les tâches.
+        ${escapeHTML(errorMessage)}
       </div>`;
 
+    return;
   }
 
+  if(!tasksData.length){
+
+    list.innerHTML =
+      `<div class="empty">
+        Aucune tâche pour le moment.
+      </div>`;
+
+    return;
+  }
+
+  list.innerHTML =
+    tasksData
+      .map(function(task){
+
+        const priority =
+          task.priority || "medium";
+
+        const priorityLabel =
+          priority === "high"
+            ? "Haute"
+            : priority === "low"
+              ? "Faible"
+              : "Moyenne";
+
+        return `
+          <div class="item">
+
+            <div class="item-main">
+
+              <div class="item-title">
+                ${escapeHTML(task.title)}
+              </div>
+
+              <div class="item-small">
+                Priorité : ${priorityLabel}
+              </div>
+
+            </div>
+
+            <div class="item-actions">
+
+              <button
+                class="${task.completed ? "orange" : "success"}"
+                onclick="toggleTask(${Number(task.id)},${!task.completed})"
+              >
+                ${task.completed ? "Annuler" : "Terminer"}
+              </button>
+
+              <button
+                class="danger"
+                onclick="deleteTask(${Number(task.id)})"
+              >
+                Supprimer
+              </button>
+
+            </div>
+
+          </div>
+        `;
+
+      })
+      .join("");
 }
 
 
@@ -1902,7 +3227,6 @@ async function addTask(){
     );
 
     return;
-
   }
 
   try{
@@ -1911,10 +3235,9 @@ async function addTask(){
       "/api/tasks",
       {
         method:"POST",
-
         body:JSON.stringify({
-          title:title,
-          priority:priority
+          title,
+          priority
         })
       }
     );
@@ -1923,66 +3246,54 @@ async function addTask(){
 
     await loadTasks();
 
-    updateStats();
+    updateDashboard();
 
   }catch(error){
 
     alert(
       error.message
     );
-
   }
-
 }
 
 
-async function toggleTask(
-  id,
-  completed
-){
+async function toggleTask(id,completed){
 
   try{
 
     await api(
-      "/api/tasks/" + id,
+      `/api/tasks/${id}`,
       {
         method:"PATCH",
-
         body:JSON.stringify({
-          completed:completed
+          completed
         })
       }
     );
 
     await loadTasks();
 
+    updateDashboard();
+
   }catch(error){
 
     alert(
       error.message
     );
-
   }
-
 }
 
 
 async function deleteTask(id){
 
-  if(
-    !confirm(
-      "Supprimer cette tâche ?"
-    )
-  ){
-
-    return;
-
-  }
+  if(!confirm(
+    "Supprimer cette tâche ?"
+  )) return;
 
   try{
 
     await api(
-      "/api/tasks/" + id,
+      `/api/tasks/${id}`,
       {
         method:"DELETE"
       }
@@ -1990,16 +3301,14 @@ async function deleteTask(id){
 
     await loadTasks();
 
-    updateStats();
+    updateDashboard();
 
   }catch(error){
 
     alert(
       error.message
     );
-
   }
-
 }
 
 
@@ -2009,81 +3318,17 @@ async function deleteTask(id){
 
 async function loadEvents(){
 
-  const list =
-    document.getElementById(
-      "eventsList"
-    );
-
   try{
 
     const data =
-      await api(
-        "/api/planning"
-      );
+      await api("/api/events");
 
-    const events =
-      data?.events ||
-      data?.planning ||
-      data?.data ||
+    eventsData =
+      data.events ||
+      data.data ||
       [];
 
-    list.innerHTML = "";
-
-    if(!events.length){
-
-      list.innerHTML =
-        `<div class="empty">
-          Aucun événement pour le moment.
-        </div>`;
-
-      return;
-
-    }
-
-    events.forEach(
-      event => {
-
-        const item =
-          document.createElement(
-            "div"
-          );
-
-        item.className =
-          "item";
-
-        item.innerHTML = `
-          <div class="item-main">
-
-            <div class="item-title">
-              ${escapeHTML(event.title)}
-            </div>
-
-            <div class="item-small">
-              ${escapeHTML(
-                event.date || ""
-              )}
-            </div>
-
-          </div>
-
-          <div class="item-actions">
-
-            <button
-              class="danger"
-              onclick="deleteEvent('${event.id}')"
-            >
-              Supprimer
-            </button>
-
-          </div>
-        `;
-
-        list.appendChild(
-          item
-        );
-
-      }
-    );
+    renderEvents();
 
   }catch(error){
 
@@ -2092,101 +3337,150 @@ async function loadEvents(){
       error
     );
 
+    eventsData = [];
+
+    renderEvents(
+      "Impossible de charger le planning."
+    );
+  }
+}
+
+
+function renderEvents(errorMessage = ""){
+
+  const list =
+    document.getElementById(
+      "eventsList"
+    );
+
+  if(errorMessage){
+
     list.innerHTML =
       `<div class="empty">
-        Impossible de charger le planning.
+        ${escapeHTML(errorMessage)}
       </div>`;
 
+    return;
   }
 
+  if(!eventsData.length){
+
+    list.innerHTML =
+      `<div class="empty">
+        Aucun événement pour le moment.
+      </div>`;
+
+    return;
+  }
+
+  list.innerHTML =
+    eventsData
+      .map(function(event){
+
+        return `
+          <div class="item">
+
+            <div class="item-main">
+
+              <div class="item-title">
+                ${escapeHTML(event.title)}
+              </div>
+
+              <div class="item-small">
+                ${escapeHTML(event.event_date || "")}
+                ${event.event_time
+                  ? " — " +
+                    escapeHTML(event.event_time)
+                  : ""}
+              </div>
+
+            </div>
+
+            <div class="item-actions">
+
+              <button
+                class="danger"
+                onclick="deleteEvent(${Number(event.id)})"
+              >
+                Supprimer
+              </button>
+
+            </div>
+
+          </div>
+        `;
+
+      })
+      .join("");
 }
 
 
 async function addEvent(){
 
   const title =
-    document.getElementById(
-      "eventTitle"
-    ).value.trim();
+    document
+      .getElementById("eventTitle")
+      .value
+      .trim();
 
   const date =
-    document.getElementById(
-      "eventDate"
-    ).value;
+    document
+      .getElementById("eventDate")
+      .value;
 
-  if(!title){
+  if(!title || !date){
 
     alert(
-      "Écrivez le nom de l'événement."
+      "Veuillez remplir le titre et la date."
     );
 
     return;
-
-  }
-
-  if(!date){
-
-    alert(
-      "Choisissez une date."
-    );
-
-    return;
-
   }
 
   try{
 
     await api(
-      "/api/planning",
+      "/api/events",
       {
         method:"POST",
-
         body:JSON.stringify({
-          title:title,
-          date:date
+          title,
+          event_date:date
         })
       }
     );
 
-    document.getElementById(
-      "eventTitle"
-    ).value = "";
+    document
+      .getElementById("eventTitle")
+      .value = "";
 
-    document.getElementById(
-      "eventDate"
-    ).value = "";
+    document
+      .getElementById("eventDate")
+      .value = "";
 
     await loadEvents();
 
-    updateStats();
+    updateDashboard();
 
   }catch(error){
 
     alert(
       error.message
     );
-
   }
-
 }
 
 
 async function deleteEvent(id){
 
-  if(
-    !confirm(
-      "Supprimer cet événement ?"
-    )
-  ){
-
-    return;
-
-  }
+  if(!confirm(
+    "Supprimer cet événement ?"
+  )) return;
 
   try{
 
     await api(
-      "/api/planning/" + id,
+      `/api/events/${id}`,
       {
         method:"DELETE"
       }
@@ -2194,16 +3488,14 @@ async function deleteEvent(id){
 
     await loadEvents();
 
-    updateStats();
+    updateDashboard();
 
   }catch(error){
 
     alert(
       error.message
     );
-
   }
-
 }
 
 
@@ -2213,82 +3505,17 @@ async function deleteEvent(id){
 
 async function loadNotes(){
 
-  const list =
-    document.getElementById(
-      "notesList"
-    );
-
   try{
 
     const data =
-      await api(
-        "/api/notes"
-      );
+      await api("/api/notes");
 
-    const notes =
-      data?.notes ||
-      data?.data ||
+    notesData =
+      data.notes ||
+      data.data ||
       [];
 
-    list.innerHTML = "";
-
-    if(!notes.length){
-
-      list.innerHTML =
-        `<div class="empty">
-          Aucune note pour le moment.
-        </div>`;
-
-      return;
-
-    }
-
-    notes.forEach(
-      note => {
-
-        const item =
-          document.createElement(
-            "div"
-          );
-
-        item.className =
-          "item";
-
-        item.innerHTML = `
-          <div class="item-main">
-
-            <div class="item-title">
-              ${escapeHTML(
-                note.title
-              )}
-            </div>
-
-            <div class="item-small">
-              ${escapeHTML(
-                note.content
-              )}
-            </div>
-
-          </div>
-
-          <div class="item-actions">
-
-            <button
-              class="danger"
-              onclick="deleteNote('${note.id}')"
-            >
-              Supprimer
-            </button>
-
-          </div>
-        `;
-
-        list.appendChild(
-          item
-        );
-
-      }
-    );
+    renderNotes();
 
   }catch(error){
 
@@ -2297,46 +3524,101 @@ async function loadNotes(){
       error
     );
 
+    notesData = [];
+
+    renderNotes(
+      "Impossible de charger les notes."
+    );
+  }
+}
+
+
+function renderNotes(errorMessage = ""){
+
+  const list =
+    document.getElementById(
+      "notesList"
+    );
+
+  if(errorMessage){
+
     list.innerHTML =
       `<div class="empty">
-        Impossible de charger les notes.
+        ${escapeHTML(errorMessage)}
       </div>`;
 
+    return;
   }
 
+  if(!notesData.length){
+
+    list.innerHTML =
+      `<div class="empty">
+        Aucune note pour le moment.
+      </div>`;
+
+    return;
+  }
+
+  list.innerHTML =
+    notesData
+      .map(function(note){
+
+        return `
+          <div class="item">
+
+            <div class="item-main">
+
+              <div class="item-title">
+                ${escapeHTML(note.title)}
+              </div>
+
+              <div class="item-small">
+                ${escapeHTML(note.content)}
+              </div>
+
+            </div>
+
+            <div class="item-actions">
+
+              <button
+                class="danger"
+                onclick="deleteNote(${Number(note.id)})"
+              >
+                Supprimer
+              </button>
+
+            </div>
+
+          </div>
+        `;
+
+      })
+      .join("");
 }
 
 
 async function addNote(){
 
   const title =
-    document.getElementById(
-      "noteTitle"
-    ).value.trim();
+    document
+      .getElementById("noteTitle")
+      .value
+      .trim();
 
   const content =
-    document.getElementById(
-      "noteContent"
-    ).value.trim();
+    document
+      .getElementById("noteContent")
+      .value
+      .trim();
 
-  if(!title){
+  if(!title || !content){
 
     alert(
-      "Ajoutez un titre."
+      "Veuillez remplir le titre et le contenu."
     );
 
     return;
-
-  }
-
-  if(!content){
-
-    alert(
-      "Écrivez votre note."
-    );
-
-    return;
-
   }
 
   try{
@@ -2345,53 +3627,44 @@ async function addNote(){
       "/api/notes",
       {
         method:"POST",
-
         body:JSON.stringify({
-          title:title,
-          content:content
+          title,
+          content
         })
       }
     );
 
-    document.getElementById(
-      "noteTitle"
-    ).value = "";
+    document
+      .getElementById("noteTitle")
+      .value = "";
 
-    document.getElementById(
-      "noteContent"
-    ).value = "";
+    document
+      .getElementById("noteContent")
+      .value = "";
 
     await loadNotes();
 
-    updateStats();
+    updateDashboard();
 
   }catch(error){
 
     alert(
       error.message
     );
-
   }
-
 }
 
 
 async function deleteNote(id){
 
-  if(
-    !confirm(
-      "Supprimer cette note ?"
-    )
-  ){
-
-    return;
-
-  }
+  if(!confirm(
+    "Supprimer cette note ?"
+  )) return;
 
   try{
 
     await api(
-      "/api/notes/" + id,
+      `/api/notes/${id}`,
       {
         method:"DELETE"
       }
@@ -2399,16 +3672,14 @@ async function deleteNote(id){
 
     await loadNotes();
 
-    updateStats();
+    updateDashboard();
 
   }catch(error){
 
     alert(
       error.message
     );
-
   }
-
 }
 
 
@@ -2418,98 +3689,17 @@ async function deleteNote(id){
 
 async function loadBudget(){
 
-  const list =
-    document.getElementById(
-      "budgetList"
-    );
-
   try{
 
     const data =
-      await api(
-        "/api/budget"
-      );
+      await api("/api/budget");
 
-    const entries =
-      data?.budget ||
-      data?.transactions ||
-      data?.data ||
+    budgetData =
+      data.budget ||
+      data.data ||
       [];
 
-    list.innerHTML = "";
-
-    if(!entries.length){
-
-      list.innerHTML =
-        `<div class="empty">
-          Aucun mouvement budgétaire.
-        </div>`;
-
-      return;
-
-    }
-
-    entries.forEach(
-      entry => {
-
-        const item =
-          document.createElement(
-            "div"
-          );
-
-        item.className =
-          "item";
-
-        const amount =
-          Number(
-            entry.amount || 0
-          );
-
-        item.innerHTML = `
-          <div class="item-main">
-
-            <div class="item-title">
-              ${escapeHTML(
-                entry.description
-              )}
-            </div>
-
-            <div class="item-small">
-              ${
-                entry.type === "expense"
-                  ? "Dépense"
-                  : "Revenu"
-              }
-            </div>
-
-          </div>
-
-          <div class="item-actions">
-
-            <strong>
-              ${
-                entry.type === "expense"
-                  ? "-"
-                  : "+"
-              }${amount.toFixed(2)} HTG
-            </strong>
-
-            <button
-              class="danger"
-              onclick="deleteBudget('${entry.id}')"
-            >
-              Supprimer
-            </button>
-
-          </div>
-        `;
-
-        list.appendChild(
-          item
-        );
-
-      }
-    );
+    renderBudget();
 
   }catch(error){
 
@@ -2518,56 +3708,173 @@ async function loadBudget(){
       error
     );
 
+    budgetData = [];
+
+    renderBudget(
+      "Impossible de charger le budget."
+    );
+  }
+}
+
+
+function renderBudget(errorMessage = ""){
+
+  const list =
+    document.getElementById(
+      "budgetList"
+    );
+
+  if(errorMessage){
+
     list.innerHTML =
       `<div class="empty">
-        Impossible de charger le budget.
+        ${escapeHTML(errorMessage)}
       </div>`;
 
+    return;
   }
 
+  let income = 0;
+  let expense = 0;
+
+  budgetData.forEach(function(item){
+
+    const amount =
+      Number(item.amount || 0);
+
+    if(item.type === "income"){
+
+      income += amount;
+
+    }else{
+
+      expense += amount;
+
+    }
+
+  });
+
+  const balance =
+    income - expense;
+
+  document
+    .getElementById("budgetBalance")
+    .textContent =
+      formatMoney(balance);
+
+  document
+    .getElementById("budgetBalance")
+    .className =
+      "balance " +
+      (balance >= 0
+        ? "income"
+        : "expense");
+
+  document
+    .getElementById("budgetSummary")
+    .textContent =
+      `Revenus : ${formatMoney(income)} — Dépenses : ${formatMoney(expense)}`;
+
+  if(!budgetData.length){
+
+    list.innerHTML =
+      `<div class="empty">
+        Aucune opération pour le moment.
+      </div>`;
+
+    return;
+  }
+
+  list.innerHTML =
+    budgetData
+      .map(function(item){
+
+        const amount =
+          Number(item.amount || 0);
+
+        const isIncome =
+          item.type === "income";
+
+        return `
+          <div class="item">
+
+            <div class="item-main">
+
+              <div class="item-title">
+                ${escapeHTML(item.description)}
+              </div>
+
+              <div class="item-small">
+                ${isIncome ? "Revenu" : "Dépense"}
+              </div>
+
+            </div>
+
+            <div class="item-actions">
+
+              <strong class="${isIncome ? "income" : "expense"}">
+                ${isIncome ? "+" : "-"}${formatMoney(amount)}
+              </strong>
+
+              <button
+                class="danger"
+                onclick="deleteBudget(${Number(item.id)})"
+              >
+                Supprimer
+              </button>
+
+            </div>
+
+          </div>
+        `;
+
+      })
+      .join("");
 }
 
 
 async function addBudget(){
 
   const description =
-    document.getElementById(
-      "budgetDescription"
-    ).value.trim();
+    document
+      .getElementById(
+        "budgetDescription"
+      )
+      .value
+      .trim();
 
   const amount =
     Number(
-      document.getElementById(
-        "budgetAmount"
-      ).value
+      document
+        .getElementById(
+          "budgetAmount"
+        )
+        .value
     );
 
   const type =
-    document.getElementById(
-      "budgetType"
-    ).value;
+    document
+      .getElementById(
+        "budgetType"
+      )
+      .value;
 
   if(!description){
 
     alert(
-      "Ajoutez une description."
+      "Veuillez entrer une description."
     );
 
     return;
-
   }
 
-  if(
-    !Number.isFinite(amount) ||
-    amount <= 0
-  ){
+  if(!amount || amount <= 0){
 
     alert(
-      "Entrez un montant valide."
+      "Veuillez entrer un montant valide."
     );
 
     return;
-
   }
 
   try{
@@ -2576,22 +3883,25 @@ async function addBudget(){
       "/api/budget",
       {
         method:"POST",
-
         body:JSON.stringify({
-          description:description,
-          amount:amount,
-          type:type
+          description,
+          amount,
+          type
         })
       }
     );
 
-    document.getElementById(
-      "budgetDescription"
-    ).value = "";
+    document
+      .getElementById(
+        "budgetDescription"
+      )
+      .value = "";
 
-    document.getElementById(
-      "budgetAmount"
-    ).value = "";
+    document
+      .getElementById(
+        "budgetAmount"
+      )
+      .value = "";
 
     await loadBudget();
 
@@ -2600,28 +3910,20 @@ async function addBudget(){
     alert(
       error.message
     );
-
   }
-
 }
 
 
 async function deleteBudget(id){
 
-  if(
-    !confirm(
-      "Supprimer cette opération ?"
-    )
-  ){
-
-    return;
-
-  }
+  if(!confirm(
+    "Supprimer cette opération ?"
+  )) return;
 
   try{
 
     await api(
-      "/api/budget/" + id,
+      `/api/budget/${id}`,
       {
         method:"DELETE"
       }
@@ -2634,125 +3936,27 @@ async function deleteBudget(id){
     alert(
       error.message
     );
-
   }
+}
 
-  }
+
 /* =====================================================
    OBJECTIFS
 ===================================================== */
 
 async function loadGoals(){
 
-  const list =
-    document.getElementById(
-      "goalsList"
-    );
-
   try{
 
     const data =
-      await api(
-        "/api/goals"
-      );
+      await api("/api/goals");
 
-    const goals =
-      data?.goals ||
-      data?.data ||
+    goalsData =
+      data.goals ||
+      data.data ||
       [];
 
-    list.innerHTML = "";
-
-    if(!goals.length){
-
-      list.innerHTML =
-        `<div class="empty">
-          Aucun objectif pour le moment.
-        </div>`;
-
-      return;
-
-    }
-
-    goals.forEach(
-      goal => {
-
-        const item =
-          document.createElement(
-            "div"
-          );
-
-        item.className =
-          "item";
-
-        const target =
-          Number(
-            goal.target || 0
-          );
-
-        const progress =
-          Number(
-            goal.progress || 0
-          );
-
-        const percent =
-          target > 0
-            ? Math.min(
-                100,
-                Math.round(
-                  (progress / target) * 100
-                )
-              )
-            : 0;
-
-        item.innerHTML = `
-          <div class="item-main">
-
-            <div class="item-title">
-              ${escapeHTML(
-                goal.title
-              )}
-            </div>
-
-            <div class="item-small">
-              Progression :
-              ${progress} / ${target}
-            </div>
-
-            <div class="progress">
-              <div
-                class="progress-bar"
-                style="width:${percent}%"
-              ></div>
-            </div>
-
-          </div>
-
-          <div class="item-actions">
-
-            <button
-              class="success"
-              onclick="increaseGoal('${goal.id}')"
-            >
-              +1
-            </button>
-
-            <button
-              class="danger"
-              onclick="deleteGoal('${goal.id}')"
-            >
-              Supprimer
-            </button>
-
-          </div>
-        `;
-
-        list.appendChild(
-          item
-        );
-
-      }
-    );
+    renderGoals();
 
   }catch(error){
 
@@ -2761,51 +3965,144 @@ async function loadGoals(){
       error
     );
 
+    goalsData = [];
+
+    renderGoals(
+      "Impossible de charger les objectifs."
+    );
+  }
+}
+
+
+function renderGoals(errorMessage = ""){
+
+  const list =
+    document.getElementById(
+      "goalsList"
+    );
+
+  if(errorMessage){
+
     list.innerHTML =
       `<div class="empty">
-        Impossible de charger les objectifs.
+        ${escapeHTML(errorMessage)}
       </div>`;
 
+    return;
   }
 
+  if(!goalsData.length){
+
+    list.innerHTML =
+      `<div class="empty">
+        Aucun objectif pour le moment.
+      </div>`;
+
+    return;
+  }
+
+  list.innerHTML =
+    goalsData
+      .map(function(goal){
+
+        const target =
+          Number(goal.target || 0);
+
+        const progress =
+          Number(goal.progress || 0);
+
+        const percent =
+          target > 0
+            ? Math.min(
+                100,
+                Math.round(
+                  progress / target * 100
+                )
+              )
+            : 0;
+
+        return `
+          <div class="item">
+
+            <div class="item-main">
+
+              <div class="item-title">
+                ${escapeHTML(goal.title)}
+              </div>
+
+              <div class="item-small">
+                Progression :
+                ${progress} / ${target}
+              </div>
+
+              <div class="progress">
+
+                <div
+                  class="progress-bar"
+                  style="width:${percent}%"
+                ></div>
+
+              </div>
+
+            </div>
+
+            <div class="item-actions">
+
+              <button
+                class="success"
+                onclick="increaseGoal(${Number(goal.id)},${progress + 1})"
+              >
+                +1
+              </button>
+
+              <button
+                class="danger"
+                onclick="deleteGoal(${Number(goal.id)})"
+              >
+                Supprimer
+              </button>
+
+                        </div>
+
+          </div>
+        `;
+
+      })
+      .join("");
 }
 
 
 async function addGoal(){
 
   const title =
-    document.getElementById(
-      "goalTitle"
-    ).value.trim();
+    document
+      .getElementById("goalTitle")
+      .value
+      .trim();
 
   const target =
     Number(
-      document.getElementById(
-        "goalTarget"
-      ).value
+      document
+        .getElementById("goalTarget")
+        .value
     );
 
   if(!title){
 
     alert(
-      "Écrivez le nom de l'objectif."
+      "Veuillez entrer le nom de l'objectif."
     );
 
     return;
-
   }
 
-  if(
-    !Number.isFinite(target) ||
-    target <= 0
-  ){
+  if(!target || target <= 0){
 
     alert(
-      "Entrez une cible valide."
+      "Veuillez entrer une cible valide."
     );
 
     return;
-
   }
 
   try{
@@ -2814,49 +4111,44 @@ async function addGoal(){
       "/api/goals",
       {
         method:"POST",
-
         body:JSON.stringify({
-          title:title,
-          target:target,
-          progress:0
+          title,
+          target
         })
       }
     );
 
-    document.getElementById(
-      "goalTitle"
-    ).value = "";
+    document
+      .getElementById("goalTitle")
+      .value = "";
 
-    document.getElementById(
-      "goalTarget"
-    ).value = "";
+    document
+      .getElementById("goalTarget")
+      .value = "";
 
     await loadGoals();
 
-    updateStats();
+    updateDashboard();
 
   }catch(error){
 
     alert(
       error.message
     );
-
   }
-
 }
 
 
-async function increaseGoal(id){
+async function increaseGoal(id,progress){
 
   try{
 
     await api(
-      "/api/goals/" + id,
+      `/api/goals/${id}`,
       {
         method:"PATCH",
-
         body:JSON.stringify({
-          increment:1
+          progress
         })
       }
     );
@@ -2868,28 +4160,20 @@ async function increaseGoal(id){
     alert(
       error.message
     );
-
   }
-
 }
 
 
 async function deleteGoal(id){
 
-  if(
-    !confirm(
-      "Supprimer cet objectif ?"
-    )
-  ){
-
-    return;
-
-  }
+  if(!confirm(
+    "Supprimer cet objectif ?"
+  )) return;
 
   try{
 
     await api(
-      "/api/goals/" + id,
+      `/api/goals/${id}`,
       {
         method:"DELETE"
       }
@@ -2897,194 +4181,109 @@ async function deleteGoal(id){
 
     await loadGoals();
 
-    updateStats();
+    updateDashboard();
 
   }catch(error){
 
     alert(
       error.message
     );
-
   }
+}
+
+
+/* =====================================================
+   DASHBOARD
+===================================================== */
+
+function updateDashboard(){
+
+  document
+    .getElementById("statTasks")
+    .textContent =
+      tasksData.length;
+
+  document
+    .getElementById("statEvents")
+    .textContent =
+      eventsData.length;
+
+  document
+    .getElementById("statNotes")
+    .textContent =
+      notesData.length;
+
+  document
+    .getElementById("statGoals")
+    .textContent =
+      goalsData.length;
 
 }
 
 
 /* =====================================================
-   STATISTIQUES DASHBOARD
+   PREMIUM / ABONNEMENT
 ===================================================== */
 
-async function updateStats(){
+async function loadSubscription(){
+
+  const statusBox =
+    document.getElementById(
+      "premiumStatus"
+    );
 
   try{
 
-    const [
-      tasksData,
-      eventsData,
-      notesData,
-      goalsData
-    ] = await Promise.all([
+    const data =
+      await api(
+        "/api/subscription/status"
+      );
 
-      api("/api/tasks"),
+    const premium =
+      data.premium === true ||
+      data.isPremium === true ||
+      data.active === true ||
+      data.status === "active" ||
+      data.subscription?.status === "active";
 
-      api("/api/planning"),
+    if(premium){
 
-      api("/api/notes"),
+      statusBox.textContent =
+        "Votre compte est actuellement Premium.";
 
-      api("/api/goals")
+      document
+        .getElementById("premiumBadge")
+        .classList
+        .remove("hidden");
 
-    ]);
+      return;
+    }
 
-    const tasks =
-      tasksData?.tasks ||
-      tasksData?.data ||
-      [];
+    statusBox.textContent =
+      "Votre compte est actuellement en version gratuite.";
 
-    const events =
-      eventsData?.events ||
-      eventsData?.planning ||
-      eventsData?.data ||
-      [];
-
-    const notes =
-      notesData?.notes ||
-      notesData?.data ||
-      [];
-
-    const goals =
-      goalsData?.goals ||
-      goalsData?.data ||
-      [];
-
-    document.getElementById(
-      "statTasks"
-    ).textContent =
-      tasks.length;
-
-    document.getElementById(
-      "statEvents"
-    ).textContent =
-      events.length;
-
-    document.getElementById(
-      "statNotes"
-    ).textContent =
-      notes.length;
-
-    document.getElementById(
-      "statGoals"
-    ).textContent =
-      goals.length;
+    document
+      .getElementById("premiumBadge")
+      .classList
+      .add("hidden");
 
   }catch(error){
 
     console.error(
-      "Erreur statistiques:",
+      "Erreur abonnement:",
       error
     );
 
+    statusBox.textContent =
+      "Impossible de vérifier le statut Premium.";
+
   }
 
 }
 
 
 /* =====================================================
-   FOCUS TIMER
-===================================================== */
-
-let timerSeconds = 25 * 60;
-
-let timerInterval = null;
-
-
-function updateTimerDisplay(){
-
-  const minutes =
-    Math.floor(
-      timerSeconds / 60
-    );
-
-  const seconds =
-    timerSeconds % 60;
-
-  document.getElementById(
-    "timer"
-  ).textContent =
-    String(minutes).padStart(2,"0")
-    + ":"
-    + String(seconds).padStart(2,"0");
-
-}
-
-
-function startTimer(){
-
-  if(timerInterval){
-
-    return;
-
-  }
-
-  timerInterval =
-    setInterval(
-      function(){
-
-        if(timerSeconds <= 0){
-
-          clearInterval(
-            timerInterval
-          );
-
-          timerInterval = null;
-
-          alert(
-            "🎉 Session Focus terminée !"
-          );
-
-          return;
-
-        }
-
-        timerSeconds--;
-
-        updateTimerDisplay();
-
-      },
-      1000
-    );
-
-}
-
-
-function pauseTimer(){
-
-  if(timerInterval){
-
-    clearInterval(
-      timerInterval
-    );
-
-    timerInterval = null;
-
-  }
-
-}
-
-
-function resetTimer(){
-
-  pauseTimer();
-
-  timerSeconds =
-    25 * 60;
-
-  updateTimerDisplay();
-
-}
-
-
-/* =====================================================
-   PREMIUM / TCHOTCHOM
+   PAIEMENT PREMIUM
 ===================================================== */
 
 async function createPremiumPayment(){
@@ -3096,20 +4295,26 @@ async function createPremiumPayment(){
 
   const amount =
     Number(
-      document.getElementById(
-        "premiumAmount"
-      ).value
+      document
+        .getElementById(
+          "premiumAmount"
+        )
+        .value
     );
 
-  const paymentMethod =
-    document.getElementById(
-      "premiumMethod"
-    ).value;
+  const method =
+    document
+      .getElementById(
+        "premiumMethod"
+      )
+      .value;
 
-  if(
-    !Number.isFinite(amount) ||
-    amount <= 0
-  ){
+  showPaymentMessage(
+    "",
+    true
+  );
+
+  if(!amount || amount <= 0){
 
     showPaymentMessage(
       "Veuillez entrer un montant valide.",
@@ -3117,68 +4322,100 @@ async function createPremiumPayment(){
     );
 
     return;
-
   }
 
   button.disabled = true;
 
   button.textContent =
-    "Création du paiement...";
-
-  showPaymentMessage(
-    "",
-    true
-  );
+    "Préparation du paiement...";
 
   try{
 
+    /*
+      Le backend Lumio 5.0.0 doit recevoir :
+      amount
+      currency
+      payment_method
+    */
+
     const data =
       await api(
-        "/api/subscription/create",
+        "/api/payments/create",
         {
           method:"POST",
-
           body:JSON.stringify({
 
             amount:amount,
 
             currency:"HTG",
 
-            paymentMethod:
-              paymentMethod
+            payment_method:method
 
           })
-
         }
       );
 
-    if(!data?.success){
+    /*
+      Plusieurs formats de réponse sont acceptés
+      afin que le frontend puisse fonctionner avec
+      l'URL retournée par le backend.
+    */
 
-      throw new Error(
-        data?.error ||
-        "Le paiement n'a pas pu être créé."
+    const paymentUrl =
+      data.payment_url ||
+      data.paymentUrl ||
+      data.url ||
+      data.checkout_url ||
+      data.checkoutUrl ||
+      data.data?.payment_url ||
+      data.data?.paymentUrl ||
+      data.data?.url;
+
+    if(paymentUrl){
+
+      showPaymentMessage(
+        "Paiement créé. Redirection vers le paiement...",
+        true
       );
 
+      setTimeout(function(){
+
+        window.location.href =
+          paymentUrl;
+
+      },800);
+
+      return;
     }
 
-    const payment =
-      data?.payment ||
-      data?.data ||
-      {};
+    /*
+      Si le backend a créé le paiement mais
+      n'a pas retourné d'URL.
+    */
 
-    const reference =
-      payment?.reference ||
-      "Paiement créé";
+    if(
+      data.success === true ||
+      data.status === "pending" ||
+      data.payment
+    ){
 
-    showPaymentMessage(
-      "Paiement créé avec succès. Référence : "
-      + reference,
-      true
-    );
+      showPaymentMessage(
+        "Le paiement a été créé. Vérifiez la réponse du service de paiement.",
+        true
+      );
 
-    console.log(
-      "Paiement Premium:",
-      data
+      console.log(
+        "Réponse paiement:",
+        data
+      );
+
+      return;
+    }
+
+    throw new Error(
+      data.error ||
+      data.message ||
+      "Le serveur n'a pas retourné de lien de paiement."
     );
 
   }catch(error){
@@ -3207,16 +4444,138 @@ async function createPremiumPayment(){
 
 
 /* =====================================================
-   VERIFICATION DE SESSION
+   TIMER FOCUS
 ===================================================== */
 
-async function checkSession(){
+let timerSeconds = 25 * 60;
+
+let timerInterval = null;
+
+let timerRunning = false;
+
+
+function updateTimer(){
+
+  const minutes =
+    Math.floor(
+      timerSeconds / 60
+    );
+
+  const seconds =
+    timerSeconds % 60;
+
+  document
+    .getElementById("timer")
+    .textContent =
+      String(minutes).padStart(2,"0") +
+      ":" +
+      String(seconds).padStart(2,"0");
+
+}
+
+
+function startTimer(){
+
+  if(timerRunning) return;
+
+  timerRunning = true;
+
+  timerInterval =
+    setInterval(function(){
+
+      if(timerSeconds <= 0){
+
+        clearInterval(
+          timerInterval
+        );
+
+        timerInterval = null;
+
+        timerRunning = false;
+
+        timerSeconds =
+          25 * 60;
+
+        updateTimer();
+
+        alert(
+          "Session Focus terminée."
+        );
+
+        return;
+      }
+
+      timerSeconds--;
+
+      updateTimer();
+
+    },1000);
+
+}
+
+
+function pauseTimer(){
+
+  if(timerInterval){
+
+    clearInterval(
+      timerInterval
+    );
+
+    timerInterval = null;
+
+  }
+
+  timerRunning = false;
+
+}
+
+
+function resetTimer(){
+
+  if(timerInterval){
+
+    clearInterval(
+      timerInterval
+    );
+
+    timerInterval = null;
+
+  }
+
+  timerRunning = false;
+
+  timerSeconds =
+    25 * 60;
+
+  updateTimer();
+
+}
+
+
+/* =====================================================
+   INITIALISATION
+===================================================== */
+
+async function initialize(){
+
+  updateTimer();
+
+  /*
+    Aucun token :
+    on reste sur l'écran de connexion.
+  */
 
   if(!token){
 
     return;
 
   }
+
+  /*
+    Token présent :
+    on vérifie qu'il est encore valide.
+  */
 
   try{
 
@@ -3226,29 +4585,17 @@ async function checkSession(){
       );
 
     currentUser =
-      data?.user ||
-      data?.data?.user ||
-      data?.data ||
-      null;
+      data.user ||
+      data.data ||
+      data;
 
-    if(currentUser){
-
-      openApp();
-
-    }else{
-
-      token = "";
-
-      localStorage.removeItem(
-        "lumio_token"
-      );
-
-    }
+    await openApp();
 
   }catch(error){
 
     console.log(
-      "Session non valide."
+      "Session non valide:",
+      error.message
     );
 
     token = "";
@@ -3263,22 +4610,54 @@ async function checkSession(){
 
 
 /* =====================================================
-   INITIALISATION
+   RACCOURCIS CLAVIER
 ===================================================== */
 
 document.addEventListener(
-  "DOMContentLoaded",
-  function(){
+  "keydown",
+  function(event){
 
-    updateTimerDisplay();
+    /*
+      Entrée dans le champ tâche
+    */
 
-    checkSession();
+    if(
+      event.key === "Enter" &&
+      document.activeElement?.id === "taskTitle"
+    ){
+
+      event.preventDefault();
+
+      addTask();
+
+    }
+
+    /*
+      Entrée dans le champ événement
+    */
+
+    if(
+      event.key === "Enter" &&
+      document.activeElement?.id === "eventTitle"
+    ){
+
+      event.preventDefault();
+
+      addEvent();
+
+    }
 
   }
 );
+
+
+/* =====================================================
+   DÉMARRAGE
+===================================================== */
+
+initialize();
 
 </script>
 
 </body>
 </html>
-  
