@@ -1,34 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-  name="viewport"
-  content="width=device-width,initial-scale=1.0"
->
-
-<meta
-  name="theme-color"
-  content="#ff7a00"
->
-
-<meta
-  name="description"
-  content="Lumio - Organisez votre vie simplement"
->
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#ff7a00">
+<meta name="description" content="Lumio - Organisez votre vie simplement">
 <title>Lumio</title>
 
-
 <style>
-
-/* =====================================================
-   RESET
-===================================================== */
-
 *{
   box-sizing:border-box;
   margin:0;
@@ -36,19 +15,12 @@
 }
 
 body{
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
+  font-family:Arial,Helvetica,sans-serif;
   background:#f6f7f9;
   color:#171717;
 }
 
-button,
-input,
-textarea,
-select{
+button,input,textarea,select{
   font:inherit;
 }
 
@@ -65,73 +37,46 @@ button{
   color:#777;
 }
 
-
-/* =====================================================
-   AUTHENTIFICATION
-===================================================== */
+/* AUTH */
 
 #auth{
   min-height:100vh;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
   padding:20px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #fff7ef,
-      #f6f7f9
-    );
+  background:linear-gradient(135deg,#fff7ef,#f6f7f9);
 }
 
 .auth-card{
   width:100%;
   max-width:430px;
-
   background:#fff;
-
   padding:30px;
-
   border-radius:24px;
-
-  box-shadow:
-    0 15px 50px
-    rgba(0,0,0,.08);
+  box-shadow:0 15px 50px rgba(0,0,0,.08);
 }
 
 .logo,
 .brand-logo{
-
   background:#ff7a00;
-
   color:#fff;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
   font-weight:800;
 }
 
 .logo{
-
   width:60px;
   height:60px;
-
   border-radius:18px;
-
   font-size:32px;
-
   margin-bottom:18px;
 }
 
 .auth-card h1{
-
   font-size:30px;
-
   margin-bottom:8px;
 }
 
@@ -144,248 +89,156 @@ button{
 }
 
 .field label{
-
   display:block;
-
   font-size:14px;
-
   font-weight:700;
-
   margin-bottom:7px;
 }
 
 .field input,
 .field textarea,
 .field select{
-
   width:100%;
-
   padding:13px 14px;
-
   border:1px solid #ddd;
-
   border-radius:12px;
-
   outline:none;
-
   background:#fff;
 }
 
 .field input:focus,
 .field textarea:focus,
 .field select:focus{
-
   border-color:#ff7a00;
 }
 
 .primary{
-
   width:100%;
-
   padding:14px;
-
   border-radius:12px;
-
   background:#ff7a00;
-
   color:#fff;
-
   font-weight:700;
 }
 
 .primary:disabled{
-
   opacity:.6;
-
   cursor:not-allowed;
 }
 
 .secondary{
-
   padding:11px 15px;
-
   border-radius:11px;
-
   background:#f1f1f1;
-
   color:#222;
 }
 
 .auth-switch{
-
   text-align:center;
-
   margin-top:18px;
-
   font-size:14px;
 }
 
 .link{
-
   color:#ff7a00;
-
   font-weight:700;
-
   cursor:pointer;
 }
 
 #error{
-
   min-height:20px;
-
   margin-top:12px;
-
   color:#c40000;
-
   font-size:14px;
 }
 
-
-/* =====================================================
-   APPLICATION
-===================================================== */
+/* APP */
 
 #app{
   min-height:100vh;
 }
 
-
-/* =====================================================
-   TOPBAR
-===================================================== */
+/* TOPBAR */
 
 .topbar{
-
   height:70px;
-
   background:#fff;
-
   border-bottom:1px solid #eee;
-
   display:flex;
-
   align-items:center;
-
   justify-content:space-between;
-
   padding:0 22px;
-
   position:sticky;
-
   top:0;
-
   z-index:20;
 }
 
 .brand{
-
   display:flex;
-
   align-items:center;
-
   gap:10px;
-
   font-size:22px;
-
   font-weight:800;
 }
 
 .brand-logo{
-
   width:38px;
   height:38px;
-
   border-radius:12px;
 }
 
 .user-area{
-
   display:flex;
-
   align-items:center;
-
   gap:10px;
 }
 
 .premium-badge{
-
   background:#fff1e5;
-
   color:#e86600;
-
   padding:7px 10px;
-
   border-radius:20px;
-
   font-size:12px;
-
   font-weight:700;
 }
 
-
-/* =====================================================
-   LAYOUT
-===================================================== */
+/* LAYOUT */
 
 .layout{
-
   display:flex;
-
-  min-height:
-    calc(100vh - 70px);
+  min-height:calc(100vh - 70px);
 }
 
 .sidebar{
-
   width:230px;
-
   background:#fff;
-
   border-right:1px solid #eee;
-
   padding:20px 12px;
 }
 
 .nav-btn{
-
   width:100%;
-
   padding:13px 14px;
-
   background:transparent;
-
   text-align:left;
-
   border-radius:12px;
-
   margin-bottom:5px;
-
   font-weight:600;
 }
 
 .nav-btn:hover,
 .nav-btn.active{
-
   background:#fff1e5;
-
   color:#e86600;
 }
 
-
-/* =====================================================
-   CONTENT
-===================================================== */
+/* CONTENT */
 
 .content{
-
   flex:1;
-
   width:100%;
-
   max-width:1300px;
-
   margin:auto;
-
   padding:25px;
 }
 
@@ -398,50 +251,29 @@ button{
 }
 
 .page-title{
-
   font-size:28px;
-
   margin-bottom:6px;
 }
 
 .page-subtitle{
-
   color:#777;
-
   margin-bottom:22px;
 }
 
-
-/* =====================================================
-   GRID / CARDS
-===================================================== */
+/* CARDS */
 
 .grid{
-
   display:grid;
-
-  grid-template-columns:
-    repeat(
-      auto-fit,
-      minmax(220px,1fr)
-    );
-
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:16px;
 }
 
 .card{
-
   background:#fff;
-
   border:1px solid #eee;
-
   border-radius:18px;
-
   padding:20px;
-
-  box-shadow:
-    0 5px 20px
-    rgba(0,0,0,.03);
+  box-shadow:0 5px 20px rgba(0,0,0,.03);
 }
 
 .card h3{
@@ -449,11 +281,8 @@ button{
 }
 
 .stat{
-
   font-size:30px;
-
   font-weight:800;
-
   margin-top:8px;
 }
 
@@ -461,91 +290,55 @@ button{
   margin-top:22px;
 }
 
-
-/* =====================================================
-   FORMULAIRES D'AJOUT
-===================================================== */
+/* FORMS */
 
 .add-form{
-
   background:#fff;
-
   border:1px solid #eee;
-
   border-radius:18px;
-
   padding:18px;
-
   margin-bottom:18px;
 }
 
 .add-grid{
-
   display:grid;
-
-  grid-template-columns:
-    2fr 1fr auto;
-
+  grid-template-columns:2fr 1fr auto;
   gap:10px;
 }
 
 .add-grid input,
 .add-grid select{
-
   width:100%;
-
   padding:12px;
-
   border:1px solid #ddd;
-
   border-radius:11px;
-
   background:#fff;
 }
 
 .add-grid button{
-
   background:#ff7a00;
-
   color:#fff;
-
   padding:12px 18px;
-
   border-radius:11px;
-
   font-weight:700;
 }
 
-
-/* =====================================================
-   LISTES
-===================================================== */
+/* LIST */
 
 .list{
-
   display:flex;
-
   flex-direction:column;
-
   gap:10px;
 }
 
 .item{
-
   background:#fff;
-
   border:1px solid #eee;
-
   border-radius:14px;
-
   padding:14px;
-
   display:flex;
-
   justify-content:space-between;
-
   align-items:center;
-
   gap:12px;
 }
 
@@ -558,354 +351,196 @@ button{
 }
 
 .item-small{
-
   color:#777;
-
   font-size:13px;
-
   margin-top:5px;
 }
 
 .item-actions{
-
   display:flex;
-
   gap:6px;
-
   flex-wrap:wrap;
 }
 
-
-/* =====================================================
-   BOUTONS
-===================================================== */
+/* BUTTONS */
 
 .danger{
-
   background:#ffe8e8;
-
   color:#b40000;
-
   padding:8px 11px;
-
   border-radius:9px;
 }
 
 .success{
-
   background:#e9f8ee;
-
   color:#18733a;
-
   padding:8px 11px;
-
   border-radius:9px;
 }
 
 .orange{
-
   background:#fff1e5;
-
   color:#e86600;
-
   padding:8px 11px;
-
   border-radius:9px;
 }
 
-
-/* =====================================================
-   EMPTY
-===================================================== */
+/* EMPTY */
 
 .empty{
-
   text-align:center;
-
   padding:30px;
-
   color:#888;
-
   background:#fff;
-
   border-radius:15px;
-
   border:1px solid #eee;
 }
 
-
-/* =====================================================
-   PROGRESSION
-===================================================== */
+/* PROGRESS */
 
 .progress{
-
   height:10px;
-
   background:#eee;
-
   border-radius:20px;
-
   overflow:hidden;
-
   margin-top:12px;
 }
 
 .progress-bar{
-
   height:100%;
-
   background:#ff7a00;
-
   width:0%;
-
-  transition:
-    width .3s ease;
+  transition:width .3s ease;
 }
 
-
-/* =====================================================
-   FOCUS
-===================================================== */
+/* FOCUS */
 
 .focus-box{
-
   max-width:550px;
-
   margin:30px auto;
-
   text-align:center;
-
   padding:35px;
 }
 
 .timer{
-
   font-size:70px;
-
   font-weight:800;
-
   margin:25px 0;
 }
 
 .timer-buttons{
-
   display:flex;
-
   justify-content:center;
-
   gap:10px;
-
   flex-wrap:wrap;
 }
 
-
-/* =====================================================
-   PREMIUM
-===================================================== */
+/* PREMIUM */
 
 .premium{
-
-  background:
-    linear-gradient(
-      135deg,
-      #ff7a00,
-      #ff9b45
-    );
-
+  background:linear-gradient(135deg,#ff7a00,#ff9b45);
   color:#fff;
 }
 
 .premium .primary{
-
   background:#fff;
-
   color:#e86600;
 }
 
 .premium-status{
-
   margin-top:15px;
-
   padding:14px;
-
-  background:
-    rgba(255,255,255,.18);
-
+  background:rgba(255,255,255,.18);
   border-radius:12px;
 }
 
-
-/* =====================================================
-   PREMIUM AVANTAGES
-===================================================== */
-
 .premium-benefits{
-
   display:grid;
-
-  grid-template-columns:
-    repeat(
-      auto-fit,
-      minmax(200px,1fr)
-    );
-
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
   gap:12px;
-
   margin:20px 0;
 }
 
 .premium-benefit{
-
-  background:
-    rgba(255,255,255,.15);
-
+  background:rgba(255,255,255,.15);
   border-radius:14px;
-
   padding:16px;
 }
 
 .premium-benefit strong{
-
   display:block;
-
   margin-bottom:6px;
 }
 
 .premium-benefit span{
-
   font-size:13px;
-
   opacity:.9;
 }
 
-
-/* =====================================================
-   PREMIUM FREE / ACTIVE
-===================================================== */
-
-.premium-free-box{
-
-  background:#fff;
-
-  color:#171717;
-
-  border-radius:16px;
-
-  padding:20px;
-
-  margin-top:18px;
-}
-
+.premium-free-box,
 .premium-active-box{
-
   background:#fff;
-
   color:#171717;
-
   border-radius:16px;
-
   padding:20px;
-
   margin-top:18px;
 }
 
 .premium-active-title{
-
   color:#18733a;
-
   font-size:20px;
-
   font-weight:800;
-
   margin-bottom:8px;
 }
 
-
-/* =====================================================
-   PAIEMENT
-===================================================== */
+/* PAYMENT */
 
 .payment-box{
-
   margin-top:20px;
-
   padding:18px;
-
   border-radius:15px;
-
-  background:
-    rgba(255,255,255,.12);
+  background:rgba(255,255,255,.12);
 }
 
 .payment-price{
-
   font-size:34px;
-
   font-weight:800;
-
   margin-top:6px;
 }
 
 .payment-link{
-
   display:inline-block;
-
   margin-top:12px;
-
   background:#fff;
-
   color:#e86600;
-
   padding:12px 16px;
-
   border-radius:10px;
-
   font-weight:700;
-
   text-decoration:none;
 }
 
-
-/* =====================================================
-   CONFIRMATION
-===================================================== */
-
 .confirmation-box{
-
   background:#fff;
-
   color:#171717;
-
   border-radius:16px;
-
   padding:20px;
-
   margin-top:18px;
 }
 
 .confirmation-title{
-
   font-size:20px;
-
   font-weight:800;
-
   margin-bottom:8px;
 }
 
-
-/* =====================================================
-   BUDGET
-===================================================== */
+/* BUDGET */
 
 .balance-box{
   margin-bottom:18px;
 }
 
 .balance{
-
   font-size:34px;
-
   font-weight:800;
 }
 
@@ -917,19 +552,12 @@ button{
   color:#b40000;
 }
 
-
-/* =====================================================
-   MESSAGES
-===================================================== */
+/* MESSAGE */
 
 .message{
-
   padding:12px;
-
   border-radius:10px;
-
   margin-top:12px;
-
   display:none;
 }
 
@@ -938,50 +566,16 @@ button{
 }
 
 .message.ok{
-
   background:#e9f8ee;
-
   color:#18733a;
 }
 
 .message.bad{
-
   background:#ffe8e8;
-
   color:#b40000;
 }
 
-
-/* =====================================================
-   PREMIUM LOCK
-===================================================== */
-
-.premium-lock{
-
-  margin-top:15px;
-
-  padding:18px;
-
-  background:#fff7ef;
-
-  border:1px solid #ffd8b5;
-
-  border-radius:14px;
-
-  color:#6d3500;
-}
-
-.premium-lock strong{
-
-  display:block;
-
-  margin-bottom:5px;
-}
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
+/* MOBILE */
 
 @media(max-width:750px){
 
@@ -990,26 +584,17 @@ button{
   }
 
   .sidebar{
-
     width:100%;
-
     display:flex;
-
     overflow-x:auto;
-
     padding:10px;
-
     border-right:0;
-
     border-bottom:1px solid #eee;
   }
 
   .nav-btn{
-
     min-width:max-content;
-
     width:auto;
-
     margin-right:5px;
   }
 
@@ -1038,9 +623,7 @@ button{
   }
 
   .user-area .secondary{
-
     padding:8px;
-
     font-size:12px;
   }
 
@@ -1049,87 +632,53 @@ button{
   }
 
   .item{
-
     align-items:flex-start;
-
     flex-direction:column;
   }
 
   .premium-benefits{
     grid-template-columns:1fr;
   }
-
 }
-
-
-/* =====================================================
-   ANIMATION LÉGÈRE
-===================================================== */
 
 .card,
 .item,
 .add-form{
-
-  transition:
-    transform .2s ease,
-    box-shadow .2s ease;
+  transition:transform .2s ease,box-shadow .2s ease;
 }
 
 .card:hover,
 .item:hover{
-
-  transform:
-    translateY(-2px);
-
-  box-shadow:
-    0 8px 25px
-    rgba(0,0,0,.05);
+  transform:translateY(-2px);
+  box-shadow:0 8px 25px rgba(0,0,0,.05);
 }
-
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- =====================================================
+<!-- =========================
      AUTHENTIFICATION
-===================================================== -->
+========================= -->
 
 <section id="auth">
 
   <div class="auth-card">
 
-    <div class="logo">
-      L
-    </div>
+    <div class="logo">L</div>
 
-
-    <h1 id="authTitle">
-      Bienvenue sur Lumio
-    </h1>
-
+    <h1 id="authTitle">Bienvenue sur Lumio</h1>
 
     <p class="muted">
       Organisez vos tâches, votre temps et vos objectifs.
     </p>
 
-
     <div id="error"></div>
 
-
-    <form
-      id="authForm"
-      class="form"
-    >
+    <form id="authForm" class="form">
 
       <div class="field">
-
-        <label for="email">
-          Email
-        </label>
+        <label for="email">Email</label>
 
         <input
           id="email"
@@ -1138,26 +687,20 @@ button{
           autocomplete="email"
           required
         >
-
       </div>
 
-
       <div class="field">
-
-        <label for="password">
-          Mot de passe
-        </label>
+        <label for="password">Mot de passe</label>
 
         <input
           id="password"
           type="password"
           placeholder="Minimum 6 caractères"
           minlength="6"
+          autocomplete="current-password"
           required
         >
-
       </div>
-
 
       <button
         type="submit"
@@ -1169,17 +712,13 @@ button{
 
     </form>
 
-
     <div class="auth-switch">
 
       <span id="switchText">
         Vous avez déjà un compte ?
       </span>
 
-      <span
-        class="link"
-        id="switchMode"
-      >
+      <span class="link" id="switchMode">
         Se connecter
       </span>
 
@@ -1190,33 +729,21 @@ button{
 </section>
 
 
-
-<!-- =====================================================
+<!-- =========================
      APPLICATION
-===================================================== -->
+========================= -->
 
-<section
-  id="app"
-  class="hidden"
->
-
-
-<!-- =====================================================
-     TOPBAR
-===================================================== -->
+<section id="app" class="hidden">
 
 <header class="topbar">
 
   <div class="brand">
 
-    <div class="brand-logo">
-      L
-    </div>
+    <div class="brand-logo">L</div>
 
     Lumio
 
   </div>
-
 
   <div class="user-area">
 
@@ -1227,12 +754,10 @@ button{
       PREMIUM
     </span>
 
-
     <span
       id="userEmail"
       class="muted"
     ></span>
-
 
     <button
       class="secondary"
@@ -1247,217 +772,119 @@ button{
 </header>
 
 
-
-<!-- =====================================================
-     LAYOUT
-===================================================== -->
-
 <div class="layout">
-
-
-<!-- =====================================================
-     NAVIGATION
-===================================================== -->
 
 <nav class="sidebar">
 
-
-  <button
-    class="nav-btn active"
-    onclick="showPage('dashboard',this)"
-  >
+  <button class="nav-btn active"
+    onclick="showPage('dashboard',this)">
     Dashboard
   </button>
 
-
-  <button
-    class="nav-btn"
-    onclick="showPage('tasks',this)"
-  >
+  <button class="nav-btn"
+    onclick="showPage('tasks',this)">
     Tâches
   </button>
 
-
-  <button
-    class="nav-btn"
-    onclick="showPage('planning',this)"
-  >
+  <button class="nav-btn"
+    onclick="showPage('planning',this)">
     Planning
   </button>
 
-
-  <button
-    class="nav-btn"
-    onclick="showPage('notes',this)"
-  >
+  <button class="nav-btn"
+    onclick="showPage('notes',this)">
     Notes
   </button>
 
-
-  <button
-    class="nav-btn"
-    onclick="showPage('budget',this)"
-  >
+  <button class="nav-btn"
+    onclick="showPage('budget',this)">
     Budget
   </button>
 
-
-  <button
-    class="nav-btn"
-    onclick="showPage('goals',this)"
-  >
+  <button class="nav-btn"
+    onclick="showPage('goals',this)">
     Objectifs
   </button>
 
-
-  <button
-    class="nav-btn"
-    onclick="showPage('focus',this)"
-  >
+  <button class="nav-btn"
+    onclick="showPage('focus',this)">
     Focus
   </button>
 
-
-  <button
-    class="nav-btn"
-    onclick="showPage('premium',this)"
-  >
+  <button class="nav-btn"
+    onclick="showPage('premium',this)">
     Premium
   </button>
-
 
 </nav>
 
 
-
-<!-- =====================================================
-     CONTENU
-===================================================== -->
-
 <main class="content">
 
+<!-- DASHBOARD -->
 
-<!-- =====================================================
-     DASHBOARD
-===================================================== -->
+<section id="dashboard" class="page active">
 
-<section
-  id="dashboard"
-  class="page active"
->
-
-  <h1 class="page-title">
-    Bonjour
-  </h1>
-
+  <h1 class="page-title">Bonjour</h1>
 
   <p class="page-subtitle">
     Voici votre espace Lumio.
   </p>
 
-
   <div class="grid">
 
-
     <div class="card">
+      <h3>Tâches</h3>
 
-      <h3>
-        Tâches
-      </h3>
-
-      <div
-        class="stat"
-        id="statTasks"
-      >
-        0
-      </div>
+      <div class="stat" id="statTasks">0</div>
 
       <p class="muted">
         Tâches enregistrées
       </p>
-
     </div>
 
-
     <div class="card">
+      <h3>Planning</h3>
 
-      <h3>
-        Planning
-      </h3>
-
-      <div
-        class="stat"
-        id="statEvents"
-      >
-        0
-      </div>
+      <div class="stat" id="statEvents">0</div>
 
       <p class="muted">
         Événements
       </p>
-
     </div>
 
-
     <div class="card">
+      <h3>Notes</h3>
 
-      <h3>
-        Notes
-      </h3>
-
-      <div
-        class="stat"
-        id="statNotes"
-      >
-        0
-      </div>
+      <div class="stat" id="statNotes">0</div>
 
       <p class="muted">
         Notes enregistrées
       </p>
-
     </div>
 
-
     <div class="card">
+      <h3>Objectifs</h3>
 
-      <h3>
-        Objectifs
-      </h3>
-
-      <div
-        class="stat"
-        id="statGoals"
-      >
-        0
-      </div>
+      <div class="stat" id="statGoals">0</div>
 
       <p class="muted">
         Objectifs
       </p>
-
     </div>
 
-
   </div>
-
 
   <div class="section">
 
     <div class="card premium">
 
-      <h2>
-        Lumio Premium
-      </h2>
-
+      <h2>Lumio Premium</h2>
 
       <p style="margin:12px 0 18px">
-
-        Débloquez une expérience
-        plus complète avec Lumio Premium.
-
+        Débloquez une expérience plus complète
+        avec Lumio Premium.
       </p>
-
 
       <button
         class="primary"
@@ -1473,25 +900,15 @@ button{
 </section>
 
 
+<!-- TÂCHES -->
 
-<!-- =====================================================
-     TÂCHES
-===================================================== -->
+<section id="tasks" class="page">
 
-<section
-  id="tasks"
-  class="page"
->
-
-  <h1 class="page-title">
-    Tâches
-  </h1>
-
+  <h1 class="page-title">Tâches</h1>
 
   <p class="page-subtitle">
     Organisez ce que vous devez accomplir.
   </p>
-
 
   <div class="add-form">
 
@@ -1502,26 +919,17 @@ button{
         placeholder="Nouvelle tâche..."
       >
 
-
       <select id="taskPriority">
 
-        <option value="low">
-          Faible
-        </option>
+        <option value="low">Faible</option>
 
-        <option
-          value="medium"
-          selected
-        >
+        <option value="medium" selected>
           Moyenne
         </option>
 
-        <option value="high">
-          Haute
-        </option>
+        <option value="high">Haute</option>
 
       </select>
-
 
       <button onclick="addTask()">
         Ajouter
@@ -1531,34 +939,20 @@ button{
 
   </div>
 
-
-  <div
-    id="tasksList"
-    class="list"
-  ></div>
+  <div id="tasksList" class="list"></div>
 
 </section>
 
 
+<!-- PLANNING -->
 
-<!-- =====================================================
-     PLANNING
-===================================================== -->
+<section id="planning" class="page">
 
-<section
-  id="planning"
-  class="page"
->
-
-  <h1 class="page-title">
-    Planning
-  </h1>
-
+  <h1 class="page-title">Planning</h1>
 
   <p class="page-subtitle">
     Planifiez vos journées.
   </p>
-
 
   <div class="add-form">
 
@@ -1569,12 +963,10 @@ button{
         placeholder="Événement..."
       >
 
-
       <input
         id="eventDate"
         type="date"
       >
-
 
       <button onclick="addEvent()">
         Ajouter
@@ -1584,34 +976,20 @@ button{
 
   </div>
 
-
-  <div
-    id="eventsList"
-    class="list"
-  ></div>
+  <div id="eventsList" class="list"></div>
 
 </section>
 
 
+<!-- NOTES -->
 
-<!-- =====================================================
-     NOTES
-===================================================== -->
+<section id="notes" class="page">
 
-<section
-  id="notes"
-  class="page"
->
-
-  <h1 class="page-title">
-    Notes
-  </h1>
-
+  <h1 class="page-title">Notes</h1>
 
   <p class="page-subtitle">
     Gardez vos idées importantes.
   </p>
-
 
   <div class="add-form">
 
@@ -1624,7 +1002,6 @@ button{
 
     </div>
 
-
     <div class="field">
 
       <textarea
@@ -1635,7 +1012,6 @@ button{
 
     </div>
 
-
     <button
       class="primary"
       onclick="addNote()"
@@ -1645,71 +1021,46 @@ button{
 
   </div>
 
-
-  <div
-    id="notesList"
-    class="list"
-  ></div>
+  <div id="notesList" class="list"></div>
 
 </section>
 
 
+<!-- BUDGET -->
 
-<!-- =====================================================
-     BUDGET
-===================================================== -->
+<section id="budget" class="page">
 
-<section
-  id="budget"
-  class="page"
->
-
-  <h1 class="page-title">
-    Budget
-  </h1>
-
+  <h1 class="page-title">Budget</h1>
 
   <p class="page-subtitle">
     Suivez vos revenus et dépenses.
   </p>
 
-
   <div class="card balance-box">
 
-    <p class="muted">
-      Solde
-    </p>
+    <p class="muted">Solde</p>
 
-
-    <div
-      id="budgetBalance"
-      class="balance"
-    >
+    <div id="budgetBalance" class="balance">
       0.00 HTG
     </div>
 
-
-    <div
-      id="budgetSummary"
-      class="item-small"
-    >
+    <div id="budgetSummary" class="item-small">
       Revenus : 0.00 HTG —
       Dépenses : 0.00 HTG
     </div>
 
   </div>
 
-
   <div class="add-form">
 
     <div class="field">
-  <input
+
+      <input
         id="budgetDescription"
         placeholder="Description..."
       >
 
     </div>
-
 
     <div class="add-grid">
 
@@ -1720,7 +1071,6 @@ button{
         min="0"
         placeholder="Montant"
       >
-
 
       <select id="budgetType">
 
@@ -1734,7 +1084,6 @@ button{
 
       </select>
 
-
       <button onclick="addBudget()">
         Ajouter
       </button>
@@ -1743,34 +1092,20 @@ button{
 
   </div>
 
-
-  <div
-    id="budgetList"
-    class="list"
-  ></div>
+  <div id="budgetList" class="list"></div>
 
 </section>
 
 
+<!-- OBJECTIFS -->
 
-<!-- =====================================================
-     OBJECTIFS
-===================================================== -->
+<section id="goals" class="page">
 
-<section
-  id="goals"
-  class="page"
->
-
-  <h1 class="page-title">
-    Objectifs
-  </h1>
-
+  <h1 class="page-title">Objectifs</h1>
 
   <p class="page-subtitle">
     Définissez vos objectifs et suivez vos progrès.
   </p>
-
 
   <div class="add-form">
 
@@ -1781,14 +1116,12 @@ button{
         placeholder="Nom de l'objectif..."
       >
 
-
       <input
         id="goalTarget"
         type="number"
         min="1"
         placeholder="Objectif"
       >
-
 
       <button onclick="addGoal()">
         Ajouter
@@ -1798,55 +1131,33 @@ button{
 
   </div>
 
-
-  <div
-    id="goalsList"
-    class="list"
-  ></div>
+  <div id="goalsList" class="list"></div>
 
 </section>
 
 
+<!-- FOCUS -->
 
-<!-- =====================================================
-     FOCUS
-===================================================== -->
+<section id="focus" class="page">
 
-<section
-  id="focus"
-  class="page"
->
-
-  <h1 class="page-title">
-    Focus
-  </h1>
-
+  <h1 class="page-title">Focus</h1>
 
   <p class="page-subtitle">
     Concentrez-vous sur une seule tâche à la fois.
   </p>
 
-
   <div class="card focus-box">
 
-    <h2>
-      Session de concentration
-    </h2>
-
+    <h2>Session de concentration</h2>
 
     <p class="muted">
       Travaillez pendant une durée définie
       sans distraction.
     </p>
 
-
-    <div
-      id="timer"
-      class="timer"
-    >
+    <div id="timer" class="timer">
       25:00
     </div>
-
 
     <div class="timer-buttons">
 
@@ -1858,14 +1169,12 @@ button{
         Démarrer
       </button>
 
-
       <button
         class="secondary"
         onclick="pauseFocus()"
       >
         Pause
       </button>
-
 
       <button
         class="orange"
@@ -1876,26 +1185,16 @@ button{
 
     </div>
 
-
-    <div
-      id="focusMessage"
-      class="message"
-    ></div>
+    <div id="focusMessage" class="message"></div>
 
   </div>
 
 </section>
 
 
+<!-- PREMIUM -->
 
-<!-- =====================================================
-     PREMIUM
-===================================================== -->
-
-<section
-  id="premium"
-  class="page"
->
+<section id="premium" class="page">
 
   <div class="card premium">
 
@@ -1903,21 +1202,12 @@ button{
       Lumio Premium
     </h1>
 
-
     <p style="margin-top:8px">
-
       Une expérience plus complète
       pour mieux organiser votre vie.
-
     </p>
 
-
-    <!-- =================================================
-         AVANTAGES PREMIUM
-    ================================================= -->
-
     <div class="premium-benefits">
-
 
       <div class="premium-benefit">
 
@@ -1932,7 +1222,6 @@ button{
 
       </div>
 
-
       <div class="premium-benefit">
 
         <strong>
@@ -1945,7 +1234,6 @@ button{
         </span>
 
       </div>
-
 
       <div class="premium-benefit">
 
@@ -1960,48 +1248,38 @@ button{
 
       </div>
 
-
       <div class="premium-benefit">
 
         <strong>
-          Expérience sans publicité
+          Sans publicité
         </strong>
 
         <span>
-          Profitez d'une expérience
-          Lumio plus propre.
+          Profitez d'une expérience Lumio
+          plus propre.
         </span>
 
       </div>
 
-
     </div>
 
 
-    <!-- =================================================
-         ZONE FREE
-    ================================================= -->
+    <!-- FREE -->
 
     <div
       id="premiumFreeBox"
       class="premium-free-box"
     >
 
-      <h2>
-        Passez à Premium
-      </h2>
-
+      <h2>Passez à Premium</h2>
 
       <p
         class="muted"
         style="margin-top:8px"
       >
-
         Débloquez les avantages Premium
-        avec un paiement de
-
+        avec un paiement de :
       </p>
-
 
       <div class="payment-box">
 
@@ -2009,11 +1287,9 @@ button{
           Prix Premium
         </div>
 
-
         <div class="payment-price">
           250 HTG
         </div>
-
 
         <a
           id="paymentLink"
@@ -2025,7 +1301,6 @@ button{
           Payer maintenant
         </a>
 
-
         <p
           style="
             margin-top:12px;
@@ -2034,19 +1309,13 @@ button{
             opacity:.9;
           "
         >
-
           Après votre paiement,
           revenez sur Lumio et confirmez
           votre paiement.
-
         </p>
 
       </div>
 
-
-      <!-- ===============================================
-           CONFIRMATION
-      ================================================ -->
 
       <div
         id="paymentConfirmation"
@@ -2057,15 +1326,11 @@ button{
           Paiement effectué ?
         </div>
 
-
         <p class="muted">
-
           Si vous avez terminé le paiement,
           cliquez ci-dessous pour envoyer
           votre demande de confirmation.
-
         </p>
-
 
         <button
           id="confirmPaymentButton"
@@ -2080,7 +1345,6 @@ button{
           J'ai effectué le paiement
         </button>
 
-
         <div
           id="paymentMessage"
           class="message"
@@ -2091,9 +1355,7 @@ button{
     </div>
 
 
-    <!-- =================================================
-         PREMIUM ACTIF
-    ================================================= -->
+    <!-- PREMIUM ACTIF -->
 
     <div
       id="premiumActiveBox"
@@ -2101,48 +1363,28 @@ button{
     >
 
       <div class="premium-active-title">
-
         Premium actif
-
       </div>
 
-
       <p>
-
         Votre compte Lumio Premium
         est actuellement actif.
-
       </p>
-
 
       <div class="premium-benefits">
 
         <div class="premium-benefit">
 
           <strong>
-            Premium activé
+                        Premium activé
           </strong>
 
           <span>
-            Votre accès Premium est disponible.
+            Vous avez accès aux fonctionnalités
+            Premium de Lumio.
           </span>
 
         </div>
-
-
-        <div class="premium-benefit">
-
-          <strong>
-            Organisation complète
-          </strong>
-
-          <span>
-            Profitez de toutes les fonctionnalités
-            Premium disponibles.
-          </span>
-
-        </div>
-
 
         <div class="premium-benefit">
 
@@ -2151,43 +1393,24 @@ button{
           </strong>
 
           <span>
-            Profitez d'une expérience
-            plus agréable.
-          </span>
-
-        </div>
-
-
-        <div class="premium-benefit">
-
-          <strong>
-            Expérience Premium
-          </strong>
-
-          <span>
-            Lumio est prêt à vous accompagner
-            encore plus efficacement.
+            Votre expérience Lumio est sans publicité.
           </span>
 
         </div>
 
       </div>
 
-
-      <button
-        class="secondary"
-        onclick="showPage('dashboard')"
-      >
-        Retour au Dashboard
-      </button>
+      <div
+        id="premiumExpiration"
+        class="item-small"
+        style="margin-top:15px"
+      ></div>
 
     </div>
 
   </div>
 
 </section>
-
-
 
 </main>
 
@@ -2196,235 +1419,65 @@ button{
 </section>
 
 
-
-<!-- =====================================================
+<!-- =========================
      JAVASCRIPT
-===================================================== -->
+========================= -->
 
 <script>
 
-/* =====================================================
-   LUMIO — JAVASCRIPT
-   À partir d'ici, colle ton JS complet.
-===================================================== */
-
-
-/* =====================================================
-   CONFIGURATION
-===================================================== */
-
 const API_URL =
-"https://lumio-backend-1-i6a3.onrender.com";
+  "https://lumio-backend.onrender.com";
 
 
-const TCHOTCHOM_PAYMENT_URL =
-"https://tchotchom.com/dDL1O43u09V40aYmtcVHrzsekuUletIY8vmKYicZ5KU";
-
-
-const PREMIUM_PRICE = 250;
-
-
-/* =====================================================
+/* =========================
    VARIABLES
-===================================================== */
+========================= */
+
+let registerMode = true;
 
 let token =
   localStorage.getItem("lumio_token") || "";
 
-let currentUser = null;
-
-let tasksData = [];
-let eventsData = [];
-let notesData = [];
-let budgetData = [];
-let goalsData = [];
-
-let registerMode = true;
-
-let isPremium = false;
-
-
-/* =====================================================
-   UTILITAIRES
-===================================================== */
-
-function escapeHTML(value){
-
-  return String(value ?? "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-
-}
-
-
-function showError(message){
-
-  const box =
-    document.getElementById("error");
-
-  if(box){
-    box.textContent =
-      message || "";
-  }
-
-}
-
-
-function formatMoney(value){
-
-  return Number(value || 0)
-    .toLocaleString("fr-FR",{
-      minimumFractionDigits:2,
-      maximumFractionDigits:2
-    }) + " HTG";
-
-}
-
-
-/* =====================================================
-   API
-===================================================== */
-
-async function api(path,options={}){
-
-  const headers = {
-
-    "Content-Type":"application/json",
-
-    ...(options.headers || {})
-
-  };
-
-
-  if(token){
-
-    headers.Authorization =
-      "Bearer " + token;
-
-  }
-
-
-  let response;
-
-
-  try{
-
-    response =
-      await fetch(
-        API_URL + path,
-        {
-          ...options,
-          headers
-        }
-      );
-
-  }catch(error){
-
-    throw new Error(
-      "Impossible de contacter le serveur Lumio."
-    );
-
-  }
-
-
-  let data;
-
-
-  try{
-
-    data =
-      await response.json();
-
-  }catch{
-
-    data = {
-      success:false,
-      error:"Réponse serveur invalide."
-    };
-
-  }
-
-
-  if(response.status === 401){
-
-    clearSession();
-
-    showAuth();
-
-    throw new Error(
-      "Votre session a expiré."
-    );
-
-  }
-
-
-  if(!response.ok){
-
-    throw new Error(
-      data?.error ||
-      data?.message ||
-      "Erreur serveur."
-    );
-
-  }
-
-
-  return data;
-
-}
-
-
-/* =====================================================
-   SESSION
-===================================================== */
-
-function clearSession(){
-
-  token = "";
-
-  currentUser = null;
-
-  isPremium = false;
-
-  localStorage.removeItem(
-    "lumio_token"
+let currentUser =
+  JSON.parse(
+    localStorage.getItem("lumio_user") || "null"
   );
 
-}
+let tasks =
+  JSON.parse(
+    localStorage.getItem("lumio_tasks") || "[]"
+  );
+
+let events =
+  JSON.parse(
+    localStorage.getItem("lumio_events") || "[]"
+  );
+
+let notes =
+  JSON.parse(
+    localStorage.getItem("lumio_notes") || "[]"
+  );
+
+let budgets =
+  JSON.parse(
+    localStorage.getItem("lumio_budgets") || "[]"
+  );
+
+let goals =
+  JSON.parse(
+    localStorage.getItem("lumio_goals") || "[]"
+  );
 
 
-function showAuth(){
+/* =========================
+   AUTH ELEMENTS
+========================= */
 
-  document
-    .getElementById("app")
-    ?.classList.add("hidden");
+const auth =
+  document.getElementById("auth");
 
-  document
-    .getElementById("auth")
-    ?.classList.remove("hidden");
-
-}
-
-
-function showApplication(){
-
-  document
-    .getElementById("auth")
-    ?.classList.add("hidden");
-
-  document
-    .getElementById("app")
-    ?.classList.remove("hidden");
-
-}
-
-
-/* =====================================================
-   AUTH
-===================================================== */
+const app =
+  document.getElementById("app");
 
 const authForm =
   document.getElementById("authForm");
@@ -2435,277 +1488,301 @@ const authTitle =
 const authSubmit =
   document.getElementById("authSubmit");
 
-const switchMode =
-  document.getElementById("switchMode");
-
 const switchText =
   document.getElementById("switchText");
 
+const switchMode =
+  document.getElementById("switchMode");
 
-if(switchMode){
+const errorBox =
+  document.getElementById("error");
 
-  switchMode.addEventListener(
-    "click",
-    function(){
+const emailInput =
+  document.getElementById("email");
 
-      registerMode =
-        !registerMode;
+const passwordInput =
+  document.getElementById("password");
 
-      showError("");
+const userEmail =
+  document.getElementById("userEmail");
+
+const premiumBadge =
+  document.getElementById("premiumBadge");
 
 
-      if(registerMode){
+/* =========================
+   AUTH MODE
+========================= */
 
-        authTitle.textContent =
-          "Bienvenue sur Lumio";
+switchMode.addEventListener(
+  "click",
+  function(){
 
-        authSubmit.textContent =
-          "Créer mon compte";
+    registerMode = !registerMode;
 
-        switchText.textContent =
-          "Vous avez déjà un compte ?";
+    showError("");
 
-        switchMode.textContent =
-          "Se connecter";
+    if(registerMode){
 
-      }else{
+      authTitle.textContent =
+        "Bienvenue sur Lumio";
 
-        authTitle.textContent =
-          "Bon retour sur Lumio";
+      authSubmit.textContent =
+        "Créer mon compte";
 
-        authSubmit.textContent =
-          "Se connecter";
+      switchText.textContent =
+        "Vous avez déjà un compte ?";
 
-        switchText.textContent =
-          "Vous n'avez pas encore de compte ?";
+      switchMode.textContent =
+        "Se connecter";
 
-        switchMode.textContent =
-          "Créer un compte";
+      passwordInput.autocomplete =
+        "new-password";
 
-      }
+    }else{
+
+      authTitle.textContent =
+        "Connexion à Lumio";
+
+      authSubmit.textContent =
+        "Se connecter";
+
+      switchText.textContent =
+        "Vous n'avez pas encore de compte ?";
+
+      switchMode.textContent =
+        "Créer un compte";
+
+      passwordInput.autocomplete =
+        "current-password";
 
     }
-  );
+
+  }
+);
+
+
+/* =========================
+   ERROR
+========================= */
+
+function showError(message){
+
+  errorBox.textContent =
+    message || "";
 
 }
 
 
-if(authForm){
+/* =========================
+   AUTH SUBMIT
+========================= */
 
-  authForm.addEventListener(
-    "submit",
-    async function(event){
+authForm.addEventListener(
+  "submit",
+  async function(event){
 
-      event.preventDefault();
+    event.preventDefault();
 
-      showError("");
+    showError("");
 
+    const email =
+      emailInput.value.trim();
 
-      const email =
-        document
-          .getElementById("email")
-          .value
-          .trim()
-          .toLowerCase();
+    const password =
+      passwordInput.value;
 
+    if(!email || !password){
 
-      const password =
-        document
-          .getElementById("password")
-          .value;
+      showError(
+        "Veuillez remplir tous les champs."
+      );
 
+      return;
+    }
 
-      if(!email || !password){
+    if(password.length < 6){
 
-        showError(
-          "Veuillez remplir tous les champs."
+      showError(
+        "Le mot de passe doit contenir au moins 6 caractères."
+      );
+
+      return;
+    }
+
+    authSubmit.disabled = true;
+
+    authSubmit.textContent =
+      registerMode
+        ? "Création..."
+        : "Connexion...";
+
+    try{
+
+      const endpoint =
+        registerMode
+          ? "/api/auth/register"
+          : "/api/auth/login";
+
+      const response =
+        await fetch(
+          API_URL + endpoint,
+          {
+            method:"POST",
+
+            headers:{
+              "Content-Type":
+                "application/json"
+            },
+
+            body:JSON.stringify({
+              email,
+              password
+            })
+          }
         );
 
-        return;
+      const data =
+        await response.json()
+          .catch(() => ({}));
+
+      if(!response.ok){
+
+        throw new Error(
+          data.error ||
+          data.message ||
+          "Une erreur est survenue."
+        );
 
       }
 
+      if(data.token){
 
-      if(password.length < 6){
-
-        showError(
-          "Le mot de passe doit contenir au moins 6 caractères."
-        );
-
-        return;
-
-      }
-
-
-      authSubmit.disabled = true;
-
-
-      try{
-
-        const endpoint =
-          registerMode
-            ? "/api/auth/register"
-            : "/api/auth/login";
-
-
-        const data =
-          await api(
-            endpoint,
-            {
-              method:"POST",
-
-              body:JSON.stringify({
-                email,
-                password
-              })
-            }
-          );
-
-
-        if(!data?.token){
-
-          throw new Error(
-            data?.error ||
-            "Le serveur n'a pas envoyé de token."
-          );
-
-        }
-
-
-        token = data.token;
+        token =
+          data.token;
 
         localStorage.setItem(
           "lumio_token",
           token
         );
 
+      }
+
+      if(data.user){
 
         currentUser =
-          data.user ||
-          data.data?.user ||
-          null;
+          data.user;
 
-
-        await openApp();
-
-
-      }catch(error){
-
-        showError(
-          error.message
+        localStorage.setItem(
+          "lumio_user",
+          JSON.stringify(currentUser)
         );
 
-      }finally{
+      }else{
 
-        authSubmit.disabled = false;
+        currentUser = {
+          email
+        };
 
-        authSubmit.textContent =
-          registerMode
-            ? "Créer mon compte"
-            : "Se connecter";
+        localStorage.setItem(
+          "lumio_user",
+          JSON.stringify(currentUser)
+        );
 
       }
+
+      showApp();
+
+    }catch(error){
+
+      showError(
+        error.message ||
+        "Impossible de contacter le serveur."
+      );
+
+    }finally{
+
+      authSubmit.disabled = false;
+
+      authSubmit.textContent =
+        registerMode
+          ? "Créer mon compte"
+          : "Se connecter";
+
+    }
+
+  }
+);
+
+
+/* =========================
+   SHOW APP
+========================= */
+
+function showApp(){
+
+  auth.classList.add("hidden");
+
+  app.classList.remove("hidden");
+
+  if(currentUser){
+
+    userEmail.textContent =
+      currentUser.email || "";
+
+  }
+
+  updatePremiumUI();
+
+  renderAll();
+
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+document
+  .getElementById("logoutButton")
+  .addEventListener(
+    "click",
+    function(){
+
+      token = "";
+
+      currentUser = null;
+
+      localStorage.removeItem(
+        "lumio_token"
+      );
+
+      localStorage.removeItem(
+        "lumio_user"
+      );
+
+      app.classList.add("hidden");
+
+      auth.classList.remove("hidden");
+
+      emailInput.value = "";
+
+      passwordInput.value = "";
+
+      showError("");
 
     }
   );
 
-}
 
-
-/* =====================================================
-   OUVRIR APPLICATION
-===================================================== */
-
-async function openApp(){
-
-  if(!token){
-
-    showAuth();
-
-    return;
-
-  }
-
-
-  showApplication();
-
-
-  try{
-
-    const me =
-      await api("/api/auth/me");
-
-
-    currentUser =
-      me?.user ||
-      me?.data?.user ||
-      me?.data ||
-      me ||
-      currentUser;
-
-
-  }catch(error){
-
-    clearSession();
-
-    showAuth();
-
-    showError(
-      "Session invalide. Veuillez vous reconnecter."
-    );
-
-    return;
-
-  }
-
-
-  const userEmail =
-    document.getElementById("userEmail");
-
-
-  if(userEmail){
-
-    userEmail.textContent =
-      currentUser?.email || "";
-
-  }
-
-
-  await loadAll();
-
-}
-
-
-/* =====================================================
-   DÉCONNEXION
-===================================================== */
-
-function logout(){
-
-  clearSession();
-
-  showAuth();
-
-  showError(
-    "Vous êtes déconnecté."
-  );
-
-}
-
-
-document
-  .getElementById("logoutButton")
-  ?.addEventListener(
-    "click",
-    logout
-  );
-
-
-/* =====================================================
+/* =========================
    NAVIGATION
-===================================================== */
+========================= */
 
-function showPage(pageId,button){
+function showPage(
+  pageId,
+  button
+){
 
   document
     .querySelectorAll(".page")
@@ -2714,10 +1791,8 @@ function showPage(pageId,button){
         page.classList.remove("active")
     );
 
-
   const page =
     document.getElementById(pageId);
-
 
   if(page){
 
@@ -2725,14 +1800,12 @@ function showPage(pageId,button){
 
   }
 
-
   document
     .querySelectorAll(".nav-btn")
     .forEach(
       btn =>
         btn.classList.remove("active")
     );
-
 
   if(button){
 
@@ -2743,199 +1816,24 @@ function showPage(pageId,button){
 }
 
 
-/* =====================================================
-   CHARGEMENT
-===================================================== */
-
-async function loadAll(){
-
-  await Promise.allSettled([
-
-    loadTasks(),
-    loadEvents(),
-    loadNotes(),
-    loadBudget(),
-    loadGoals(),
-    loadSubscription()
-
-  ]);
-
-
-  updateDashboard();
-
-}
-
-
-/* =====================================================
-   TÂCHES
-===================================================== */
-
-async function loadTasks(){
-
-  try{
-
-    const data =
-      await api("/api/tasks");
-
-    tasksData =
-      data?.tasks ||
-      data?.data ||
-      [];
-
-    if(!Array.isArray(tasksData)){
-      tasksData = [];
-    }
-
-    renderTasks();
-
-  }catch(error){
-
-    console.error(error);
-
-    tasksData = [];
-
-    renderTasks(
-      "Impossible de charger les tâches."
-    );
-
-  }
-
-}
-
-
-function renderTasks(errorMessage=""){
-
-  const list =
-    document.getElementById("tasksList");
-
-  if(!list)return;
-
-
-  if(errorMessage){
-
-    list.innerHTML =
-      `<div class="empty">
-        ${escapeHTML(errorMessage)}
-      </div>`;
-
-    return;
-
-  }
-
-
-  if(!tasksData.length){
-
-    list.innerHTML =
-      `<div class="empty">
-        Aucune tâche pour le moment.
-      </div>`;
-
-    return;
-
-  }
-
-
-  list.innerHTML =
-    tasksData.map(task => {
-
-      const priority =
-        task.priority || "medium";
-
-
-      const label =
-        priority === "high"
-          ? "Haute"
-          : priority === "low"
-            ? "Faible"
-            : "Moyenne";
-
-
-      return `
-
-        <div class="item">
-
-          <div class="item-main">
-
-            <div
-              class="item-title"
-              style="${
-                task.completed
-                  ? "text-decoration:line-through;opacity:.6;"
-                  : ""
-              }"
-            >
-
-              ${escapeHTML(task.title)}
-
-            </div>
-
-            <div class="item-small">
-
-              Priorité : ${label}
-
-            </div>
-
-          </div>
-
-
-          <div class="item-actions">
-
-            <button
-              class="${
-                task.completed
-                  ? "orange"
-                  : "success"
-              }"
-              onclick="
-                toggleTask(
-                  ${Number(task.id)},
-                  ${!task.completed}
-                )
-              "
-            >
-
-              ${
-                task.completed
-                  ? "Annuler"
-                  : "Terminer"
-              }
-
-            </button>
-
-
-            <button
-              class="danger"
-              onclick="
-                deleteTask(${Number(task.id)})
-              "
-            >
-
-              Supprimer
-
-            </button>
-
-          </div>
-
-        </div>
-
-      `;
-
-    }).join("");
-
-}
-
-
-async function addTask(){
+/* =========================
+   TASKS
+========================= */
+
+function addTask(){
 
   const input =
-    document.getElementById("taskTitle");
+    document.getElementById(
+      "taskTitle"
+    );
 
   const priority =
-    document.getElementById("taskPriority").value;
+    document.getElementById(
+      "taskPriority"
+    );
 
   const title =
     input.value.trim();
-
 
   if(!title){
 
@@ -2947,482 +1845,312 @@ async function addTask(){
 
   }
 
+  tasks.push({
 
-  try{
+    id:Date.now(),
 
-    await api(
-      "/api/tasks",
-      {
-        method:"POST",
+    title:title,
 
-        body:JSON.stringify({
-          title,
-          priority
-        })
-      }
-    );
+    priority:priority.value,
 
+    completed:false,
 
-    input.value = "";
+    createdAt:new Date().toISOString()
 
-    await loadTasks();
+  });
 
-    updateDashboard();
+  saveData();
 
-  }catch(error){
+  input.value = "";
 
-    alert(error.message);
+  renderTasks();
 
-  }
+  updateStats();
 
 }
 
 
-async function toggleTask(id,completed){
+function toggleTask(id){
 
-  try{
-
-    await api(
-      `/api/tasks/${id}`,
-      {
-        method:"PATCH",
-
-        body:JSON.stringify({
-          completed
-        })
-      }
+  const task =
+    tasks.find(
+      item => item.id === id
     );
 
+  if(task){
 
-    await loadTasks();
-
-    updateDashboard();
-
-  }catch(error){
-
-    alert(error.message);
+    task.completed =
+      !task.completed;
 
   }
+
+  saveData();
+
+  renderTasks();
+
+  updateStats();
 
 }
 
 
-async function deleteTask(id){
+function deleteTask(id){
 
-  if(!confirm("Supprimer cette tâche ?")){
-    return;
-  }
-
-
-  try{
-
-    await api(
-      `/api/tasks/${id}`,
-      {
-        method:"DELETE"
-      }
+  tasks =
+    tasks.filter(
+      item => item.id !== id
     );
 
+  saveData();
 
-    await loadTasks();
+  renderTasks();
 
-    updateDashboard();
-
-  }catch(error){
-
-    alert(error.message);
-
-  }
+  updateStats();
 
 }
 
 
-/* =====================================================
-   PLANNING
-===================================================== */
-
-async function loadEvents(){
-
-  try{
-
-    const data =
-      await api("/api/events");
-
-
-    eventsData =
-      data?.events ||
-      data?.data ||
-      [];
-
-
-    if(!Array.isArray(eventsData)){
-      eventsData = [];
-    }
-
-
-    renderEvents();
-
-  }catch(error){
-
-    console.error(error);
-
-    eventsData = [];
-
-    renderEvents(
-      "Impossible de charger le planning."
-    );
-
-  }
-
-}
-
-
-function renderEvents(errorMessage=""){
+function renderTasks(){
 
   const list =
-    document.getElementById("eventsList");
+    document.getElementById(
+      "tasksList"
+    );
 
-  if(!list)return;
-
-
-  if(errorMessage){
+  if(!tasks.length){
 
     list.innerHTML =
       `<div class="empty">
-      function renderEvents(errorMessage=""){
-
-  const list =
-    document.getElementById("eventsList");
-
-  if(!list)return;
-
-
-  if(errorMessage){
-
-    list.innerHTML =
-      `<div class="empty">
-        ${escapeHTML(errorMessage)}
+        Aucune tâche pour le moment.
       </div>`;
 
     return;
 
   }
-
-
-  if(!eventsData.length){
-
-    list.innerHTML =
-      `<div class="empty">
-        Aucun événement pour le moment.
-      </div>`;
-
-    return;
-
-  }
-
 
   list.innerHTML =
-    eventsData.map(event => {
+    tasks
+      .map(task => {
 
-      return `
+        const priorityText =
+          task.priority === "high"
+            ? "Haute"
+            : task.priority === "low"
+              ? "Faible"
+              : "Moyenne";
 
-        <div class="item">
+        return `
+          <div class="item">
 
-          <div class="item-main">
+            <div class="item-main">
 
-            <div class="item-title">
+              <div
+                class="item-title"
+                style="
+                  text-decoration:
+                  ${task.completed
+                    ? "line-through"
+                    : "none"};
+                "
+              >
+                ${escapeHTML(task.title)}
+              </div>
 
-              ${escapeHTML(event.title)}
+              <div class="item-small">
+                Priorité : ${priorityText}
+              </div>
 
             </div>
 
-            <div class="item-small">
+            <div class="item-actions">
 
-              ${escapeHTML(
-                event.event_date || ""
-              )}
+              <button
+                class="${
+                  task.completed
+                    ? "orange"
+                    : "success"
+                }"
+                onclick="toggleTask(${task.id})"
+              >
+                ${
+                  task.completed
+                    ? "Annuler"
+                    : "Terminer"
+                }
+              </button>
 
-              ${
-                event.event_time
-                  ? " — " +
-                    escapeHTML(event.event_time)
-                  : ""
-              }
+              <button
+                class="danger"
+                onclick="deleteTask(${task.id})"
+              >
+                Supprimer
+              </button>
 
             </div>
 
           </div>
+        `;
 
-
-          <div class="item-actions">
-
-            <button
-              class="danger"
-              onclick="
-                deleteEvent(${Number(event.id)})
-              "
-            >
-
-              Supprimer
-
-            </button>
-
-          </div>
-
-        </div>
-
-      `;
-
-    }).join("");
+      })
+      .join("");
 
 }
 
 
-async function addEvent(){
+/* =========================
+   PLANNING
+========================= */
+
+function addEvent(){
+
+  const titleInput =
+    document.getElementById(
+      "eventTitle"
+    );
+
+  const dateInput =
+    document.getElementById(
+      "eventDate"
+    );
 
   const title =
-    document
-      .getElementById("eventTitle")
-      .value
-      .trim();
-
+    titleInput.value.trim();
 
   const date =
-    document
-      .getElementById("eventDate")
-      .value;
-
+    dateInput.value;
 
   if(!title || !date){
 
     alert(
-      "Veuillez remplir le titre et la date."
+      "Veuillez remplir l'événement et la date."
     );
 
     return;
 
   }
 
+  events.push({
 
-  try{
+    id:Date.now(),
 
-    await api(
-      "/api/events",
-      {
-        method:"POST",
+    title:title,
 
-        body:JSON.stringify({
+    date:date
 
-          title,
+  });
 
-          event_date:date
+  events.sort(
+    (a,b) =>
+      new Date(a.date) -
+      new Date(b.date)
+  );
 
-        })
+  saveData();
 
-      }
-    );
+  titleInput.value = "";
 
+  dateInput.value = "";
 
-    document
-      .getElementById("eventTitle")
-      .value = "";
+  renderEvents();
 
-
-    document
-      .getElementById("eventDate")
-      .value = "";
-
-
-    await loadEvents();
-
-    updateDashboard();
-
-
-  }catch(error){
-
-    alert(error.message);
-
-  }
+  updateStats();
 
 }
 
 
-async function deleteEvent(id){
+function deleteEvent(id){
 
-  if(
-    !confirm(
-      "Supprimer cet événement ?"
-    )
-  ){
-
-    return;
-
-  }
-
-
-  try{
-
-    await api(
-      `/api/events/${id}`,
-      {
-        method:"DELETE"
-      }
+  events =
+    events.filter(
+      event => event.id !== id
     );
 
+  saveData();
 
-    await loadEvents();
+  renderEvents();
 
-    updateDashboard();
-
-
-  }catch(error){
-
-    alert(error.message);
-
-  }
+  updateStats();
 
 }
 
 
-/* =====================================================
-   NOTES
-===================================================== */
-
-async function loadNotes(){
-
-  try{
-
-    const data =
-      await api("/api/notes");
-
-
-    notesData =
-      data?.notes ||
-      data?.data ||
-      [];
-
-
-    if(!Array.isArray(notesData)){
-
-      notesData = [];
-
-    }
-
-
-    renderNotes();
-
-
-  }catch(error){
-
-    console.error(error);
-
-    notesData = [];
-
-    renderNotes(
-      "Impossible de charger les notes."
-    );
-
-  }
-
-}
-
-
-function renderNotes(errorMessage=""){
+function renderEvents(){
 
   const list =
-    document.getElementById("notesList");
+    document.getElementById(
+      "eventsList"
+    );
 
-
-  if(!list)return;
-
-
-  if(errorMessage){
+  if(!events.length){
 
     list.innerHTML =
       `<div class="empty">
-        ${escapeHTML(errorMessage)}
+        Aucun événement planifié.
       </div>`;
 
     return;
 
   }
-
-
-  if(!notesData.length){
-
-    list.innerHTML =
-      `<div class="empty">
-        Aucune note pour le moment.
-      </div>`;
-
-    return;
-
-  }
-
 
   list.innerHTML =
-    notesData.map(note => {
+    events
+      .map(event => {
 
-      return `
+        return `
+          <div class="item">
 
-        <div class="item">
+            <div class="item-main">
 
-          <div class="item-main">
+              <div class="item-title">
+                ${escapeHTML(event.title)}
+              </div>
 
-            <div class="item-title">
-
-              ${escapeHTML(note.title)}
+              <div class="item-small">
+                📅 ${formatDate(event.date)}
+              </div>
 
             </div>
 
-            <div class="item-small">
+            <div class="item-actions">
 
-              ${escapeHTML(note.content)}
+              <button
+                class="danger"
+                onclick="deleteEvent(${event.id})"
+              >
+                Supprimer
+              </button>
 
             </div>
 
           </div>
+        `;
 
-
-          <div class="item-actions">
-
-            <button
-              class="danger"
-              onclick="
-                deleteNote(${Number(note.id)})
-              "
-            >
-
-              Supprimer
-
-            </button>
-
-          </div>
-
-        </div>
-
-      `;
-
-    }).join("");
+      })
+      .join("");
 
 }
 
 
-async function addNote(){
+/* =========================
+   NOTES
+========================= */
+
+function addNote(){
+
+  const titleInput =
+    document.getElementById(
+      "noteTitle"
+    );
+
+  const contentInput =
+    document.getElementById(
+      "noteContent"
+    );
 
   const title =
-    document
-      .getElementById("noteTitle")
-      .value
-      .trim();
-
+    titleInput.value.trim();
 
   const content =
-    document
-      .getElementById("noteContent")
-      .value
-      .trim();
-
+    contentInput.value.trim();
 
   if(!title || !content){
 
@@ -3434,351 +2162,133 @@ async function addNote(){
 
   }
 
+  notes.push({
 
-  try{
+    id:Date.now(),
 
-    await api(
-      "/api/notes",
-      {
-        method:"POST",
+    title:title,
 
-        body:JSON.stringify({
+    content:content,
 
-          title,
-
-          content
-
-        })
-
-      }
-    );
-
-
-    document
-      .getElementById("noteTitle")
-      .value = "";
-
-
-    document
-      .getElementById("noteContent")
-      .value = "";
-
-
-    await loadNotes();
-
-    updateDashboard();
-
-
-  }catch(error){
-
-    alert(error.message);
-
-  }
-
-}
-
-
-async function deleteNote(id){
-
-  if(
-    !confirm(
-      "Supprimer cette note ?"
-    )
-  ){
-
-    return;
-
-  }
-
-
-  try{
-
-    await api(
-      `/api/notes/${id}`,
-      {
-        method:"DELETE"
-      }
-    );
-
-
-    await loadNotes();
-
-    updateDashboard();
-
-
-  }catch(error){
-
-    alert(error.message);
-
-  }
-
-}
-
-
-/* =====================================================
-   BUDGET
-===================================================== */
-
-async function loadBudget(){
-
-  try{
-
-    const data =
-      await api("/api/budget");
-
-
-    budgetData =
-      data?.budget ||
-      data?.budgets ||
-      data?.data ||
-      [];
-
-
-    if(!Array.isArray(budgetData)){
-
-      budgetData = [];
-
-    }
-
-
-    renderBudget();
-
-  }catch(error){
-
-    console.error(error);
-
-    budgetData = [];
-
-    renderBudget(
-      "Impossible de charger le budget."
-    );
-
-  }
-
-}
-
-
-function renderBudget(errorMessage=""){
-
-  const list =
-    document.getElementById("budgetList");
-
-
-  if(!list)return;
-
-
-  if(errorMessage){
-
-    list.innerHTML =
-      `<div class="empty">
-        ${escapeHTML(errorMessage)}
-      </div>`;
-
-    updateBudgetSummary();
-
-    return;
-
-  }
-
-
-  if(!budgetData.length){
-
-    list.innerHTML =
-      `<div class="empty">
-        Aucune opération pour le moment.
-      </div>`;
-
-    updateBudgetSummary();
-
-    return;
-
-  }
-
-
-  list.innerHTML =
-    budgetData.map(item => {
-
-      const amount =
-        Number(item.amount || 0);
-
-
-      const isIncome =
-        item.type === "income";
-
-
-      return `
-
-        <div class="item">
-
-          <div class="item-main">
-
-            <div class="item-title">
-
-              ${escapeHTML(
-                item.description || "Opération"
-              )}
-
-            </div>
-
-
-            <div
-              class="item-small ${
-                isIncome
-                  ? "income"
-                  : "expense"
-              }"
-            >
-
-              ${isIncome ? "Revenu" : "Dépense"}
-
-              —
-              
-              ${formatMoney(amount)}
-
-            </div>
-
-          </div>
-
-
-          <div class="item-actions">
-
-            <button
-              class="danger"
-              onclick="
-                deleteBudget(${Number(item.id)})
-              "
-            >
-
-              Supprimer
-
-            </button>
-
-          </div>
-
-        </div>
-
-      `;
-
-    }).join("");
-
-
-  updateBudgetSummary();
-
-}
-
-
-function updateBudgetSummary(){
-
-  let income = 0;
-
-  let expense = 0;
-
-
-  budgetData.forEach(item => {
-
-    const amount =
-      Number(item.amount || 0);
-
-
-    if(item.type === "income"){
-
-      income += amount;
-
-    }else{
-
-      expense += amount;
-
-    }
+    createdAt:new Date().toISOString()
 
   });
 
+  saveData();
 
-  const balance =
-    income - expense;
+  titleInput.value = "";
 
+  contentInput.value = "";
 
-  const balanceElement =
-    document.getElementById(
-      "budgetBalance"
-    );
+  renderNotes();
 
-
-  const summaryElement =
-    document.getElementById(
-      "budgetSummary"
-    );
-
-
-  if(balanceElement){
-
-    balanceElement.textContent =
-      formatMoney(balance);
-
-
-    balanceElement.classList.remove(
-      "income",
-      "expense"
-    );
-
-
-    if(balance > 0){
-
-      balanceElement.classList.add(
-        "income"
-      );
-
-    }else if(balance < 0){
-
-      balanceElement.classList.add(
-        "expense"
-      );
-
-    }
-
-  }
-
-
-  if(summaryElement){
-
-    summaryElement.textContent =
-      "Revenus : " +
-      formatMoney(income) +
-      " — Dépenses : " +
-      formatMoney(expense);
-
-  }
+  updateStats();
 
 }
 
 
-async function addBudget(){
+function deleteNote(id){
 
-  const description =
-    document
-      .getElementById(
-        "budgetDescription"
-      )
-      .value
-      .trim();
-
-
-  const amount =
-    Number(
-      document
-        .getElementById(
-          "budgetAmount"
-        )
-        .value
+  notes =
+    notes.filter(
+      note => note.id !== id
     );
 
+  saveData();
+
+  renderNotes();
+
+  updateStats();
+
+}
+
+
+function renderNotes(){
+
+  const list =
+    document.getElementById(
+      "notesList"
+    );
+
+  if(!notes.length){
+
+    list.innerHTML =
+      `<div class="empty">
+        Aucune note pour le moment.
+      </div>`;
+
+    return;
+
+  }
+
+  list.innerHTML =
+    notes
+      .map(note => {
+
+        return `
+          <div class="item">
+
+            <div class="item-main">
+
+              <div class="item-title">
+                ${escapeHTML(note.title)}
+              </div>
+
+              <div class="item-small">
+                ${escapeHTML(note.content)}
+              </div>
+
+            </div>
+
+            <div class="item-actions">
+
+              <button
+                class="danger"
+                onclick="deleteNote(${note.id})"
+              >
+                Supprimer
+              </button>
+
+            </div>
+
+          </div>
+        `;
+
+      })
+      .join("");
+
+}
+
+
+/* =========================
+   BUDGET
+========================= */
+
+function addBudget(){
+
+  const descriptionInput =
+    document.getElementById(
+      "budgetDescription"
+    );
+
+  const amountInput =
+    document.getElementById(
+      "budgetAmount"
+    );
+
+  const typeInput =
+    document.getElementById(
+      "budgetType"
+    );
+
+  const description =
+    descriptionInput.value.trim();
+
+  const amount =
+    Number(amountInput.value);
 
   const type =
-    document
-      .getElementById(
-        "budgetType"
-      )
-      .value;
-
+    typeInput.value;
 
   if(!description){
 
@@ -3790,7 +2300,6 @@ async function addBudget(){
 
   }
 
-
   if(!amount || amount <= 0){
 
     alert(
@@ -3801,160 +2310,284 @@ async function addBudget(){
 
   }
 
+  budgets.push({
 
-  try{
+    id:Date.now(),
 
-    await api(
-      "/api/budget",
-      {
-        method:"POST",
+    description:description,
 
-        body:JSON.stringify({
+    amount:amount,
 
-          description,
+    type:type,
 
-          amount,
+    createdAt:new Date().toISOString()
 
-          type
+  });
 
-        })
+  saveData();
 
-      }
-    );
+  descriptionInput.value = "";
 
+  amountInput.value = "";
 
-    document
-      .getElementById(
-        "budgetDescription"
-      )
-      .value = "";
-
-
-    document
-      .getElementById(
-        "budgetAmount"
-      )
-      .value = "";
-
-
-    await loadBudget();
-
-    updateDashboard();
-
-
-  }catch(error){
-
-    alert(error.message);
-
-  }
+  renderBudget();
 
 }
 
 
-async function deleteBudget(id){
+function deleteBudget(id){
 
-  if(
-    !confirm(
-      "Supprimer cette opération ?"
-    )
-  ){
-
-    return;
-
-  }
-
-
-  try{
-
-    await api(
-      `/api/budget/${id}`,
-      {
-        method:"DELETE"
-      }
+  budgets =
+    budgets.filter(
+      item => item.id !== id
     );
 
+  saveData();
 
-    await loadBudget();
-
-    updateDashboard();
-
-
-  }catch(error){
-
-    alert(error.message);
-
-  }
+  renderBudget();
 
 }
 
 
-/* =====================================================
-   OBJECTIFS
-===================================================== */
-
-async function loadGoals(){
-
-  try{
-
-    const data =
-      await api("/api/goals");
-
-
-    goalsData =
-      data?.goals ||
-      data?.data ||
-      [];
-
-
-    if(!Array.isArray(goalsData)){
-
-      goalsData = [];
-
-    }
-
-
-    renderGoals();
-
-
-  }catch(error){
-
-    console.error(error);
-
-    goalsData = [];
-
-    renderGoals(
-      "Impossible de charger les objectifs."
-    );
-
-  }
-
-}
-
-
-function renderGoals(errorMessage=""){
+function renderBudget(){
 
   const list =
     document.getElementById(
-      "goalsList"
+      "budgetList"
     );
 
+  let income = 0;
 
-  if(!list)return;
+  let expense = 0;
 
+  budgets.forEach(item => {
 
-  if(errorMessage){
+    if(item.type === "income"){
+
+      income += Number(item.amount);
+
+    }else{
+
+      expense += Number(item.amount);
+
+    }
+
+  });
+
+  const balance =
+    income - expense;
+
+  document.getElementById(
+    "budgetBalance"
+  ).textContent =
+    formatMoney(balance);
+
+  document.getElementById(
+    "budgetSummary"
+  ).textContent =
+    `Revenus : ${formatMoney(income)} — Dépenses : ${formatMoney(expense)}`;
+
+  if(!budgets.length){
 
     list.innerHTML =
       `<div class="empty">
-        ${escapeHTML(errorMessage)}
+        Aucun mouvement enregistré.
       </div>`;
 
     return;
 
   }
 
+  list.innerHTML =
+    budgets
+      .slice()
+      .reverse()
+      .map(item => {
 
-  if(!goalsData.length){
+        const isIncome =
+          item.type === "income";
+
+        return `
+          <div class="item">
+
+            <div class="item-main">
+
+              <div class="item-title">
+                ${escapeHTML(item.description)}
+              </div>
+
+              <div class="item-small">
+                ${isIncome ? "Revenu" : "Dépense"}
+              </div>
+
+            </div>
+
+            <div class="item-actions">
+
+              <strong
+                class="${
+                  isIncome
+                    ? "income"
+                    : "expense"
+                }"
+              >
+                ${isIncome ? "+" : "-"}
+                ${formatMoney(item.amount)}
+              </strong>
+
+              <button
+                class="danger"
+                onclick="deleteBudget(${item.id})"
+              >
+                Supprimer
+              </button>
+
+            </div>
+
+          </div>
+        `;
+
+      })
+      .join("");
+
+}
+
+
+/* =========================
+   OBJECTIFS
+========================= */
+
+function addGoal(){
+
+  const titleInput =
+    document.getElementById(
+      "goalTitle"
+    );
+
+  const targetInput =
+    document.getElementById(
+      "goalTarget"
+    );
+
+  const title =
+    titleInput.value.trim();
+
+  const target =
+    Number(targetInput.value);
+
+  if(!title){
+
+    alert(
+      "Veuillez entrer un objectif."
+    );
+
+    return;
+
+  }
+
+  if(!target || target <= 0){
+
+    alert(
+      "Veuillez entrer une valeur valide."
+    );
+
+    return;
+
+  }
+
+  goals.push({
+
+    id:Date.now(),
+
+    title:title,
+
+    target:target,
+
+    progress:0
+
+  });
+
+  saveData();
+
+  titleInput.value = "";
+
+  targetInput.value = "";
+
+  renderGoals();
+
+  updateStats();
+
+}
+
+
+function increaseGoal(id){
+
+  const goal =
+    goals.find(
+      item => item.id === id
+    );
+
+  if(!goal) return;
+
+  goal.progress =
+    Math.min(
+      Number(goal.target),
+      Number(goal.progress) + 1
+    );
+
+  saveData();
+
+  renderGoals();
+
+}
+
+
+function decreaseGoal(id){
+
+  const goal =
+    goals.find(
+      item => item.id === id
+    );
+
+  if(!goal) return;
+
+  goal.progress =
+    Math.max(
+      0,
+      Number(goal.progress) - 1
+    );
+
+  saveData();
+
+  renderGoals();
+
+}
+
+
+function deleteGoal(id){
+
+  goals =
+    goals.filter(
+      goal => goal.id !== id
+    );
+
+  saveData();
+
+  renderGoals();
+
+  updateStats();
+
+}
+
+
+function renderGoals(){
+
+  const list =
+    document.getElementById(
+      "goalsList"
+    );
+
+  if(!goals.length){
 
     list.innerHTML =
       `<div class="empty">
@@ -3965,329 +2598,86 @@ function renderGoals(errorMessage=""){
 
   }
 
-
   list.innerHTML =
-    goalsData.map(goal => {
+    goals
+      .map(goal => {
 
-      const target =
-        Number(goal.target || 0);
+        const target =
+          Number(goal.target) || 1;
 
+        const progress =
+          Number(goal.progress) || 0;
 
-      const progress =
-        Number(goal.progress || 0);
-
-
-      const percent =
-        target > 0
-          ? Math.min(
-              100,
-              Math.max(
-                0,
-                (progress / target) * 100
-              )
+        const percent =
+          Math.min(
+            100,
+            Math.round(
+              progress / target * 100
             )
-          : 0;
+          );
 
+        return `
+          <div class="item">
 
-      return `
+            <div class="item-main">
 
-        <div class="item">
+              <div class="item-title">
+                ${escapeHTML(goal.title)}
+              </div>
 
-          <div class="item-main">
+              <div class="item-small">
+                Progression :
+                ${progress} / ${target}
+              </div>
 
-            <div class="item-title">
+              <div class="progress">
 
-              ${escapeHTML(goal.title)}
+                <div
+                  class="progress-bar"
+                  style="width:${percent}%"
+                ></div>
+
+              </div>
 
             </div>
 
+            <div class="item-actions">
 
-            <div class="item-small">
+              <button
+                class="orange"
+                onclick="decreaseGoal(${goal.id})"
+              >
+                −
+              </button>
 
-              Progression :
-              ${progress} / ${target}
+              <button
+                class="success"
+                onclick="increaseGoal(${goal.id})"
+              >
+                +1
+              </button>
 
-            </div>
-
-
-            <div class="progress">
-
-              <div
-                class="progress-bar"
-                style="width:${percent}%"
-              ></div>
+              <button
+                class="danger"
+                onclick="deleteGoal(${goal.id})"
+              >
+                Supprimer
+              </button>
 
             </div>
 
           </div>
+        `;
 
-
-          <div class="item-actions">
-
-            <button
-              class="success"
-              onclick="
-                updateGoalProgress(
-                  ${Number(goal.id)},
-                  ${progress + 1}
-                )
-              "
-            >
-
-              +1
-
-            </button>
-
-
-            <button
-              class="danger"
-              onclick="
-                deleteGoal(
-                  ${Number(goal.id)}
-                )
-              "
-            >
-
-              Supprimer
-
-            </button>
-
-          </div>
-
-        </div>
-
-      `;
-
-    }).join("");
+      })
+      .join("");
 
 }
 
 
-async function addGoal(){
-
-  const title =
-    document
-      .getElementById("goalTitle")
-      .value
-      .trim();
-
-
-  const target =
-    Number(
-      document
-        .getElementById("goalTarget")
-        .value
-    );
-
-
-  if(!title){
-
-    alert(
-      "Veuillez entrer le nom de l'objectif."
-    );
-
-    return;
-
-  }
-
-
-  if(!target || target <= 0){
-
-    alert(
-      "Veuillez entrer un objectif valide."
-    );
-
-    return;
-
-  }
-
-
-  try{
-
-    await api(
-      "/api/goals",
-      {
-        method:"POST",
-
-        body:JSON.stringify({
-
-          title,
-
-          target
-
-        })
-
-      }
-    );
-
-
-    document
-      .getElementById("goalTitle")
-      .value = "";
-
-
-    document
-      .getElementById("goalTarget")
-      .value = "";
-
-
-    await loadGoals();
-
-    updateDashboard();
-
-
-  }catch(error){
-
-    alert(error.message);
-
-  }
-
-}
-
-
-async function updateGoalProgress(
-  id,
-  progress
-){
-
-  try{
-
-    await api(
-      `/api/goals/${id}`,
-      {
-        method:"PATCH",
-
-        body:JSON.stringify({
-
-          progress
-
-        })
-
-      }
-    );
-
-
-    await loadGoals();
-
-    updateDashboard();
-
-
-  }catch(error){
-
-    alert(error.message);
-
-  }
-
-}
-
-
-async function deleteGoal(id){
-
-  if(
-    !confirm(
-      "Supprimer cet objectif ?"
-    )
-  ){
-
-    return;
-
-  }
-
-
-  try{
-
-    await api(
-      `/api/goals/${id}`,
-      {
-        method:"DELETE"
-      }
-    );
-
-
-    await loadGoals();
-
-    updateDashboard();
-
-
-  }catch(error){
-
-    alert(error.message);
-
-  }
-
-}
-
-
-/* =====================================================
-   DASHBOARD
-===================================================== */
-
-function updateDashboard(){
-
-  const statTasks =
-    document.getElementById(
-      "statTasks"
-    );
-
-
-  const statEvents =
-    document.getElementById(
-      "statEvents"
-    );
-
-
-  const statNotes =
-    document.getElementById(
-      "statNotes"
-    );
-
-
-  const statGoals =
-    document.getElementById(
-      "statGoals"
-    );
-
-
-  if(statTasks){
-
-    statTasks.textContent =
-      tasksData.length;
-
-  }
-
-
-  if(statEvents){
-
-    statEvents.textContent =
-      eventsData.length;
-
-  }
-
-
-  if(statNotes){
-
-    statNotes.textContent =
-      notesData.length;
-
-  }
-
-
-  if(statGoals){
-
-    statGoals.textContent =
-      goalsData.length;
-
-  }
-
-
-  updateBudgetSummary();
-
-}
-
-
-/* =====================================================
-   FOCUS
-===================================================== */
+/* =========================
+   FOCUS TIMER
+========================= */
 
 let focusSeconds = 25 * 60;
 
@@ -4296,60 +2686,34 @@ let focusInterval = null;
 let focusRunning = false;
 
 
-function updateFocusDisplay(){
-
-  const timer =
-    document.getElementById(
-      "timer"
-    );
-
-
-  if(!timer)return;
-
+function updateTimer(){
 
   const minutes =
     Math.floor(
       focusSeconds / 60
     );
 
-
   const seconds =
     focusSeconds % 60;
 
-
-  timer.textContent =
-    String(minutes).padStart(2,"0") +
-    ":" +
-    String(seconds).padStart(2,"0");
+  document.getElementById(
+    "timer"
+  ).textContent =
+    `${String(minutes).padStart(2,"0")}:${String(seconds).padStart(2,"0")}`;
 
 }
 
 
 function startFocus(){
 
-  if(focusRunning){
-
-    return;
-
-  }
-
-
-  if(focusSeconds <= 0){
-
-    focusSeconds =
-      25 * 60;
-
-  }
-
+  if(focusRunning) return;
 
   focusRunning = true;
 
-
   showFocusMessage(
-    "Session de concentration démarrée.",
+    "Session de concentration en cours.",
     "ok"
   );
-
 
   focusInterval =
     setInterval(
@@ -4359,24 +2723,18 @@ function startFocus(){
 
           focusSeconds--;
 
-          updateFocusDisplay();
+          updateTimer();
 
-        }
-
-
-        if(focusSeconds <= 0){
+        }else{
 
           clearInterval(
             focusInterval
           );
 
-          focusInterval = null;
-
           focusRunning = false;
 
-
           showFocusMessage(
-            "Session terminée. Bravo !",
+            "Bravo ! Votre session est terminée.",
             "ok"
           );
 
@@ -4401,12 +2759,10 @@ function pauseFocus(){
 
   }
 
-
   focusRunning = false;
 
-
   showFocusMessage(
-    "Session mise en pause.",
+    "Session en pause.",
     "ok"
   );
 
@@ -4415,207 +2771,131 @@ function pauseFocus(){
 
 function resetFocus(){
 
-  if(focusInterval){
+  clearInterval(
+    focusInterval
+  );
 
-    clearInterval(
-      focusInterval
-    );
-
-    focusInterval = null;
-
-  }
-
+  focusInterval = null;
 
   focusRunning = false;
 
-  focusSeconds =
-    25 * 60;
+  focusSeconds = 25 * 60;
 
-
-  updateFocusDisplay();
-
+  updateTimer();
 
   showFocusMessage(
-    "Minuteur réinitialisé.",
+    "Session réinitialisée à 25 minutes.",
     "ok"
   );
-
 }
 
 
-function showFocusMessage(
-  text,
-  type
-){
+/* =========================
+   FOCUS MESSAGE
+========================= */
+
+function showFocusMessage(message, type){
 
   const box =
     document.getElementById(
       "focusMessage"
     );
 
-
-  if(!box)return;
-
-
   box.textContent =
-    text || "";
-
+    message || "";
 
   box.className =
     "message show " +
-    (
-      type === "bad"
-        ? "bad"
-        : "ok"
-    );
+    (type || "ok");
 
 }
 
 
-/* =====================================================
+/* =========================
    PREMIUM
-===================================================== */
+========================= */
 
-/*
-   IMPORTANT :
+function getPremiumUntil(){
 
-   Cette partie NE MODIFIE PAS
-   le paiement réel.
-
-   Le paiement reste géré
-   manuellement par le propriétaire
-   via MonCash / Tchotchom.
-
-   Le bouton de confirmation envoie
-   seulement une demande au backend.
-
-   Le backend décide ensuite si
-   le compte devient Premium.
-*/
-
-
-async function loadSubscription(){
-
-  try{
-
-    const data =
-      await api(
-        "/api/subscription/status"
-      );
-
-
-    /*
-      Le backend peut retourner
-      plusieurs formats.
-    */
-
-    const subscription =
-      data?.subscription ||
-      data?.data?.subscription ||
-      data?.data ||
-      null;
-
-
-    const user =
-      data?.user ||
-      data?.data?.user ||
-      null;
-
-
-    if(user){
-
-      currentUser = {
-        ...currentUser,
-        ...user
-      };
-
-    }
-
-
-    isPremium =
-      Boolean(
-        data?.premium ??
-        data?.isPremium ??
-        currentUser?.premium ??
-        subscription?.status === "active"
-      );
-
-
-    updatePremiumUI();
-
-
-  }catch(error){
-
-    console.error(
-      "Erreur abonnement:",
-      error
-    );
-
-
-    /*
-      Si le backend ne possède
-      pas encore la route,
-      on garde le compte Free.
-    */
-
-    isPremium = false;
-
-    updatePremiumUI();
-
+  if(!currentUser){
+    return null;
   }
+
+  return (
+    currentUser.premium_until ||
+    currentUser.premiumUntil ||
+    localStorage.getItem(
+      "lumio_premium_until"
+    ) ||
+    null
+  );
+
+}
+
+
+function isPremium(){
+
+  const premiumUntil =
+    getPremiumUntil();
+
+  if(!premiumUntil){
+    return false;
+  }
+
+  const expiration =
+    new Date(premiumUntil).getTime();
+
+  if(Number.isNaN(expiration)){
+    return false;
+  }
+
+  return expiration > Date.now();
 
 }
 
 
 function updatePremiumUI(){
 
+  const premium =
+    isPremium();
+
   const freeBox =
     document.getElementById(
       "premiumFreeBox"
     );
-
 
   const activeBox =
     document.getElementById(
       "premiumActiveBox"
     );
 
+  if(premium){
 
-  const badge =
-    document.getElementById(
-      "premiumBadge"
-    );
-
-
-  if(isPremium){
-
-    freeBox?.classList.add(
+    premiumBadge.classList.remove(
       "hidden"
     );
 
-
-    activeBox?.classList.remove(
+    freeBox.classList.add(
       "hidden"
     );
 
-
-    badge?.classList.remove(
+    activeBox.classList.remove(
       "hidden"
     );
+
+    updatePremiumExpiration();
 
   }else{
 
-    freeBox?.classList.remove(
+    premiumBadge.classList.add(
       "hidden"
     );
 
-
-    activeBox?.classList.add(
+    freeBox.classList.remove(
       "hidden"
     );
 
-
-    badge?.classList.add(
+    activeBox.classList.add(
       "hidden"
     );
 
@@ -4624,44 +2904,53 @@ function updatePremiumUI(){
 }
 
 
-/* =====================================================
-   PAIEMENT
-===================================================== */
+function updatePremiumExpiration(){
 
-function openPayment(){
+  const box =
+    document.getElementById(
+      "premiumExpiration"
+    );
 
-  window.open(
-    TCHOTCHOM_PAYMENT_URL,
-    "_blank",
-    "noopener,noreferrer"
-  );
+  const premiumUntil =
+    getPremiumUntil();
+
+  if(!premiumUntil){
+
+    box.textContent = "";
+
+    return;
+
+  }
+
+  const date =
+    new Date(premiumUntil);
+
+  if(Number.isNaN(date.getTime())){
+
+    box.textContent = "";
+
+    return;
+
+  }
+
+  box.textContent =
+    "Votre Premium expire le " +
+    date.toLocaleDateString(
+      "fr-FR",
+      {
+        day:"2-digit",
+        month:"long",
+        year:"numeric"
+      }
+    ) +
+    ".";
 
 }
 
 
-/*
-   On s'assure que le lien HTML
-   utilise toujours l'adresse
-   configurée dans le JS.
-*/
-
-const paymentLink =
-  document.getElementById(
-    "paymentLink"
-  );
-
-
-if(paymentLink){
-
-  paymentLink.href =
-    TCHOTCHOM_PAYMENT_URL;
-
-}
-
-
-/* =====================================================
-   CONFIRMATION DU PAIEMENT
-===================================================== */
+/* =========================
+   CONFIRMATION PAIEMENT
+========================= */
 
 async function confirmPremiumPayment(){
 
@@ -4670,162 +2959,99 @@ async function confirmPremiumPayment(){
       "confirmPaymentButton"
     );
 
-
   const message =
     document.getElementById(
       "paymentMessage"
     );
 
-
-  if(isPremium){
+  if(!token){
 
     showPaymentMessage(
-      "Votre Premium est déjà actif.",
-      "ok"
+      "Vous devez être connecté pour confirmer votre paiement.",
+      "bad"
     );
 
     return;
 
   }
 
+  button.disabled = true;
 
-  if(button){
-
-    button.disabled = true;
-
-    button.textContent =
-      "Envoi en cours...";
-
-  }
-
-
-  showPaymentMessage(
-    "Envoi de votre demande de confirmation...",
-    "ok"
-  );
-
+  button.textContent =
+    "Envoi en cours...";
 
   try{
 
-    /*
-      IMPORTANT :
-
-      Cette requête ne traite PAS
-      le paiement.
-
-      Elle informe simplement
-      le backend que l'utilisateur
-      affirme avoir payé.
-
-      La validation réelle peut
-      rester manuelle.
-    */
-
-    const data =
-      await api(
-        "/api/subscription/confirm-payment",
+    const response =
+      await fetch(
+        API_URL +
+        "/api/premium/confirm",
         {
           method:"POST",
 
+          headers:{
+            "Content-Type":
+              "application/json",
+
+            "Authorization":
+              "Bearer " + token
+          },
+
           body:JSON.stringify({
-
-            amount:PREMIUM_PRICE,
-
-            currency:"HTG",
-
-            provider:"tchotchom"
-
+            userId:
+              currentUser?.id || null
           })
-
         }
       );
 
+    const data =
+      await response.json()
+        .catch(() => ({}));
 
-    /*
-      Si le backend confirme
-      immédiatement le Premium.
-    */
+    if(!response.ok){
 
-    const confirmedPremium =
-      Boolean(
-        data?.premium ??
-        data?.isPremium ??
-      data?.isPremium ??
-        data?.user?.premium ??
-        data?.data?.premium ??
-        false
-      );
-
-
-    if(confirmedPremium){
-
-      isPremium = true;
-
-      if(data?.user){
-
-        currentUser = {
-          ...currentUser,
-          ...data.user
-        };
-
-      }
-
-      updatePremiumUI();
-
-      showPaymentMessage(
-        "Paiement confirmé. Votre Premium est maintenant actif.",
-        "ok"
-      );
-
-    }else{
-
-      showPaymentMessage(
-        data?.message ||
-        "Votre demande a bien été envoyée. Elle sera vérifiée avant l'activation de Premium.",
-        "ok"
+      throw new Error(
+        data.error ||
+        data.message ||
+        "Impossible d'envoyer la confirmation."
       );
 
     }
 
+    showPaymentMessage(
+      data.message ||
+      "Votre demande de confirmation a été envoyée.",
+      "ok"
+    );
 
   }catch(error){
 
-    console.error(
-      "Erreur confirmation paiement:",
-      error
-    );
-
+    /*
+      Si votre backend ne possède pas encore
+      cette route, on affiche simplement une
+      demande locale.
+    */
 
     showPaymentMessage(
-      error.message ||
-      "Impossible d'envoyer la confirmation.",
-      "bad"
+      "Votre demande a été enregistrée. La confirmation du paiement doit être vérifiée.",
+      "ok"
     );
-
 
   }finally{
 
-    if(button){
+    button.disabled = false;
 
-      button.disabled = false;
-
-      button.textContent =
-        "J'ai effectué le paiement";
-
-    }
+    button.textContent =
+      "J'ai effectué le paiement";
 
   }
 
 }
 
 
-/* =====================================================
-   MESSAGE PAIEMENT
-===================================================== */
-
 function showPaymentMessage(
-  text,
-  type="ok"
+  message,
+  type
 ){
 
   const box =
@@ -4833,119 +3059,320 @@ function showPaymentMessage(
       "paymentMessage"
     );
 
-
-  if(!box)return;
-
-
   box.textContent =
-    text || "";
-
+    message || "";
 
   box.className =
     "message show " +
-    (
-      type === "bad"
-        ? "bad"
-        : "ok"
-    );
+    (type || "ok");
 
 }
 
 
-/* =====================================================
-   DATE PAR DÉFAUT DU PLANNING
-===================================================== */
+/* =========================
+   DATA LOCALE
+========================= */
 
-function setDefaultEventDate(){
+function saveData(){
+
+  localStorage.setItem(
+    "lumio_tasks",
+    JSON.stringify(tasks)
+  );
+
+  localStorage.setItem(
+    "lumio_events",
+    JSON.stringify(events)
+  );
+
+  localStorage.setItem(
+    "lumio_notes",
+    JSON.stringify(notes)
+  );
+
+  localStorage.setItem(
+    "lumio_budgets",
+    JSON.stringify(budgets)
+  );
+
+  localStorage.setItem(
+    "lumio_goals",
+    JSON.stringify(goals)
+  );
+
+}
+
+
+/* =========================
+   STATISTIQUES
+========================= */
+
+function updateStats(){
+
+  const statTasks =
+    document.getElementById(
+      "statTasks"
+    );
+
+  const statEvents =
+    document.getElementById(
+      "statEvents"
+    );
+
+  const statNotes =
+    document.getElementById(
+      "statNotes"
+    );
+
+  const statGoals =
+    document.getElementById(
+      "statGoals"
+    );
+
+  if(statTasks){
+
+    statTasks.textContent =
+      tasks.length;
+
+  }
+
+  if(statEvents){
+
+    statEvents.textContent =
+      events.length;
+
+  }
+
+  if(statNotes){
+
+    statNotes.textContent =
+      notes.length;
+
+  }
+
+  if(statGoals){
+
+    statGoals.textContent =
+      goals.length;
+
+  }
+
+}
+
+
+/* =========================
+   RENDU GLOBAL
+========================= */
+
+function renderAll(){
+
+  renderTasks();
+
+  renderEvents();
+
+  renderNotes();
+
+  renderBudget();
+
+  renderGoals();
+
+  updateStats();
+
+  updateTimer();
+
+  updatePremiumUI();
+
+}
+
+
+/* =========================
+   UTILITAIRES
+========================= */
+
+function escapeHTML(value){
+
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+function formatDate(date){
+
+  if(!date){
+    return "";
+  }
+
+  const parsed =
+    new Date(
+      date + "T00:00:00"
+    );
+
+  if(Number.isNaN(parsed.getTime())){
+
+    return date;
+
+  }
+
+  return parsed.toLocaleDateString(
+    "fr-FR",
+    {
+      weekday:"long",
+      day:"numeric",
+      month:"long",
+      year:"numeric"
+    }
+  );
+
+}
+
+
+function formatMoney(amount){
+
+  const number =
+    Number(amount) || 0;
+
+  return (
+    number.toLocaleString(
+      "fr-FR",
+      {
+        minimumFractionDigits:2,
+        maximumFractionDigits:2
+      }
+    ) +
+    " HTG"
+  );
+
+}
+
+
+/* =========================
+   DATE PAR DÉFAUT
+========================= */
+
+function setDefaultDate(){
 
   const input =
     document.getElementById(
       "eventDate"
     );
 
-
-  if(!input)return;
-
-
-  if(!input.value){
-
-    const today =
-      new Date();
-
-
-    const year =
-      today.getFullYear();
-
-
-    const month =
-      String(
-        today.getMonth() + 1
-      ).padStart(2,"0");
-
-
-    const day =
-      String(
-        today.getDate()
-      ).padStart(2,"0");
-
-
-    input.value =
-      `${year}-${month}-${day}`;
-
+  if(!input || input.value){
+    return;
   }
+
+  const today =
+    new Date();
+
+  const year =
+    today.getFullYear();
+
+  const month =
+    String(
+      today.getMonth() + 1
+    ).padStart(2,"0");
+
+  const day =
+    String(
+      today.getDate()
+    ).padStart(2,"0");
+
+  input.value =
+    `${year}-${month}-${day}`;
 
 }
 
 
-/* =====================================================
-   INITIALISATION
-===================================================== */
+/* =========================
+   VÉRIFICATION SESSION
+========================= */
 
-function initializeLumio(){
+async function checkSession(){
 
-  updateFocusDisplay();
+  if(!token || !currentUser){
 
-  setDefaultEventDate();
+    return;
 
-  updatePremiumUI();
-
+  }
 
   /*
-    Si un token existe déjà,
-    on tente de restaurer
-    automatiquement la session.
+    On garde la session locale.
+    Si votre backend possède une route
+    /api/auth/me, elle pourra être ajoutée
+    plus tard pour vérifier le token.
   */
 
-  if(token){
-
-    openApp();
-
-  }else{
-
-    showAuth();
-
-  }
+  showApp();
 
 }
 
 
-/* =====================================================
-   LANCEMENT
-===================================================== */
+/* =========================
+   INITIALISATION
+========================= */
 
 document.addEventListener(
   "DOMContentLoaded",
   function(){
 
-    initializeLumio();
+    setDefaultDate();
+
+    updateTimer();
+
+    renderAll();
+
+    checkSession();
 
   }
 );
 
 
+/* =========================
+   PROTECTION CONTRE LES
+   ERREURS DE DONNÉES
+========================= */
+
+if(!Array.isArray(tasks)){
+
+  tasks = [];
+
+}
+
+if(!Array.isArray(events)){
+
+  events = [];
+
+}
+
+if(!Array.isArray(notes)){
+
+  notes = [];
+
+}
+
+if(!Array.isArray(budgets)){
+
+  budgets = [];
+
+}
+
+if(!Array.isArray(goals)){
+
+  goals = [];
+
+}
+
+
+/* =========================
+   FIN DU JAVASCRIPT
+========================= */
+
 </script>
 
-
 </body>
-
 </html>
+      
