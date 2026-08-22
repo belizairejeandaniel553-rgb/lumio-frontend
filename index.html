@@ -1,476 +1,1098 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#ff7a00">
-<meta name="description" content="Lumio - Organisez votre vie simplement">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1.0"
+>
+
+<meta
+  name="theme-color"
+  content="#ff7a00"
+>
+
+<meta
+  name="description"
+  content="Lumio - Organisez votre vie simplement"
+>
+
 <title>Lumio</title>
 
+
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+
+/* =====================================================
+   RESET
+===================================================== */
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
   background:#f6f7f9;
   color:#171717;
 }
 
-button,input,textarea,select{font:inherit}
-button{border:0;cursor:pointer}
-.hidden{display:none!important}
-.muted{color:#777}
+button,
+input,
+textarea,
+select{
+  font:inherit;
+}
+
+button{
+  border:0;
+  cursor:pointer;
+}
+
+.hidden{
+  display:none!important;
+}
+
+.muted{
+  color:#777;
+}
+
+
+/* =====================================================
+   AUTHENTIFICATION
+===================================================== */
 
 #auth{
   min-height:100vh;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   padding:20px;
-  background:linear-gradient(135deg,#fff7ef,#f6f7f9)
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff7ef,
+      #f6f7f9
+    );
 }
 
 .auth-card{
   width:100%;
   max-width:430px;
+
   background:#fff;
+
   padding:30px;
+
   border-radius:24px;
-  box-shadow:0 15px 50px rgba(0,0,0,.08)
+
+  box-shadow:
+    0 15px 50px
+    rgba(0,0,0,.08);
 }
 
-.logo,.brand-logo{
+.logo,
+.brand-logo{
+
   background:#ff7a00;
+
   color:#fff;
+
   display:flex;
   align-items:center;
   justify-content:center;
-  font-weight:800
+
+  font-weight:800;
 }
 
 .logo{
+
   width:60px;
   height:60px;
+
   border-radius:18px;
+
   font-size:32px;
-  margin-bottom:18px
+
+  margin-bottom:18px;
 }
 
 .auth-card h1{
+
   font-size:30px;
-  margin-bottom:8px
+
+  margin-bottom:8px;
 }
 
-.form{margin-top:24px}
+.form{
+  margin-top:24px;
+}
 
-.field{margin-bottom:15px}
+.field{
+  margin-bottom:15px;
+}
 
 .field label{
+
   display:block;
+
   font-size:14px;
+
   font-weight:700;
-  margin-bottom:7px
+
+  margin-bottom:7px;
 }
 
 .field input,
 .field textarea,
 .field select{
+
   width:100%;
+
   padding:13px 14px;
+
   border:1px solid #ddd;
+
   border-radius:12px;
+
   outline:none;
-  background:#fff
+
+  background:#fff;
 }
 
 .field input:focus,
 .field textarea:focus,
 .field select:focus{
-  border-color:#ff7a00
+
+  border-color:#ff7a00;
 }
 
 .primary{
+
   width:100%;
+
   padding:14px;
+
   border-radius:12px;
+
   background:#ff7a00;
+
   color:#fff;
-  font-weight:700
+
+  font-weight:700;
 }
 
 .primary:disabled{
+
   opacity:.6;
-  cursor:not-allowed
+
+  cursor:not-allowed;
 }
 
 .secondary{
+
   padding:11px 15px;
+
   border-radius:11px;
+
   background:#f1f1f1;
-  color:#222
+
+  color:#222;
 }
 
 .auth-switch{
+
   text-align:center;
+
   margin-top:18px;
-  font-size:14px
+
+  font-size:14px;
 }
 
 .link{
+
   color:#ff7a00;
+
   font-weight:700;
-  cursor:pointer
+
+  cursor:pointer;
 }
 
 #error{
+
   min-height:20px;
+
   margin-top:12px;
+
   color:#c40000;
-  font-size:14px
+
+  font-size:14px;
 }
 
-#app{min-height:100vh}
+
+/* =====================================================
+   APPLICATION
+===================================================== */
+
+#app{
+  min-height:100vh;
+}
+
+
+/* =====================================================
+   TOPBAR
+===================================================== */
 
 .topbar{
+
   height:70px;
+
   background:#fff;
+
   border-bottom:1px solid #eee;
+
   display:flex;
+
   align-items:center;
+
   justify-content:space-between;
+
   padding:0 22px;
+
   position:sticky;
+
   top:0;
-  z-index:20
+
+  z-index:20;
 }
 
 .brand{
+
   display:flex;
+
   align-items:center;
+
   gap:10px;
+
   font-size:22px;
-  font-weight:800
+
+  font-weight:800;
 }
 
 .brand-logo{
+
   width:38px;
   height:38px;
-  border-radius:12px
+
+  border-radius:12px;
 }
 
 .user-area{
+
   display:flex;
+
   align-items:center;
-  gap:10px
+
+  gap:10px;
 }
 
 .premium-badge{
+
   background:#fff1e5;
+
   color:#e86600;
+
   padding:7px 10px;
+
   border-radius:20px;
+
   font-size:12px;
-  font-weight:700
+
+  font-weight:700;
 }
 
+
+/* =====================================================
+   LAYOUT
+===================================================== */
+
 .layout{
+
   display:flex;
-  min-height:calc(100vh - 70px)
+
+  min-height:
+    calc(100vh - 70px);
 }
 
 .sidebar{
+
   width:230px;
+
   background:#fff;
+
   border-right:1px solid #eee;
-  padding:20px 12px
+
+  padding:20px 12px;
 }
 
 .nav-btn{
+
   width:100%;
+
   padding:13px 14px;
+
   background:transparent;
+
   text-align:left;
+
   border-radius:12px;
+
   margin-bottom:5px;
-  font-weight:600
+
+  font-weight:600;
 }
 
 .nav-btn:hover,
 .nav-btn.active{
+
   background:#fff1e5;
-  color:#e86600
+
+  color:#e86600;
 }
+
+
+/* =====================================================
+   CONTENT
+===================================================== */
 
 .content{
+
   flex:1;
+
   width:100%;
+
   max-width:1300px;
+
   margin:auto;
-  padding:25px
+
+  padding:25px;
 }
 
-.page{display:none}
-.page.active{display:block}
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
 
 .page-title{
+
   font-size:28px;
-  margin-bottom:6px
+
+  margin-bottom:6px;
 }
 
 .page-subtitle{
+
   color:#777;
-  margin-bottom:22px
+
+  margin-bottom:22px;
 }
 
+
+/* =====================================================
+   GRID / CARDS
+===================================================== */
+
 .grid{
+
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:16px
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(220px,1fr)
+    );
+
+  gap:16px;
 }
 
 .card{
+
   background:#fff;
+
   border:1px solid #eee;
+
   border-radius:18px;
+
   padding:20px;
-  box-shadow:0 5px 20px rgba(0,0,0,.03)
+
+  box-shadow:
+    0 5px 20px
+    rgba(0,0,0,.03);
 }
 
-.card h3{margin-bottom:8px}
+.card h3{
+  margin-bottom:8px;
+}
 
 .stat{
+
   font-size:30px;
+
   font-weight:800;
-  margin-top:8px
+
+  margin-top:8px;
 }
 
-.section{margin-top:22px}
+.section{
+  margin-top:22px;
+}
+
+
+/* =====================================================
+   FORMULAIRES D'AJOUT
+===================================================== */
 
 .add-form{
+
   background:#fff;
+
   border:1px solid #eee;
+
   border-radius:18px;
+
   padding:18px;
-  margin-bottom:18px
+
+  margin-bottom:18px;
 }
 
 .add-grid{
+
   display:grid;
-  grid-template-columns:2fr 1fr auto;
-  gap:10px
+
+  grid-template-columns:
+    2fr 1fr auto;
+
+  gap:10px;
 }
 
 .add-grid input,
 .add-grid select{
+
   width:100%;
+
   padding:12px;
+
   border:1px solid #ddd;
+
   border-radius:11px;
-  background:#fff
+
+  background:#fff;
 }
 
 .add-grid button{
+
   background:#ff7a00;
+
   color:#fff;
+
   padding:12px 18px;
+
   border-radius:11px;
-  font-weight:700
+
+  font-weight:700;
 }
 
+
+/* =====================================================
+   LISTES
+===================================================== */
+
 .list{
+
   display:flex;
+
   flex-direction:column;
-  gap:10px
+
+  gap:10px;
 }
 
 .item{
+
   background:#fff;
+
   border:1px solid #eee;
+
   border-radius:14px;
+
   padding:14px;
+
   display:flex;
+
   justify-content:space-between;
+
   align-items:center;
-  gap:12px
+
+  gap:12px;
 }
 
-.item-main{flex:1}
+.item-main{
+  flex:1;
+}
 
-.item-title{font-weight:700}
+.item-title{
+  font-weight:700;
+}
 
 .item-small{
+
   color:#777;
+
   font-size:13px;
-  margin-top:5px
+
+  margin-top:5px;
 }
 
 .item-actions{
+
   display:flex;
+
   gap:6px;
-  flex-wrap:wrap
+
+  flex-wrap:wrap;
 }
 
+
+/* =====================================================
+   BOUTONS
+===================================================== */
+
 .danger{
+
   background:#ffe8e8;
+
   color:#b40000;
+
   padding:8px 11px;
-  border-radius:9px
+
+  border-radius:9px;
 }
 
 .success{
+
   background:#e9f8ee;
+
   color:#18733a;
+
   padding:8px 11px;
-  border-radius:9px
+
+  border-radius:9px;
 }
 
 .orange{
+
   background:#fff1e5;
+
   color:#e86600;
+
   padding:8px 11px;
-  border-radius:9px
+
+  border-radius:9px;
 }
+
+
+/* =====================================================
+   EMPTY
+===================================================== */
 
 .empty{
+
   text-align:center;
+
   padding:30px;
+
   color:#888;
+
   background:#fff;
+
   border-radius:15px;
-  border:1px solid #eee
+
+  border:1px solid #eee;
 }
 
+
+/* =====================================================
+   PROGRESSION
+===================================================== */
+
 .progress{
+
   height:10px;
+
   background:#eee;
+
   border-radius:20px;
+
   overflow:hidden;
-  margin-top:12px
+
+  margin-top:12px;
 }
 
 .progress-bar{
+
   height:100%;
+
   background:#ff7a00;
+
   width:0%;
-  transition:width .3s ease
+
+  transition:
+    width .3s ease;
 }
 
+
+/* =====================================================
+   FOCUS
+===================================================== */
+
 .focus-box{
+
   max-width:550px;
+
   margin:30px auto;
+
   text-align:center;
-  padding:35px
+
+  padding:35px;
 }
 
 .timer{
+
   font-size:70px;
+
   font-weight:800;
-  margin:25px 0
+
+  margin:25px 0;
 }
 
 .timer-buttons{
+
   display:flex;
+
   justify-content:center;
+
   gap:10px;
-  flex-wrap:wrap
+
+  flex-wrap:wrap;
 }
 
+
+/* =====================================================
+   PREMIUM
+===================================================== */
+
 .premium{
-  background:linear-gradient(135deg,#ff7a00,#ff9b45);
-  color:#fff
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff7a00,
+      #ff9b45
+    );
+
+  color:#fff;
 }
 
 .premium .primary{
+
   background:#fff;
-  color:#e86600
+
+  color:#e86600;
 }
 
 .premium-status{
+
   margin-top:15px;
+
   padding:14px;
-  background:rgba(255,255,255,.18);
-  border-radius:12px
+
+  background:
+    rgba(255,255,255,.18);
+
+  border-radius:12px;
+}
+
+
+/* =====================================================
+   PREMIUM AVANTAGES
+===================================================== */
+
+.premium-benefits{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(200px,1fr)
+    );
+
+  gap:12px;
+
+  margin:20px 0;
+}
+
+.premium-benefit{
+
+  background:
+    rgba(255,255,255,.15);
+
+  border-radius:14px;
+
+  padding:16px;
+}
+
+.premium-benefit strong{
+
+  display:block;
+
+  margin-bottom:6px;
+}
+
+.premium-benefit span{
+
+  font-size:13px;
+
+  opacity:.9;
+}
+
+
+/* =====================================================
+   PREMIUM FREE / ACTIVE
+===================================================== */
+
+.premium-free-box{
+
+  background:#fff;
+
+  color:#171717;
+
+  border-radius:16px;
+
+  padding:20px;
+
+  margin-top:18px;
+}
+
+.premium-active-box{
+
+  background:#fff;
+
+  color:#171717;
+
+  border-radius:16px;
+
+  padding:20px;
+
+  margin-top:18px;
+}
+
+.premium-active-title{
+
+  color:#18733a;
+
+  font-size:20px;
+
+  font-weight:800;
+
+  margin-bottom:8px;
+}
+
+
+/* =====================================================
+   PAIEMENT
+===================================================== */
+
+.payment-box{
+
+  margin-top:20px;
+
+  padding:18px;
+
+  border-radius:15px;
+
+  background:
+    rgba(255,255,255,.12);
+}
+
+.payment-price{
+
+  font-size:34px;
+
+  font-weight:800;
+
+  margin-top:6px;
 }
 
 .payment-link{
+
   display:inline-block;
+
   margin-top:12px;
+
   background:#fff;
+
   color:#e86600;
+
   padding:12px 16px;
+
   border-radius:10px;
+
   font-weight:700;
-  text-decoration:none
+
+  text-decoration:none;
 }
 
-.balance-box{margin-bottom:18px}
+
+/* =====================================================
+   CONFIRMATION
+===================================================== */
+
+.confirmation-box{
+
+  background:#fff;
+
+  color:#171717;
+
+  border-radius:16px;
+
+  padding:20px;
+
+  margin-top:18px;
+}
+
+.confirmation-title{
+
+  font-size:20px;
+
+  font-weight:800;
+
+  margin-bottom:8px;
+}
+
+
+/* =====================================================
+   BUDGET
+===================================================== */
+
+.balance-box{
+  margin-bottom:18px;
+}
 
 .balance{
+
   font-size:34px;
-  font-weight:800
+
+  font-weight:800;
 }
 
-.income{color:#18733a}
-.expense{color:#b40000}
+.income{
+  color:#18733a;
+}
+
+.expense{
+  color:#b40000;
+}
+
+
+/* =====================================================
+   MESSAGES
+===================================================== */
 
 .message{
+
   padding:12px;
+
   border-radius:10px;
+
   margin-top:12px;
-  display:none
+
+  display:none;
 }
 
-.message.show{display:block}
-.message.ok{background:#e9f8ee;color:#18733a}
-.message.bad{background:#ffe8e8;color:#b40000}
+.message.show{
+  display:block;
+}
+
+.message.ok{
+
+  background:#e9f8ee;
+
+  color:#18733a;
+}
+
+.message.bad{
+
+  background:#ffe8e8;
+
+  color:#b40000;
+}
+
+
+/* =====================================================
+   PREMIUM LOCK
+===================================================== */
+
+.premium-lock{
+
+  margin-top:15px;
+
+  padding:18px;
+
+  background:#fff7ef;
+
+  border:1px solid #ffd8b5;
+
+  border-radius:14px;
+
+  color:#6d3500;
+}
+
+.premium-lock strong{
+
+  display:block;
+
+  margin-bottom:5px;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
 
 @media(max-width:750px){
 
-  .layout{display:block}
+  .layout{
+    display:block;
+  }
 
   .sidebar{
+
     width:100%;
+
     display:flex;
+
     overflow-x:auto;
+
     padding:10px;
+
     border-right:0;
-    border-bottom:1px solid #eee
+
+    border-bottom:1px solid #eee;
   }
 
   .nav-btn{
+
     min-width:max-content;
+
     width:auto;
-    margin-right:5px
+
+    margin-right:5px;
   }
 
-  .content{padding:17px}
+  .content{
+    padding:17px;
+  }
 
-  .add-grid{grid-template-columns:1fr}
+  .add-grid{
+    grid-template-columns:1fr;
+  }
 
-  .topbar{padding:0 14px}
+  .topbar{
+    padding:0 14px;
+  }
 
-  .topbar .muted{display:none}
+  .topbar .muted{
+    display:none;
+  }
 
-  .page-title{font-size:24px}
+  .page-title{
+    font-size:24px;
+  }
 
-  .user-area{gap:5px}
+  .user-area{
+    gap:5px;
+  }
 
   .user-area .secondary{
+
     padding:8px;
-    font-size:12px
+
+    font-size:12px;
   }
 
-  .timer{font-size:55px}
+  .timer{
+    font-size:55px;
+  }
 
   .item{
+
     align-items:flex-start;
-    flex-direction:column
+
+    flex-direction:column;
   }
+
+  .premium-benefits{
+    grid-template-columns:1fr;
+  }
+
 }
+
+
+/* =====================================================
+   ANIMATION LÉGÈRE
+===================================================== */
+
+.card,
+.item,
+.add-form{
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+.card:hover,
+.item:hover{
+
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 8px 25px
+    rgba(0,0,0,.05);
+}
+
 </style>
+
 </head>
 
+
 <body>
+
 
 <!-- =====================================================
      AUTHENTIFICATION
@@ -478,678 +1100,1114 @@ button{border:0;cursor:pointer}
 
 <section id="auth">
 
-<div class="auth-card">
+  <div class="auth-card">
 
-<div class="logo">L</div>
+    <div class="logo">
+      L
+    </div>
 
-<h1 id="authTitle">
-Bienvenue sur Lumio
-</h1>
 
-<p class="muted">
-Organisez vos tâches, votre temps et vos objectifs.
-</p>
+    <h1 id="authTitle">
+      Bienvenue sur Lumio
+    </h1>
 
-<div id="error"></div>
 
-<form id="authForm" class="form">
+    <p class="muted">
+      Organisez vos tâches, votre temps et vos objectifs.
+    </p>
 
-<div class="field">
-<label>Email</label>
-<input
-id="email"
-type="email"
-placeholder="vous@email.com"
-autocomplete="email"
-required>
-</div>
 
-<div class="field">
-<label>Mot de passe</label>
-<input
-id="password"
-type="password"
-placeholder="Minimum 6 caractères"
-minlength="6"
-required>
-</div>
+    <div id="error"></div>
 
-<button
-type="submit"
-class="primary"
-id="authSubmit">
-Créer mon compte
-</button>
 
-</form>
+    <form
+      id="authForm"
+      class="form"
+    >
 
-<div class="auth-switch">
+      <div class="field">
 
-<span id="switchText">
-Vous avez déjà un compte ?
-</span>
+        <label for="email">
+          Email
+        </label>
 
-<span
-class="link"
-id="switchMode">
-Se connecter
-</span>
+        <input
+          id="email"
+          type="email"
+          placeholder="vous@email.com"
+          autocomplete="email"
+          required
+        >
 
-</div>
+      </div>
 
-</div>
+
+      <div class="field">
+
+        <label for="password">
+          Mot de passe
+        </label>
+
+        <input
+          id="password"
+          type="password"
+          placeholder="Minimum 6 caractères"
+          minlength="6"
+          required
+        >
+
+      </div>
+
+
+      <button
+        type="submit"
+        class="primary"
+        id="authSubmit"
+      >
+        Créer mon compte
+      </button>
+
+    </form>
+
+
+    <div class="auth-switch">
+
+      <span id="switchText">
+        Vous avez déjà un compte ?
+      </span>
+
+      <span
+        class="link"
+        id="switchMode"
+      >
+        Se connecter
+      </span>
+
+    </div>
+
+  </div>
 
 </section>
+
 
 
 <!-- =====================================================
      APPLICATION
 ===================================================== -->
 
-<section id="app" class="hidden">
+<section
+  id="app"
+  class="hidden"
+>
+
+
+<!-- =====================================================
+     TOPBAR
+===================================================== -->
 
 <header class="topbar">
 
-<div class="brand">
-<div class="brand-logo">L</div>
-Lumio
-</div>
+  <div class="brand">
 
-<div class="user-area">
+    <div class="brand-logo">
+      L
+    </div>
 
-<span
-id="premiumBadge"
-class="premium-badge hidden">
-PREMIUM
-</span>
+    Lumio
 
-<span
-id="userEmail"
-class="muted">
-</span>
+  </div>
 
-<button
-class="secondary"
-id="logoutButton"
-type="button">
-Déconnexion
-</button>
 
-</div>
+  <div class="user-area">
+
+    <span
+      id="premiumBadge"
+      class="premium-badge hidden"
+    >
+      PREMIUM
+    </span>
+
+
+    <span
+      id="userEmail"
+      class="muted"
+    ></span>
+
+
+    <button
+      class="secondary"
+      id="logoutButton"
+      type="button"
+    >
+      Déconnexion
+    </button>
+
+  </div>
 
 </header>
 
 
+
+<!-- =====================================================
+     LAYOUT
+===================================================== -->
+
 <div class="layout">
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
 
 <nav class="sidebar">
 
-<button
-class="nav-btn active"
-onclick="showPage('dashboard',this)">
-Dashboard
-</button>
 
-<button
-class="nav-btn"
-onclick="showPage('tasks',this)">
-Tâches
-</button>
+  <button
+    class="nav-btn active"
+    onclick="showPage('dashboard',this)"
+  >
+    Dashboard
+  </button>
 
-<button
-class="nav-btn"
-onclick="showPage('planning',this)">
-Planning
-</button>
 
-<button
-class="nav-btn"
-onclick="showPage('notes',this)">
-Notes
-</button>
+  <button
+    class="nav-btn"
+    onclick="showPage('tasks',this)"
+  >
+    Tâches
+  </button>
 
-<button
-class="nav-btn"
-onclick="showPage('budget',this)">
-Budget
-</button>
 
-<button
-class="nav-btn"
-onclick="showPage('goals',this)">
-Objectifs
-</button>
+  <button
+    class="nav-btn"
+    onclick="showPage('planning',this)"
+  >
+    Planning
+  </button>
 
-<button
-class="nav-btn"
-onclick="showPage('focus',this)">
-Focus
-</button>
 
-<button
-class="nav-btn"
-onclick="showPage('premium',this)">
-Premium
-</button>
+  <button
+    class="nav-btn"
+    onclick="showPage('notes',this)"
+  >
+    Notes
+  </button>
+
+
+  <button
+    class="nav-btn"
+    onclick="showPage('budget',this)"
+  >
+    Budget
+  </button>
+
+
+  <button
+    class="nav-btn"
+    onclick="showPage('goals',this)"
+  >
+    Objectifs
+  </button>
+
+
+  <button
+    class="nav-btn"
+    onclick="showPage('focus',this)"
+  >
+    Focus
+  </button>
+
+
+  <button
+    class="nav-btn"
+    onclick="showPage('premium',this)"
+  >
+    Premium
+  </button>
+
 
 </nav>
 
 
+
+<!-- =====================================================
+     CONTENU
+===================================================== -->
+
 <main class="content">
 
 
-<!-- DASHBOARD -->
+<!-- =====================================================
+     DASHBOARD
+===================================================== -->
 
 <section
-id="dashboard"
-class="page active">
+  id="dashboard"
+  class="page active"
+>
 
-<h1 class="page-title">
-Bonjour
-</h1>
-
-<p class="page-subtitle">
-Voici votre espace Lumio.
-</p>
-
-<div class="grid">
-
-<div class="card">
-<h3>Tâches</h3>
-<div
-class="stat"
-id="statTasks">
-0
-</div>
-<p class="muted">
-Tâches enregistrées
-</p>
-</div>
-
-<div class="card">
-<h3>Planning</h3>
-<div
-class="stat"
-id="statEvents">
-0
-</div>
-<p class="muted">
-Événements
-</p>
-</div>
-
-<div class="card">
-<h3>Notes</h3>
-<div
-class="stat"
-id="statNotes">
-0
-</div>
-<p class="muted">
-Notes enregistrées
-</p>
-</div>
-
-<div class="card">
-<h3>Objectifs</h3>
-<div
-class="stat"
-id="statGoals">
-0
-</div>
-<p class="muted">
-Objectifs
-</p>
-</div>
-
-</div>
+  <h1 class="page-title">
+    Bonjour
+  </h1>
 
 
-<div class="section">
+  <p class="page-subtitle">
+    Voici votre espace Lumio.
+  </p>
 
-<div class="card premium">
 
-<h2>
-Lumio Premium
-</h2>
+  <div class="grid">
 
-<p style="margin:12px 0 18px">
-Débloquez l'expérience Premium de Lumio.
-</p>
 
-<button
-class="primary"
-onclick="showPage('premium')">
-Découvrir Premium
-</button>
+    <div class="card">
 
-</div>
+      <h3>
+        Tâches
+      </h3>
 
-</div>
+      <div
+        class="stat"
+        id="statTasks"
+      >
+        0
+      </div>
+
+      <p class="muted">
+        Tâches enregistrées
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>
+        Planning
+      </h3>
+
+      <div
+        class="stat"
+        id="statEvents"
+      >
+        0
+      </div>
+
+      <p class="muted">
+        Événements
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>
+        Notes
+      </h3>
+
+      <div
+        class="stat"
+        id="statNotes"
+      >
+        0
+      </div>
+
+      <p class="muted">
+        Notes enregistrées
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>
+        Objectifs
+      </h3>
+
+      <div
+        class="stat"
+        id="statGoals"
+      >
+        0
+      </div>
+
+      <p class="muted">
+        Objectifs
+      </p>
+
+    </div>
+
+
+  </div>
+
+
+  <div class="section">
+
+    <div class="card premium">
+
+      <h2>
+        Lumio Premium
+      </h2>
+
+
+      <p style="margin:12px 0 18px">
+
+        Débloquez une expérience
+        plus complète avec Lumio Premium.
+
+      </p>
+
+
+      <button
+        class="primary"
+        onclick="showPage('premium')"
+      >
+        Découvrir Premium
+      </button>
+
+    </div>
+
+  </div>
 
 </section>
 
 
-<!-- TACHES -->
+
+<!-- =====================================================
+     TÂCHES
+===================================================== -->
 
 <section
-id="tasks"
-class="page">
+  id="tasks"
+  class="page"
+>
 
-<h1 class="page-title">
-Tâches
-</h1>
+  <h1 class="page-title">
+    Tâches
+  </h1>
 
-<p class="page-subtitle">
-Organisez ce que vous devez accomplir.
-</p>
 
-<div class="add-form">
+  <p class="page-subtitle">
+    Organisez ce que vous devez accomplir.
+  </p>
 
-<div class="add-grid">
 
-<input
-id="taskTitle"
-placeholder="Nouvelle tâche...">
+  <div class="add-form">
 
-<select id="taskPriority">
+    <div class="add-grid">
 
-<option value="low">
-Faible
-</option>
+      <input
+        id="taskTitle"
+        placeholder="Nouvelle tâche..."
+      >
 
-<option
-value="medium"
-selected>
-Moyenne
-</option>
 
-<option value="high">
-Haute
-</option>
+      <select id="taskPriority">
 
-</select>
+        <option value="low">
+          Faible
+        </option>
 
-<button onclick="addTask()">
-Ajouter
-</button>
+        <option
+          value="medium"
+          selected
+        >
+          Moyenne
+        </option>
 
-</div>
+        <option value="high">
+          Haute
+        </option>
 
-</div>
+      </select>
 
-<div
-id="tasksList"
-class="list">
-</div>
+
+      <button onclick="addTask()">
+        Ajouter
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div
+    id="tasksList"
+    class="list"
+  ></div>
 
 </section>
 
 
-<!-- PLANNING -->
+
+<!-- =====================================================
+     PLANNING
+===================================================== -->
 
 <section
-id="planning"
-class="page">
+  id="planning"
+  class="page"
+>
 
-<h1 class="page-title">
-Planning
-</h1>
+  <h1 class="page-title">
+    Planning
+  </h1>
 
-<p class="page-subtitle">
-Planifiez vos journées.
-</p>
 
-<div class="add-form">
+  <p class="page-subtitle">
+    Planifiez vos journées.
+  </p>
 
-<div class="add-grid">
 
-<input
-id="eventTitle"
-placeholder="Événement...">
+  <div class="add-form">
 
-<input
-id="eventDate"
-type="date">
+    <div class="add-grid">
 
-<button onclick="addEvent()">
-Ajouter
-</button>
+      <input
+        id="eventTitle"
+        placeholder="Événement..."
+      >
 
-</div>
 
-</div>
+      <input
+        id="eventDate"
+        type="date"
+      >
 
-<div
-id="eventsList"
-class="list">
-</div>
+
+      <button onclick="addEvent()">
+        Ajouter
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div
+    id="eventsList"
+    class="list"
+  ></div>
 
 </section>
 
 
-<!-- NOTES -->
+
+<!-- =====================================================
+     NOTES
+===================================================== -->
 
 <section
-id="notes"
-class="page">
+  id="notes"
+  class="page"
+>
 
-<h1 class="page-title">
-Notes
-</h1>
+  <h1 class="page-title">
+    Notes
+  </h1>
 
-<p class="page-subtitle">
-Gardez vos idées importantes.
-</p>
 
-<div class="add-form">
+  <p class="page-subtitle">
+    Gardez vos idées importantes.
+  </p>
 
-<div class="field">
-<input
-id="noteTitle"
-placeholder="Titre de la note">
-</div>
 
-<div class="field">
+  <div class="add-form">
 
-<textarea
-id="noteContent"
-rows="4"
-placeholder="Écrivez votre note...">
-</textarea>
+    <div class="field">
 
-</div>
+      <input
+        id="noteTitle"
+        placeholder="Titre de la note"
+      >
 
-<button
-class="primary"
-onclick="addNote()">
-Enregistrer
-</button>
+    </div>
 
-</div>
 
-<div
-id="notesList"
-class="list">
-</div>
+    <div class="field">
+
+      <textarea
+        id="noteContent"
+        rows="4"
+        placeholder="Écrivez votre note..."
+      ></textarea>
+
+    </div>
+
+
+    <button
+      class="primary"
+      onclick="addNote()"
+    >
+      Enregistrer
+    </button>
+
+  </div>
+
+
+  <div
+    id="notesList"
+    class="list"
+  ></div>
 
 </section>
 
 
-<!-- BUDGET -->
+
+<!-- =====================================================
+     BUDGET
+===================================================== -->
 
 <section
-id="budget"
-class="page">
+  id="budget"
+  class="page"
+>
 
-<h1 class="page-title">
-Budget
-</h1>
-
-<p class="page-subtitle">
-Suivez vos revenus et dépenses.
-</p>
-
-<div class="card balance-box">
-
-<p class="muted">
-Solde
-</p>
-
-<div
-id="budgetBalance"
-class="balance">
-0.00 HTG
-</div>
-
-<div
-id="budgetSummary"
-class="item-small">
-Revenus : 0.00 HTG — Dépenses : 0.00 HTG
-</div>
-
-</div>
+  <h1 class="page-title">
+    Budget
+  </h1>
 
 
-<div class="add-form">
+  <p class="page-subtitle">
+    Suivez vos revenus et dépenses.
+  </p>
 
-<div class="field">
-<input
-id="budgetDescription"
-placeholder="Description">
-</div>
 
-<div class="field">
-<input
-id="budgetAmount"
-type="number"
-step="0.01"
-min="0"
-placeholder="Montant">
-</div>
+  <div class="card balance-box">
 
-<div class="field">
+    <p class="muted">
+      Solde
+    </p>
 
-<select id="budgetType">
 
-<option value="income">
-Revenu
-</option>
+    <div
+      id="budgetBalance"
+      class="balance"
+    >
+      0.00 HTG
+    </div>
 
-<option value="expense">
-Dépense
-</option>
 
-</select>
+    <div
+      id="budgetSummary"
+      class="item-small"
+    >
+      Revenus : 0.00 HTG —
+      Dépenses : 0.00 HTG
+    </div>
 
-</div>
+  </div>
 
-<button
-class="primary"
-onclick="addBudget()">
-Ajouter au budget
-</button>
 
-</div>
+  <div class="add-form">
 
-<div
-id="budgetList"
-class="list">
-</div>
+    <div class="field">
+  <input
+        id="budgetDescription"
+        placeholder="Description..."
+      >
+
+    </div>
+
+
+    <div class="add-grid">
+
+      <input
+        id="budgetAmount"
+        type="number"
+        step="0.01"
+        min="0"
+        placeholder="Montant"
+      >
+
+
+      <select id="budgetType">
+
+        <option value="income">
+          Revenu
+        </option>
+
+        <option value="expense">
+          Dépense
+        </option>
+
+      </select>
+
+
+      <button onclick="addBudget()">
+        Ajouter
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div
+    id="budgetList"
+    class="list"
+  ></div>
 
 </section>
 
 
-<!-- OBJECTIFS -->
+
+<!-- =====================================================
+     OBJECTIFS
+===================================================== -->
 
 <section
-id="goals"
-class="page">
+  id="goals"
+  class="page"
+>
 
-<h1 class="page-title">
-Objectifs
-</h1>
+  <h1 class="page-title">
+    Objectifs
+  </h1>
 
-<p class="page-subtitle">
-Transformez vos projets en objectifs.
-</p>
 
-<div class="add-form">
+  <p class="page-subtitle">
+    Définissez vos objectifs et suivez vos progrès.
+  </p>
 
-<div class="field">
 
-<input
-id="goalTitle"
-placeholder="Mon objectif...">
+  <div class="add-form">
 
-</div>
+    <div class="add-grid">
 
-<div class="field">
+      <input
+        id="goalTitle"
+        placeholder="Nom de l'objectif..."
+      >
 
-<input
-id="goalTarget"
-type="number"
-min="1"
-placeholder="Cible">
 
-</div>
+      <input
+        id="goalTarget"
+        type="number"
+        min="1"
+        placeholder="Objectif"
+      >
 
-<button
-class="primary"
-onclick="addGoal()">
-Ajouter
-</button>
 
-</div>
+      <button onclick="addGoal()">
+        Ajouter
+      </button>
 
-<div
-id="goalsList"
-class="list">
-</div>
+    </div>
+
+  </div>
+
+
+  <div
+    id="goalsList"
+    class="list"
+  ></div>
 
 </section>
 
 
-<!-- FOCUS -->
+
+<!-- =====================================================
+     FOCUS
+===================================================== -->
 
 <section
-id="focus"
-class="page">
+  id="focus"
+  class="page"
+>
 
-<h1 class="page-title">
-Focus
-</h1>
+  <h1 class="page-title">
+    Focus
+  </h1>
 
-<p class="page-subtitle">
-Concentrez-vous sur une seule chose.
-</p>
 
-<div class="card focus-box">
+  <p class="page-subtitle">
+    Concentrez-vous sur une seule tâche à la fois.
+  </p>
 
-<h2>
-Session Focus
-</h2>
 
-<div
-class="timer"
-id="timer">
-25:00
-</div>
+  <div class="card focus-box">
 
-<div class="timer-buttons">
+    <h2>
+      Session de concentration
+    </h2>
 
-<button
-class="primary"
-style="width:auto"
-onclick="startTimer()">
-Démarrer
-</button>
 
-<button
-class="secondary"
-onclick="pauseTimer()">
-Pause
-</button>
+    <p class="muted">
+      Travaillez pendant une durée définie
+      sans distraction.
+    </p>
 
-<button
-class="danger"
-onclick="resetTimer()">
-Réinitialiser
-</button>
 
-</div>
+    <div
+      id="timer"
+      class="timer"
+    >
+      25:00
+    </div>
 
-</div>
+
+    <div class="timer-buttons">
+
+      <button
+        class="primary"
+        style="width:auto"
+        onclick="startFocus()"
+      >
+        Démarrer
+      </button>
+
+
+      <button
+        class="secondary"
+        onclick="pauseFocus()"
+      >
+        Pause
+      </button>
+
+
+      <button
+        class="orange"
+        onclick="resetFocus()"
+      >
+        Réinitialiser
+      </button>
+
+    </div>
+
+
+    <div
+      id="focusMessage"
+      class="message"
+    ></div>
+
+  </div>
 
 </section>
 
 
-<!-- PREMIUM -->
+
+<!-- =====================================================
+     PREMIUM
+===================================================== -->
 
 <section
-id="premium"
-class="page">
+  id="premium"
+  class="page"
+>
 
-<h1 class="page-title">
-Lumio Premium
-</h1>
+  <div class="card premium">
 
-<p class="page-subtitle">
-Une expérience plus complète pour Lumio.
-</p>
-
-<div class="card premium">
-
-<h2>
-Débloquez Premium
-</h2>
-
-<p style="margin:12px 0 20px">
-
-Accédez à Lumio Premium pour seulement
-<strong>250 HTG</strong>.
-
-</p>
-
-<div
-id="premiumStatus"
-class="premium-status">
-Votre compte utilise actuellement Lumio Free.
-</div>
-
-<div
-style="
-background:rgba(255,255,255,.15);
-padding:15px;
-border-radius:12px;
-margin:18px 0;
-">
-
-<strong>
-Prix Premium
-</strong>
-
-<div
-style="
-font-size:32px;
-font-weight:800;
-margin-top:6px;
-">
-250 HTG
-</div>
-
-<p style="margin-top:7px">
-Paiement sécurisé via Tchotchom / MonCash.
-</p>
-
-</div>
+    <h1 class="page-title">
+      Lumio Premium
+    </h1>
 
 
-<button
-class="primary"
-id="premiumButton"
-onclick="activatePremium()">
+    <p style="margin-top:8px">
 
-Activer Premium — 250 HTG
+      Une expérience plus complète
+      pour mieux organiser votre vie.
 
-</button>
+    </p>
 
 
-<div
-id="paymentResult"
-class="message">
-</div>
+    <!-- =================================================
+         AVANTAGES PREMIUM
+    ================================================= -->
 
-</div>
+    <div class="premium-benefits">
+
+
+      <div class="premium-benefit">
+
+        <strong>
+          Organisation avancée
+        </strong>
+
+        <span>
+          Gérez vos tâches, notes,
+          planning et objectifs plus efficacement.
+        </span>
+
+      </div>
+
+
+      <div class="premium-benefit">
+
+        <strong>
+          Focus amélioré
+        </strong>
+
+        <span>
+          Profitez pleinement du système
+          de concentration de Lumio.
+        </span>
+
+      </div>
+
+
+      <div class="premium-benefit">
+
+        <strong>
+          Budget avancé
+        </strong>
+
+        <span>
+          Suivez plus facilement votre
+          organisation financière.
+        </span>
+
+      </div>
+
+
+      <div class="premium-benefit">
+
+        <strong>
+          Expérience sans publicité
+        </strong>
+
+        <span>
+          Profitez d'une expérience
+          Lumio plus propre.
+        </span>
+
+      </div>
+
+
+    </div>
+
+
+    <!-- =================================================
+         ZONE FREE
+    ================================================= -->
+
+    <div
+      id="premiumFreeBox"
+      class="premium-free-box"
+    >
+
+      <h2>
+        Passez à Premium
+      </h2>
+
+
+      <p
+        class="muted"
+        style="margin-top:8px"
+      >
+
+        Débloquez les avantages Premium
+        avec un paiement de
+
+      </p>
+
+
+      <div class="payment-box">
+
+        <div class="muted">
+          Prix Premium
+        </div>
+
+
+        <div class="payment-price">
+          250 HTG
+        </div>
+
+
+        <a
+          id="paymentLink"
+          class="payment-link"
+          href="https://tchotchom.com/dDL1O43u09V40aYmtcVHrzsekuUletIY8vmKYicZ5KU"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Payer maintenant
+        </a>
+
+
+        <p
+          style="
+            margin-top:12px;
+            font-size:13px;
+            color:#fff;
+            opacity:.9;
+          "
+        >
+
+          Après votre paiement,
+          revenez sur Lumio et confirmez
+          votre paiement.
+
+        </p>
+
+      </div>
+
+
+      <!-- ===============================================
+           CONFIRMATION
+      ================================================ -->
+
+      <div
+        id="paymentConfirmation"
+        class="confirmation-box"
+      >
+
+        <div class="confirmation-title">
+          Paiement effectué ?
+        </div>
+
+
+        <p class="muted">
+
+          Si vous avez terminé le paiement,
+          cliquez ci-dessous pour envoyer
+          votre demande de confirmation.
+
+        </p>
+
+
+        <button
+          id="confirmPaymentButton"
+          class="primary"
+          style="
+            margin-top:15px;
+            background:#ff7a00;
+            color:#fff;
+          "
+          onclick="confirmPremiumPayment()"
+        >
+          J'ai effectué le paiement
+        </button>
+
+
+        <div
+          id="paymentMessage"
+          class="message"
+        ></div>
+
+      </div>
+
+    </div>
+
+
+    <!-- =================================================
+         PREMIUM ACTIF
+    ================================================= -->
+
+    <div
+      id="premiumActiveBox"
+      class="premium-active-box hidden"
+    >
+
+      <div class="premium-active-title">
+
+        Premium actif
+
+      </div>
+
+
+      <p>
+
+        Votre compte Lumio Premium
+        est actuellement actif.
+
+      </p>
+
+
+      <div class="premium-benefits">
+
+        <div class="premium-benefit">
+
+          <strong>
+            Premium activé
+          </strong>
+
+          <span>
+            Votre accès Premium est disponible.
+          </span>
+
+        </div>
+
+
+        <div class="premium-benefit">
+
+          <strong>
+            Organisation complète
+          </strong>
+
+          <span>
+            Profitez de toutes les fonctionnalités
+            Premium disponibles.
+          </span>
+
+        </div>
+
+
+        <div class="premium-benefit">
+
+          <strong>
+            Sans publicité
+          </strong>
+
+          <span>
+            Profitez d'une expérience
+            plus agréable.
+          </span>
+
+        </div>
+
+
+        <div class="premium-benefit">
+
+          <strong>
+            Expérience Premium
+          </strong>
+
+          <span>
+            Lumio est prêt à vous accompagner
+            encore plus efficacement.
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <button
+        class="secondary"
+        onclick="showPage('dashboard')"
+      >
+        Retour au Dashboard
+      </button>
+
+    </div>
+
+  </div>
 
 </section>
+
+
 
 </main>
+
 </div>
+
 </section>
 
 
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
 <script>
+
+/* =====================================================
+   LUMIO — JAVASCRIPT
+   À partir d'ici, colle ton JS complet.
+===================================================== */
+
 
 /* =====================================================
    CONFIGURATION
@@ -1158,13 +2216,20 @@ class="message">
 const API_URL =
 "https://lumio-backend-1-i6a3.onrender.com";
 
+
 const TCHOTCHOM_PAYMENT_URL =
 "https://tchotchom.com/dDL1O43u09V40aYmtcVHrzsekuUletIY8vmKYicZ5KU";
 
+
 const PREMIUM_PRICE = 250;
 
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
 let token =
-localStorage.getItem("lumio_token") || "";
+  localStorage.getItem("lumio_token") || "";
 
 let currentUser = null;
 
@@ -1176,6 +2241,8 @@ let goalsData = [];
 
 let registerMode = true;
 
+let isPremium = false;
+
 
 /* =====================================================
    UTILITAIRES
@@ -1183,36 +2250,36 @@ let registerMode = true;
 
 function escapeHTML(value){
 
-return String(value ?? "")
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 
 }
 
 
 function showError(message){
 
-const box =
-document.getElementById("error");
+  const box =
+    document.getElementById("error");
 
-if(box){
-box.textContent =
-message || "";
-}
+  if(box){
+    box.textContent =
+      message || "";
+  }
 
 }
 
 
 function formatMoney(value){
 
-return Number(value || 0)
-.toLocaleString("fr-FR",{
-minimumFractionDigits:2,
-maximumFractionDigits:2
-}) + " HTG";
+  return Number(value || 0)
+    .toLocaleString("fr-FR",{
+      minimumFractionDigits:2,
+      maximumFractionDigits:2
+    }) + " HTG";
 
 }
 
@@ -1223,78 +2290,89 @@ maximumFractionDigits:2
 
 async function api(path,options={}){
 
-const headers={
-"Content-Type":"application/json",
-...(options.headers || {})
-};
+  const headers = {
 
-if(token){
+    "Content-Type":"application/json",
 
-headers.Authorization =
-"Bearer " + token;
+    ...(options.headers || {})
 
-}
+  };
 
-let response;
 
-try{
+  if(token){
 
-response =
-await fetch(
-API_URL + path,
-{
-...options,
-headers
-}
-);
+    headers.Authorization =
+      "Bearer " + token;
 
-}catch(error){
+  }
 
-throw new Error(
-"Impossible de contacter le serveur Lumio."
-);
 
-}
+  let response;
 
-let data;
 
-try{
+  try{
 
-data =
-await response.json();
+    response =
+      await fetch(
+        API_URL + path,
+        {
+          ...options,
+          headers
+        }
+      );
 
-}catch{
+  }catch(error){
 
-data={
-success:false,
-error:"Réponse serveur invalide."
-};
+    throw new Error(
+      "Impossible de contacter le serveur Lumio."
+    );
 
-}
+  }
 
-if(response.status === 401){
 
-clearSession();
+  let data;
 
-showAuth();
 
-throw new Error(
-"Votre session a expiré. Connectez-vous à nouveau."
-);
+  try{
 
-}
+    data =
+      await response.json();
 
-if(!response.ok){
+  }catch{
 
-throw new Error(
-data?.error ||
-data?.message ||
-"Erreur serveur."
-);
+    data = {
+      success:false,
+      error:"Réponse serveur invalide."
+    };
 
-}
+  }
 
-return data;
+
+  if(response.status === 401){
+
+    clearSession();
+
+    showAuth();
+
+    throw new Error(
+      "Votre session a expiré."
+    );
+
+  }
+
+
+  if(!response.ok){
+
+    throw new Error(
+      data?.error ||
+      data?.message ||
+      "Erreur serveur."
+    );
+
+  }
+
+
+  return data;
 
 }
 
@@ -1305,38 +2383,41 @@ return data;
 
 function clearSession(){
 
-token="";
-currentUser=null;
+  token = "";
 
-localStorage.removeItem(
-"lumio_token"
-);
+  currentUser = null;
+
+  isPremium = false;
+
+  localStorage.removeItem(
+    "lumio_token"
+  );
 
 }
 
 
 function showAuth(){
 
-document
-.getElementById("app")
-.classList.add("hidden");
+  document
+    .getElementById("app")
+    ?.classList.add("hidden");
 
-document
-.getElementById("auth")
-.classList.remove("hidden");
+  document
+    .getElementById("auth")
+    ?.classList.remove("hidden");
 
 }
 
 
 function showApplication(){
 
-document
-.getElementById("auth")
-.classList.add("hidden");
+  document
+    .getElementById("auth")
+    ?.classList.add("hidden");
 
-document
-.getElementById("app")
-.classList.remove("hidden");
+  document
+    .getElementById("app")
+    ?.classList.remove("hidden");
 
 }
 
@@ -1346,269 +2427,278 @@ document
 ===================================================== */
 
 const authForm =
-document.getElementById("authForm");
+  document.getElementById("authForm");
 
 const authTitle =
-document.getElementById("authTitle");
+  document.getElementById("authTitle");
 
 const authSubmit =
-document.getElementById("authSubmit");
+  document.getElementById("authSubmit");
 
 const switchMode =
-document.getElementById("switchMode");
+  document.getElementById("switchMode");
 
 const switchText =
-document.getElementById("switchText");
+  document.getElementById("switchText");
 
 
-switchMode.addEventListener(
-"click",
-function(){
+if(switchMode){
 
-registerMode=!registerMode;
+  switchMode.addEventListener(
+    "click",
+    function(){
 
-showError("");
+      registerMode =
+        !registerMode;
 
-if(registerMode){
-
-authTitle.textContent=
-"Bienvenue sur Lumio";
-
-authSubmit.textContent=
-"Créer mon compte";
-
-switchText.textContent=
-"Vous avez déjà un compte ?";
-
-switchMode.textContent=
-"Se connecter";
-
-}else{
-
-authTitle.textContent=
-"Bon retour sur Lumio";
-
-authSubmit.textContent=
-"Se connecter";
-
-switchText.textContent=
-"Vous n'avez pas encore de compte ?";
-
-switchMode.textContent=
-"Créer un compte";
-
-}
-
-}
-);
+      showError("");
 
 
-authForm.addEventListener(
-"submit",
-async function(event){
+      if(registerMode){
 
-event.preventDefault();
+        authTitle.textContent =
+          "Bienvenue sur Lumio";
 
-showError("");
+        authSubmit.textContent =
+          "Créer mon compte";
 
-const email =
-document
-.getElementById("email")
-.value
-.trim()
-.toLowerCase();
+        switchText.textContent =
+          "Vous avez déjà un compte ?";
 
-const password =
-document
-.getElementById("password")
-.value;
+        switchMode.textContent =
+          "Se connecter";
 
-if(!email || !password){
+      }else{
 
-showError(
-"Veuillez remplir tous les champs."
-);
+        authTitle.textContent =
+          "Bon retour sur Lumio";
 
-return;
+        authSubmit.textContent =
+          "Se connecter";
+
+        switchText.textContent =
+          "Vous n'avez pas encore de compte ?";
+
+        switchMode.textContent =
+          "Créer un compte";
+
+      }
+
+    }
+  );
 
 }
 
-if(password.length<6){
 
-showError(
-"Le mot de passe doit contenir au moins 6 caractères."
-);
+if(authForm){
 
-return;
+  authForm.addEventListener(
+    "submit",
+    async function(event){
+
+      event.preventDefault();
+
+      showError("");
+
+
+      const email =
+        document
+          .getElementById("email")
+          .value
+          .trim()
+          .toLowerCase();
+
+
+      const password =
+        document
+          .getElementById("password")
+          .value;
+
+
+      if(!email || !password){
+
+        showError(
+          "Veuillez remplir tous les champs."
+        );
+
+        return;
+
+      }
+
+
+      if(password.length < 6){
+
+        showError(
+          "Le mot de passe doit contenir au moins 6 caractères."
+        );
+
+        return;
+
+      }
+
+
+      authSubmit.disabled = true;
+
+
+      try{
+
+        const endpoint =
+          registerMode
+            ? "/api/auth/register"
+            : "/api/auth/login";
+
+
+        const data =
+          await api(
+            endpoint,
+            {
+              method:"POST",
+
+              body:JSON.stringify({
+                email,
+                password
+              })
+            }
+          );
+
+
+        if(!data?.token){
+
+          throw new Error(
+            data?.error ||
+            "Le serveur n'a pas envoyé de token."
+          );
+
+        }
+
+
+        token = data.token;
+
+        localStorage.setItem(
+          "lumio_token",
+          token
+        );
+
+
+        currentUser =
+          data.user ||
+          data.data?.user ||
+          null;
+
+
+        await openApp();
+
+
+      }catch(error){
+
+        showError(
+          error.message
+        );
+
+      }finally{
+
+        authSubmit.disabled = false;
+
+        authSubmit.textContent =
+          registerMode
+            ? "Créer mon compte"
+            : "Se connecter";
+
+      }
+
+    }
+  );
 
 }
-
-authSubmit.disabled=true;
-
-authSubmit.textContent=
-registerMode
-?"Création..."
-:"Connexion...";
-
-try{
-
-const endpoint=
-registerMode
-?"/api/auth/register"
-:"/api/auth/login";
-
-const data=
-await api(
-endpoint,
-{
-method:"POST",
-body:JSON.stringify({
-email,
-password
-})
-}
-);
-
-if(!data?.token){
-
-throw new Error(
-data?.error ||
-"Le serveur n'a pas envoyé de token."
-);
-
-}
-
-token=data.token;
-
-localStorage.setItem(
-"lumio_token",
-token
-);
-
-currentUser=
-data.user ||
-data.data?.user ||
-null;
-
-document
-.getElementById("password")
-.value="";
-
-await openApp();
-
-}catch(error){
-
-console.error(
-"AUTH ERROR:",
-error
-);
-
-showError(
-error.message ||
-"Impossible de continuer."
-);
-
-}finally{
-
-authSubmit.disabled=false;
-
-authSubmit.textContent=
-registerMode
-?"Créer mon compte"
-:"Se connecter";
-
-}
-
-}
-);
 
 
 /* =====================================================
-   OUVRIR APP
+   OUVRIR APPLICATION
 ===================================================== */
 
 async function openApp(){
 
-if(!token){
+  if(!token){
 
-showAuth();
-return;
+    showAuth();
 
-}
+    return;
 
-showApplication();
+  }
 
-try{
 
-const me=
-await api("/api/auth/me");
+  showApplication();
 
-currentUser=
-me?.user ||
-me?.data?.user ||
-me?.data ||
-me ||
-currentUser;
 
-}catch(error){
+  try{
 
-console.error(error);
+    const me =
+      await api("/api/auth/me");
 
-clearSession();
 
-showAuth();
+    currentUser =
+      me?.user ||
+      me?.data?.user ||
+      me?.data ||
+      me ||
+      currentUser;
 
-showError(
-"Session invalide. Veuillez vous reconnecter."
-);
 
-return;
+  }catch(error){
 
-}
+    clearSession();
 
-document
-.getElementById("userEmail")
-.textContent=
-currentUser?.email || "";
+    showAuth();
 
-await loadAll();
+    showError(
+      "Session invalide. Veuillez vous reconnecter."
+    );
+
+    return;
+
+  }
+
+
+  const userEmail =
+    document.getElementById("userEmail");
+
+
+  if(userEmail){
+
+    userEmail.textContent =
+      currentUser?.email || "";
+
+  }
+
+
+  await loadAll();
 
 }
 
 
 /* =====================================================
-   LOGOUT
+   DÉCONNEXION
 ===================================================== */
 
-function logout(showMessage=true){
+function logout(){
 
-clearSession();
+  clearSession();
 
-showAuth();
+  showAuth();
 
-document
-.getElementById("email")
-.value="";
-
-document
-.getElementById("password")
-.value="";
-
-showError(
-showMessage
-?"Vous êtes déconnecté."
-:""
-);
+  showError(
+    "Vous êtes déconnecté."
+  );
 
 }
 
 
 document
-.getElementById("logoutButton")
-.addEventListener(
-"click",
-()=>logout(true)
-);
+  .getElementById("logoutButton")
+  ?.addEventListener(
+    "click",
+    logout
+  );
 
 
 /* =====================================================
@@ -1619,45 +2709,34 @@ function showPage(pageId,button){
 
   document
     .querySelectorAll(".page")
-    .forEach(function(page){
-      page.classList.remove("active");
-    });
+    .forEach(
+      page =>
+        page.classList.remove("active")
+    );
+
 
   const page =
     document.getElementById(pageId);
 
+
   if(page){
+
     page.classList.add("active");
+
   }
+
 
   document
     .querySelectorAll(".nav-btn")
-    .forEach(function(btn){
-      btn.classList.remove("active");
-    });
+    .forEach(
+      btn =>
+        btn.classList.remove("active")
+    );
+
 
   if(button){
 
     button.classList.add("active");
-
-  }else{
-
-    document
-      .querySelectorAll(".nav-btn")
-      .forEach(function(btn){
-
-        const onclick =
-          btn.getAttribute("onclick") || "";
-
-        if(
-          onclick.includes(
-            "'" + pageId + "'"
-          )
-        ){
-          btn.classList.add("active");
-        }
-
-      });
 
   }
 
@@ -1665,7 +2744,7 @@ function showPage(pageId,button){
 
 
 /* =====================================================
-   CHARGEMENT GLOBAL
+   CHARGEMENT
 ===================================================== */
 
 async function loadAll(){
@@ -1680,6 +2759,7 @@ async function loadAll(){
     loadSubscription()
 
   ]);
+
 
   updateDashboard();
 
@@ -1703,16 +2783,16 @@ async function loadTasks(){
       [];
 
     if(!Array.isArray(tasksData)){
-      tasksData=[];
+      tasksData = [];
     }
 
     renderTasks();
 
   }catch(error){
 
-    console.error("Erreur tâches:",error);
+    console.error(error);
 
-    tasksData=[];
+    tasksData = [];
 
     renderTasks(
       "Impossible de charger les tâches."
@@ -1730,9 +2810,10 @@ function renderTasks(errorMessage=""){
 
   if(!list)return;
 
+
   if(errorMessage){
 
-    list.innerHTML=
+    list.innerHTML =
       `<div class="empty">
         ${escapeHTML(errorMessage)}
       </div>`;
@@ -1741,9 +2822,10 @@ function renderTasks(errorMessage=""){
 
   }
 
+
   if(!tasksData.length){
 
-    list.innerHTML=
+    list.innerHTML =
       `<div class="empty">
         Aucune tâche pour le moment.
       </div>`;
@@ -1752,20 +2834,24 @@ function renderTasks(errorMessage=""){
 
   }
 
-  list.innerHTML=
-    tasksData.map(function(task){
+
+  list.innerHTML =
+    tasksData.map(task => {
 
       const priority =
         task.priority || "medium";
 
-      const priorityLabel =
-        priority==="high"
+
+      const label =
+        priority === "high"
           ? "Haute"
-          : priority==="low"
+          : priority === "low"
             ? "Faible"
             : "Moyenne";
 
+
       return `
+
         <div class="item">
 
           <div class="item-main">
@@ -1778,37 +2864,60 @@ function renderTasks(errorMessage=""){
                   : ""
               }"
             >
+
               ${escapeHTML(task.title)}
+
             </div>
 
             <div class="item-small">
-              Priorité : ${priorityLabel}
+
+              Priorité : ${label}
+
             </div>
 
           </div>
 
+
           <div class="item-actions">
 
             <button
-              class="${task.completed?"orange":"success"}"
-              onclick="toggleTask(
-                ${Number(task.id)},
-                ${!task.completed}
-              )"
+              class="${
+                task.completed
+                  ? "orange"
+                  : "success"
+              }"
+              onclick="
+                toggleTask(
+                  ${Number(task.id)},
+                  ${!task.completed}
+                )
+              "
             >
-              ${task.completed?"Annuler":"Terminer"}
+
+              ${
+                task.completed
+                  ? "Annuler"
+                  : "Terminer"
+              }
+
             </button>
+
 
             <button
               class="danger"
-              onclick="deleteTask(${Number(task.id)})"
+              onclick="
+                deleteTask(${Number(task.id)})
+              "
             >
+
               Supprimer
+
             </button>
 
           </div>
 
         </div>
+
       `;
 
     }).join("");
@@ -1827,13 +2936,17 @@ async function addTask(){
   const title =
     input.value.trim();
 
+
   if(!title){
 
-    alert("Écrivez le nom de la tâche.");
+    alert(
+      "Écrivez le nom de la tâche."
+    );
 
     return;
 
   }
+
 
   try{
 
@@ -1841,6 +2954,7 @@ async function addTask(){
       "/api/tasks",
       {
         method:"POST",
+
         body:JSON.stringify({
           title,
           priority
@@ -1848,7 +2962,8 @@ async function addTask(){
       }
     );
 
-    input.value="";
+
+    input.value = "";
 
     await loadTasks();
 
@@ -1871,11 +2986,13 @@ async function toggleTask(id,completed){
       `/api/tasks/${id}`,
       {
         method:"PATCH",
+
         body:JSON.stringify({
           completed
         })
       }
     );
+
 
     await loadTasks();
 
@@ -1896,6 +3013,7 @@ async function deleteTask(id){
     return;
   }
 
+
   try{
 
     await api(
@@ -1904,6 +3022,7 @@ async function deleteTask(id){
         method:"DELETE"
       }
     );
+
 
     await loadTasks();
 
@@ -1929,25 +3048,25 @@ async function loadEvents(){
     const data =
       await api("/api/events");
 
+
     eventsData =
       data?.events ||
       data?.data ||
       [];
 
+
     if(!Array.isArray(eventsData)){
-      eventsData=[];
+      eventsData = [];
     }
+
 
     renderEvents();
 
   }catch(error){
 
-    console.error(
-      "Erreur planning:",
-      error
-    );
+    console.error(error);
 
-    eventsData=[];
+    eventsData = [];
 
     renderEvents(
       "Impossible de charger le planning."
@@ -1965,9 +3084,22 @@ function renderEvents(errorMessage=""){
 
   if(!list)return;
 
+
   if(errorMessage){
 
-    list.innerHTML=
+    list.innerHTML =
+      `<div class="empty">
+      function renderEvents(errorMessage=""){
+
+  const list =
+    document.getElementById("eventsList");
+
+  if(!list)return;
+
+
+  if(errorMessage){
+
+    list.innerHTML =
       `<div class="empty">
         ${escapeHTML(errorMessage)}
       </div>`;
@@ -1976,9 +3108,10 @@ function renderEvents(errorMessage=""){
 
   }
 
+
   if(!eventsData.length){
 
-    list.innerHTML=
+    list.innerHTML =
       `<div class="empty">
         Aucun événement pour le moment.
       </div>`;
@@ -1987,42 +3120,57 @@ function renderEvents(errorMessage=""){
 
   }
 
-  list.innerHTML=
-    eventsData.map(function(event){
+
+  list.innerHTML =
+    eventsData.map(event => {
 
       return `
+
         <div class="item">
 
           <div class="item-main">
 
             <div class="item-title">
+
               ${escapeHTML(event.title)}
+
             </div>
 
             <div class="item-small">
-              ${escapeHTML(event.event_date || "")}
+
+              ${escapeHTML(
+                event.event_date || ""
+              )}
+
               ${
                 event.event_time
                   ? " — " +
                     escapeHTML(event.event_time)
                   : ""
               }
+
             </div>
 
           </div>
+
 
           <div class="item-actions">
 
             <button
               class="danger"
-              onclick="deleteEvent(${Number(event.id)})"
+              onclick="
+                deleteEvent(${Number(event.id)})
+              "
             >
+
               Supprimer
+
             </button>
 
           </div>
 
         </div>
+
       `;
 
     }).join("");
@@ -2038,10 +3186,12 @@ async function addEvent(){
       .value
       .trim();
 
+
   const date =
     document
       .getElementById("eventDate")
       .value;
+
 
   if(!title || !date){
 
@@ -2053,30 +3203,40 @@ async function addEvent(){
 
   }
 
+
   try{
 
     await api(
       "/api/events",
       {
         method:"POST",
+
         body:JSON.stringify({
+
           title,
+
           event_date:date
+
         })
+
       }
     );
 
+
     document
       .getElementById("eventTitle")
-      .value="";
+      .value = "";
+
 
     document
       .getElementById("eventDate")
-      .value="";
+      .value = "";
+
 
     await loadEvents();
 
     updateDashboard();
+
 
   }catch(error){
 
@@ -2089,11 +3249,16 @@ async function addEvent(){
 
 async function deleteEvent(id){
 
-  if(!confirm(
-    "Supprimer cet événement ?"
-  )){
+  if(
+    !confirm(
+      "Supprimer cet événement ?"
+    )
+  ){
+
     return;
+
   }
+
 
   try{
 
@@ -2104,9 +3269,11 @@ async function deleteEvent(id){
       }
     );
 
+
     await loadEvents();
 
     updateDashboard();
+
 
   }catch(error){
 
@@ -2128,25 +3295,28 @@ async function loadNotes(){
     const data =
       await api("/api/notes");
 
+
     notesData =
       data?.notes ||
       data?.data ||
       [];
 
+
     if(!Array.isArray(notesData)){
-      notesData=[];
+
+      notesData = [];
+
     }
+
 
     renderNotes();
 
+
   }catch(error){
 
-    console.error(
-      "Erreur notes:",
-      error
-    );
+    console.error(error);
 
-    notesData=[];
+    notesData = [];
 
     renderNotes(
       "Impossible de charger les notes."
@@ -2162,11 +3332,13 @@ function renderNotes(errorMessage=""){
   const list =
     document.getElementById("notesList");
 
+
   if(!list)return;
+
 
   if(errorMessage){
 
-    list.innerHTML=
+    list.innerHTML =
       `<div class="empty">
         ${escapeHTML(errorMessage)}
       </div>`;
@@ -2175,9 +3347,10 @@ function renderNotes(errorMessage=""){
 
   }
 
+
   if(!notesData.length){
 
-    list.innerHTML=
+    list.innerHTML =
       `<div class="empty">
         Aucune note pour le moment.
       </div>`;
@@ -2186,36 +3359,48 @@ function renderNotes(errorMessage=""){
 
   }
 
-  list.innerHTML=
-    notesData.map(function(note){
+
+  list.innerHTML =
+    notesData.map(note => {
 
       return `
+
         <div class="item">
 
           <div class="item-main">
 
             <div class="item-title">
+
               ${escapeHTML(note.title)}
+
             </div>
 
             <div class="item-small">
+
               ${escapeHTML(note.content)}
+
             </div>
 
           </div>
+
 
           <div class="item-actions">
 
             <button
               class="danger"
-              onclick="deleteNote(${Number(note.id)})"
+              onclick="
+                deleteNote(${Number(note.id)})
+              "
             >
+
               Supprimer
+
             </button>
 
           </div>
 
         </div>
+
       `;
 
     }).join("");
@@ -2231,11 +3416,13 @@ async function addNote(){
       .value
       .trim();
 
+
   const content =
     document
       .getElementById("noteContent")
       .value
       .trim();
+
 
   if(!title || !content){
 
@@ -2247,30 +3434,40 @@ async function addNote(){
 
   }
 
+
   try{
 
     await api(
       "/api/notes",
       {
         method:"POST",
+
         body:JSON.stringify({
+
           title,
+
           content
+
         })
+
       }
     );
 
+
     document
       .getElementById("noteTitle")
-      .value="";
+      .value = "";
+
 
     document
       .getElementById("noteContent")
-      .value="";
+      .value = "";
+
 
     await loadNotes();
 
     updateDashboard();
+
 
   }catch(error){
 
@@ -2283,11 +3480,16 @@ async function addNote(){
 
 async function deleteNote(id){
 
-  if(!confirm(
-    "Supprimer cette note ?"
-  )){
+  if(
+    !confirm(
+      "Supprimer cette note ?"
+    )
+  ){
+
     return;
+
   }
+
 
   try{
 
@@ -2298,9 +3500,11 @@ async function deleteNote(id){
       }
     );
 
+
     await loadNotes();
 
     updateDashboard();
+
 
   }catch(error){
 
@@ -2322,25 +3526,28 @@ async function loadBudget(){
     const data =
       await api("/api/budget");
 
+
     budgetData =
       data?.budget ||
+      data?.budgets ||
       data?.data ||
       [];
 
+
     if(!Array.isArray(budgetData)){
-      budgetData=[];
+
+      budgetData = [];
+
     }
+
 
     renderBudget();
 
   }catch(error){
 
-    console.error(
-      "Erreur budget:",
-      error
-    );
+    console.error(error);
 
-    budgetData=[];
+    budgetData = [];
 
     renderBudget(
       "Impossible de charger le budget."
@@ -2356,126 +3563,190 @@ function renderBudget(errorMessage=""){
   const list =
     document.getElementById("budgetList");
 
+
   if(!list)return;
+
 
   if(errorMessage){
 
-    list.innerHTML=
+    list.innerHTML =
       `<div class="empty">
         ${escapeHTML(errorMessage)}
       </div>`;
+
+    updateBudgetSummary();
 
     return;
 
   }
 
-  let income=0;
-  let expense=0;
 
-  budgetData.forEach(function(item){
+  if(!budgetData.length){
+
+    list.innerHTML =
+      `<div class="empty">
+        Aucune opération pour le moment.
+      </div>`;
+
+    updateBudgetSummary();
+
+    return;
+
+  }
+
+
+  list.innerHTML =
+    budgetData.map(item => {
+
+      const amount =
+        Number(item.amount || 0);
+
+
+      const isIncome =
+        item.type === "income";
+
+
+      return `
+
+        <div class="item">
+
+          <div class="item-main">
+
+            <div class="item-title">
+
+              ${escapeHTML(
+                item.description || "Opération"
+              )}
+
+            </div>
+
+
+            <div
+              class="item-small ${
+                isIncome
+                  ? "income"
+                  : "expense"
+              }"
+            >
+
+              ${isIncome ? "Revenu" : "Dépense"}
+
+              —
+              
+              ${formatMoney(amount)}
+
+            </div>
+
+          </div>
+
+
+          <div class="item-actions">
+
+            <button
+              class="danger"
+              onclick="
+                deleteBudget(${Number(item.id)})
+              "
+            >
+
+              Supprimer
+
+            </button>
+
+          </div>
+
+        </div>
+
+      `;
+
+    }).join("");
+
+
+  updateBudgetSummary();
+
+}
+
+
+function updateBudgetSummary(){
+
+  let income = 0;
+
+  let expense = 0;
+
+
+  budgetData.forEach(item => {
 
     const amount =
       Number(item.amount || 0);
 
-    if(item.type==="income"){
-      income+=amount;
+
+    if(item.type === "income"){
+
+      income += amount;
+
     }else{
-      expense+=amount;
+
+      expense += amount;
+
     }
 
   });
 
+
   const balance =
-    income-expense;
+    income - expense;
+
 
   const balanceElement =
     document.getElementById(
       "budgetBalance"
     );
 
+
+  const summaryElement =
+    document.getElementById(
+      "budgetSummary"
+    );
+
+
   if(balanceElement){
 
     balanceElement.textContent =
       formatMoney(balance);
 
-    balanceElement.className =
-      "balance " +
-      (
-        balance>=0
-          ? "income"
-          : "expense"
-      );
 
-  }
-
-  const summary =
-    document.getElementById(
-      "budgetSummary"
+    balanceElement.classList.remove(
+      "income",
+      "expense"
     );
 
-  if(summary){
 
-    summary.textContent =
-      `Revenus : ${formatMoney(income)} — Dépenses : ${formatMoney(expense)}`;
+    if(balance > 0){
+
+      balanceElement.classList.add(
+        "income"
+      );
+
+    }else if(balance < 0){
+
+      balanceElement.classList.add(
+        "expense"
+      );
+
+    }
 
   }
 
-  if(!budgetData.length){
 
-    list.innerHTML=
-      `<div class="empty">
-        Aucune opération pour le moment.
-      </div>`;
+  if(summaryElement){
 
-    return;
+    summaryElement.textContent =
+      "Revenus : " +
+      formatMoney(income) +
+      " — Dépenses : " +
+      formatMoney(expense);
 
   }
-
-  list.innerHTML=
-    budgetData.map(function(item){
-
-      const amount =
-        Number(item.amount || 0);
-
-      const isIncome =
-        item.type==="income";
-
-      return `
-        <div class="item">
-
-          <div class="item-main">
-
-            <div class="item-title">
-              ${escapeHTML(item.description)}
-            </div>
-
-            <div class="item-small">
-              ${isIncome?"Revenu":"Dépense"}
-            </div>
-
-          </div>
-
-          <div class="item-actions">
-
-            <strong
-              class="${isIncome?"income":"expense"}"
-            >
-              ${isIncome?"+":"-"}${formatMoney(amount)}
-            </strong>
-
-            <button
-              class="danger"
-              onclick="deleteBudget(${Number(item.id)})"
-            >
-              Supprimer
-            </button>
-
-          </div>
-
-        </div>
-      `;
-
-    }).join("");
 
 }
 
@@ -2484,21 +3755,30 @@ async function addBudget(){
 
   const description =
     document
-      .getElementById("budgetDescription")
+      .getElementById(
+        "budgetDescription"
+      )
       .value
       .trim();
+
 
   const amount =
     Number(
       document
-        .getElementById("budgetAmount")
+        .getElementById(
+          "budgetAmount"
+        )
         .value
     );
 
+
   const type =
     document
-      .getElementById("budgetType")
+      .getElementById(
+        "budgetType"
+      )
       .value;
+
 
   if(!description){
 
@@ -2510,7 +3790,8 @@ async function addBudget(){
 
   }
 
-  if(!amount || amount<=0){
+
+  if(!amount || amount <= 0){
 
     alert(
       "Veuillez entrer un montant valide."
@@ -2520,31 +3801,46 @@ async function addBudget(){
 
   }
 
+
   try{
 
     await api(
       "/api/budget",
       {
         method:"POST",
+
         body:JSON.stringify({
+
           description,
+
           amount,
+
           type
+
         })
+
       }
     );
 
-    document
-      .getElementById("budgetDescription")
-      .value="";
 
     document
-      .getElementById("budgetAmount")
-      .value="";
+      .getElementById(
+        "budgetDescription"
+      )
+      .value = "";
+
+
+    document
+      .getElementById(
+        "budgetAmount"
+      )
+      .value = "";
+
 
     await loadBudget();
 
     updateDashboard();
+
 
   }catch(error){
 
@@ -2557,11 +3853,16 @@ async function addBudget(){
 
 async function deleteBudget(id){
 
-  if(!confirm(
-    "Supprimer cette opération ?"
-  )){
+  if(
+    !confirm(
+      "Supprimer cette opération ?"
+    )
+  ){
+
     return;
+
   }
+
 
   try{
 
@@ -2572,9 +3873,11 @@ async function deleteBudget(id){
       }
     );
 
+
     await loadBudget();
 
     updateDashboard();
+
 
   }catch(error){
 
@@ -2596,25 +3899,28 @@ async function loadGoals(){
     const data =
       await api("/api/goals");
 
+
     goalsData =
       data?.goals ||
       data?.data ||
       [];
 
+
     if(!Array.isArray(goalsData)){
-      goalsData=[];
+
+      goalsData = [];
+
     }
+
 
     renderGoals();
 
+
   }catch(error){
 
-    console.error(
-      "Erreur objectifs:",
-      error
-    );
+    console.error(error);
 
-    goalsData=[];
+    goalsData = [];
 
     renderGoals(
       "Impossible de charger les objectifs."
@@ -2628,13 +3934,17 @@ async function loadGoals(){
 function renderGoals(errorMessage=""){
 
   const list =
-    document.getElementById("goalsList");
+    document.getElementById(
+      "goalsList"
+    );
+
 
   if(!list)return;
 
+
   if(errorMessage){
 
-    list.innerHTML=
+    list.innerHTML =
       `<div class="empty">
         ${escapeHTML(errorMessage)}
       </div>`;
@@ -2643,9 +3953,10 @@ function renderGoals(errorMessage=""){
 
   }
 
+
   if(!goalsData.length){
 
-    list.innerHTML=
+    list.innerHTML =
       `<div class="empty">
         Aucun objectif pour le moment.
       </div>`;
@@ -2654,38 +3965,50 @@ function renderGoals(errorMessage=""){
 
   }
 
-  list.innerHTML=
-    goalsData.map(function(goal){
+
+  list.innerHTML =
+    goalsData.map(goal => {
 
       const target =
         Number(goal.target || 0);
 
+
       const progress =
         Number(goal.progress || 0);
 
+
       const percent =
-        target>0
+        target > 0
           ? Math.min(
               100,
-              Math.round(
-                progress/target*100
+              Math.max(
+                0,
+                (progress / target) * 100
               )
             )
           : 0;
 
+
       return `
+
         <div class="item">
 
           <div class="item-main">
 
             <div class="item-title">
+
               ${escapeHTML(goal.title)}
+
             </div>
 
+
             <div class="item-small">
+
               Progression :
               ${progress} / ${target}
+
             </div>
+
 
             <div class="progress">
 
@@ -2698,29 +4021,41 @@ function renderGoals(errorMessage=""){
 
           </div>
 
+
           <div class="item-actions">
 
             <button
               class="success"
-              onclick="increaseGoal(
-                ${Number(goal.id)},
-                ${Math.min(progress+1,target)}
-              )"
-              ${progress>=target?"disabled":""}
+              onclick="
+                updateGoalProgress(
+                  ${Number(goal.id)},
+                  ${progress + 1}
+                )
+              "
             >
+
               +1
+
             </button>
+
 
             <button
               class="danger"
-              onclick="deleteGoal(${Number(goal.id)})"
+              onclick="
+                deleteGoal(
+                  ${Number(goal.id)}
+                )
+              "
             >
+
               Supprimer
+
             </button>
 
           </div>
 
         </div>
+
       `;
 
     }).join("");
@@ -2736,12 +4071,14 @@ async function addGoal(){
       .value
       .trim();
 
+
   const target =
     Number(
       document
         .getElementById("goalTarget")
         .value
     );
+
 
   if(!title){
 
@@ -2753,15 +4090,17 @@ async function addGoal(){
 
   }
 
-  if(!target || target<=0){
+
+  if(!target || target <= 0){
 
     alert(
-      "Veuillez entrer une cible valide."
+      "Veuillez entrer un objectif valide."
     );
 
     return;
 
   }
+
 
   try{
 
@@ -2769,24 +4108,33 @@ async function addGoal(){
       "/api/goals",
       {
         method:"POST",
+
         body:JSON.stringify({
+
           title,
+
           target
+
         })
+
       }
     );
 
+
     document
       .getElementById("goalTitle")
-      .value="";
+      .value = "";
+
 
     document
       .getElementById("goalTarget")
-      .value="";
+      .value = "";
+
 
     await loadGoals();
 
     updateDashboard();
+
 
   }catch(error){
 
@@ -2797,7 +4145,10 @@ async function addGoal(){
 }
 
 
-async function increaseGoal(id,progress){
+async function updateGoalProgress(
+  id,
+  progress
+){
 
   try{
 
@@ -2805,15 +4156,21 @@ async function increaseGoal(id,progress){
       `/api/goals/${id}`,
       {
         method:"PATCH",
+
         body:JSON.stringify({
+
           progress
+
         })
+
       }
     );
+
 
     await loadGoals();
 
     updateDashboard();
+
 
   }catch(error){
 
@@ -2826,11 +4183,16 @@ async function increaseGoal(id,progress){
 
 async function deleteGoal(id){
 
-  if(!confirm(
-    "Supprimer cet objectif ?"
-  )){
+  if(
+    !confirm(
+      "Supprimer cet objectif ?"
+    )
+  ){
+
     return;
+
   }
+
 
   try{
 
@@ -2841,9 +4203,11 @@ async function deleteGoal(id){
       }
     );
 
+
     await loadGoals();
 
     updateDashboard();
+
 
   }catch(error){
 
@@ -2861,60 +4225,97 @@ async function deleteGoal(id){
 function updateDashboard(){
 
   const statTasks =
-    document.getElementById("statTasks");
+    document.getElementById(
+      "statTasks"
+    );
+
 
   const statEvents =
-    document.getElementById("statEvents");
+    document.getElementById(
+      "statEvents"
+    );
+
 
   const statNotes =
-    document.getElementById("statNotes");
+    document.getElementById(
+      "statNotes"
+    );
+
 
   const statGoals =
-    document.getElementById("statGoals");
+    document.getElementById(
+      "statGoals"
+    );
+
 
   if(statTasks){
+
     statTasks.textContent =
       tasksData.length;
+
   }
+
 
   if(statEvents){
+
     statEvents.textContent =
       eventsData.length;
+
   }
+
 
   if(statNotes){
+
     statNotes.textContent =
       notesData.length;
+
   }
 
+
   if(statGoals){
+
     statGoals.textContent =
       goalsData.length;
+
   }
+
+
+  updateBudgetSummary();
 
 }
 
 
 /* =====================================================
-   FOCUS TIMER
+   FOCUS
 ===================================================== */
 
-let timerSeconds=25*60;
-let timerInterval=null;
+let focusSeconds = 25 * 60;
+
+let focusInterval = null;
+
+let focusRunning = false;
 
 
-function updateTimer(){
+function updateFocusDisplay(){
 
   const timer =
-    document.getElementById("timer");
+    document.getElementById(
+      "timer"
+    );
+
 
   if(!timer)return;
 
+
   const minutes =
-    Math.floor(timerSeconds/60);
+    Math.floor(
+      focusSeconds / 60
+    );
+
 
   const seconds =
-    timerSeconds%60;
+    focusSeconds % 60;
+
 
   timer.textContent =
     String(minutes).padStart(2,"0") +
@@ -2924,58 +4325,149 @@ function updateTimer(){
 }
 
 
-function startTimer(){
+function startFocus(){
 
-  if(timerInterval){
+  if(focusRunning){
+
     return;
+
   }
 
-  timerInterval =
-    setInterval(function(){
 
-      if(timerSeconds<=0){
+  if(focusSeconds <= 0){
 
-        clearInterval(timerInterval);
+    focusSeconds =
+      25 * 60;
 
-        timerInterval=null;
+  }
 
-        alert(
-          "Votre session Focus est terminée."
-        );
 
-        return;
+  focusRunning = true;
 
-      }
 
-      timerSeconds--;
+  showFocusMessage(
+    "Session de concentration démarrée.",
+    "ok"
+  );
 
-      updateTimer();
 
-    },1000);
+  focusInterval =
+    setInterval(
+      function(){
+
+        if(focusSeconds > 0){
+
+          focusSeconds--;
+
+          updateFocusDisplay();
+
+        }
+
+
+        if(focusSeconds <= 0){
+
+          clearInterval(
+            focusInterval
+          );
+
+          focusInterval = null;
+
+          focusRunning = false;
+
+
+          showFocusMessage(
+            "Session terminée. Bravo !",
+            "ok"
+          );
+
+        }
+
+      },
+      1000
+    );
 
 }
 
 
-function pauseTimer(){
+function pauseFocus(){
 
-  if(timerInterval){
+  if(focusInterval){
 
-    clearInterval(timerInterval);
+    clearInterval(
+      focusInterval
+    );
 
-    timerInterval=null;
+    focusInterval = null;
 
   }
+
+
+  focusRunning = false;
+
+
+  showFocusMessage(
+    "Session mise en pause.",
+    "ok"
+  );
 
 }
 
 
-function resetTimer(){
+function resetFocus(){
 
-  pauseTimer();
+  if(focusInterval){
 
-  timerSeconds=25*60;
+    clearInterval(
+      focusInterval
+    );
 
-  updateTimer();
+    focusInterval = null;
+
+  }
+
+
+  focusRunning = false;
+
+  focusSeconds =
+    25 * 60;
+
+
+  updateFocusDisplay();
+
+
+  showFocusMessage(
+    "Minuteur réinitialisé.",
+    "ok"
+  );
+
+}
+
+
+function showFocusMessage(
+  text,
+  type
+){
+
+  const box =
+    document.getElementById(
+      "focusMessage"
+    );
+
+
+  if(!box)return;
+
+
+  box.textContent =
+    text || "";
+
+
+  box.className =
+    "message show " +
+    (
+      type === "bad"
+        ? "bad"
+        : "ok"
+    );
 
 }
 
@@ -2984,19 +4476,25 @@ function resetTimer(){
    PREMIUM
 ===================================================== */
 
+/*
+   IMPORTANT :
+
+   Cette partie NE MODIFIE PAS
+   le paiement réel.
+
+   Le paiement reste géré
+   manuellement par le propriétaire
+   via MonCash / Tchotchom.
+
+   Le bouton de confirmation envoie
+   seulement une demande au backend.
+
+   Le backend décide ensuite si
+   le compte devient Premium.
+*/
+
+
 async function loadSubscription(){
-
-  const status =
-    document.getElementById(
-      "premiumStatus"
-    );
-
-  const badge =
-    document.getElementById(
-      "premiumBadge"
-    );
-
-  if(!status)return;
 
   try{
 
@@ -3005,54 +4503,46 @@ async function loadSubscription(){
         "/api/subscription/status"
       );
 
-    const premium =
-      data?.premium === true ||
-      data?.isPremium === true ||
-      data?.data?.premium === true ||
-      data?.subscription?.status === "active";
 
-    if(premium){
+    /*
+      Le backend peut retourner
+      plusieurs formats.
+    */
 
-      status.innerHTML =
-        "Votre compte est actuellement <strong>Premium</strong>.";
+    const subscription =
+      data?.subscription ||
+      data?.data?.subscription ||
+      data?.data ||
+      null;
 
-      if(badge){        badge.classList.remove("hidden");
-      }
 
-      const button =
-        document.getElementById("premiumButton");
+    const user =
+      data?.user ||
+      data?.data?.user ||
+      null;
 
-      if(button){
 
-        button.textContent =
-          "Premium activé";
+    if(user){
 
-        button.disabled = true;
-
-      }
-
-    }else{
-
-      status.innerHTML =
-        "Votre compte utilise actuellement <strong>Lumio Free</strong>.";
-
-      if(badge){
-        badge.classList.add("hidden");
-      }
-
-      const button =
-        document.getElementById("premiumButton");
-
-      if(button){
-
-        button.textContent =
-          "Activer Premium — 250 HTG";
-
-        button.disabled = false;
-
-      }
+      currentUser = {
+        ...currentUser,
+        ...user
+      };
 
     }
+
+
+    isPremium =
+      Boolean(
+        data?.premium ??
+        data?.isPremium ??
+        currentUser?.premium ??
+        subscription?.status === "active"
+      );
+
+
+    updatePremiumUI();
+
 
   }catch(error){
 
@@ -3061,11 +4551,267 @@ async function loadSubscription(){
       error
     );
 
-    status.innerHTML =
-      "Votre compte utilise actuellement <strong>Lumio Free</strong>.";
 
-    if(badge){
-      badge.classList.add("hidden");
+    /*
+      Si le backend ne possède
+      pas encore la route,
+      on garde le compte Free.
+    */
+
+    isPremium = false;
+
+    updatePremiumUI();
+
+  }
+
+}
+
+
+function updatePremiumUI(){
+
+  const freeBox =
+    document.getElementById(
+      "premiumFreeBox"
+    );
+
+
+  const activeBox =
+    document.getElementById(
+      "premiumActiveBox"
+    );
+
+
+  const badge =
+    document.getElementById(
+      "premiumBadge"
+    );
+
+
+  if(isPremium){
+
+    freeBox?.classList.add(
+      "hidden"
+    );
+
+
+    activeBox?.classList.remove(
+      "hidden"
+    );
+
+
+    badge?.classList.remove(
+      "hidden"
+    );
+
+  }else{
+
+    freeBox?.classList.remove(
+      "hidden"
+    );
+
+
+    activeBox?.classList.add(
+      "hidden"
+    );
+
+
+    badge?.classList.add(
+      "hidden"
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   PAIEMENT
+===================================================== */
+
+function openPayment(){
+
+  window.open(
+    TCHOTCHOM_PAYMENT_URL,
+    "_blank",
+    "noopener,noreferrer"
+  );
+
+}
+
+
+/*
+   On s'assure que le lien HTML
+   utilise toujours l'adresse
+   configurée dans le JS.
+*/
+
+const paymentLink =
+  document.getElementById(
+    "paymentLink"
+  );
+
+
+if(paymentLink){
+
+  paymentLink.href =
+    TCHOTCHOM_PAYMENT_URL;
+
+}
+
+
+/* =====================================================
+   CONFIRMATION DU PAIEMENT
+===================================================== */
+
+async function confirmPremiumPayment(){
+
+  const button =
+    document.getElementById(
+      "confirmPaymentButton"
+    );
+
+
+  const message =
+    document.getElementById(
+      "paymentMessage"
+    );
+
+
+  if(isPremium){
+
+    showPaymentMessage(
+      "Votre Premium est déjà actif.",
+      "ok"
+    );
+
+    return;
+
+  }
+
+
+  if(button){
+
+    button.disabled = true;
+
+    button.textContent =
+      "Envoi en cours...";
+
+  }
+
+
+  showPaymentMessage(
+    "Envoi de votre demande de confirmation...",
+    "ok"
+  );
+
+
+  try{
+
+    /*
+      IMPORTANT :
+
+      Cette requête ne traite PAS
+      le paiement.
+
+      Elle informe simplement
+      le backend que l'utilisateur
+      affirme avoir payé.
+
+      La validation réelle peut
+      rester manuelle.
+    */
+
+    const data =
+      await api(
+        "/api/subscription/confirm-payment",
+        {
+          method:"POST",
+
+          body:JSON.stringify({
+
+            amount:PREMIUM_PRICE,
+
+            currency:"HTG",
+
+            provider:"tchotchom"
+
+          })
+
+        }
+      );
+
+
+    /*
+      Si le backend confirme
+      immédiatement le Premium.
+    */
+
+    const confirmedPremium =
+      Boolean(
+        data?.premium ??
+        data?.isPremium ??
+      data?.isPremium ??
+        data?.user?.premium ??
+        data?.data?.premium ??
+        false
+      );
+
+
+    if(confirmedPremium){
+
+      isPremium = true;
+
+      if(data?.user){
+
+        currentUser = {
+          ...currentUser,
+          ...data.user
+        };
+
+      }
+
+      updatePremiumUI();
+
+      showPaymentMessage(
+        "Paiement confirmé. Votre Premium est maintenant actif.",
+        "ok"
+      );
+
+    }else{
+
+      showPaymentMessage(
+        data?.message ||
+        "Votre demande a bien été envoyée. Elle sera vérifiée avant l'activation de Premium.",
+        "ok"
+      );
+
+    }
+
+
+  }catch(error){
+
+    console.error(
+      "Erreur confirmation paiement:",
+      error
+    );
+
+
+    showPaymentMessage(
+      error.message ||
+      "Impossible d'envoyer la confirmation.",
+      "bad"
+    );
+
+
+  }finally{
+
+    if(button){
+
+      button.disabled = false;
+
+      button.textContent =
+        "J'ai effectué le paiement";
+
     }
 
   }
@@ -3074,54 +4820,79 @@ async function loadSubscription(){
 
 
 /* =====================================================
-   ACTIVATION PREMIUM
+   MESSAGE PAIEMENT
 ===================================================== */
 
-function activatePremium(){
+function showPaymentMessage(
+  text,
+  type="ok"
+){
 
-  const result =
+  const box =
     document.getElementById(
-      "paymentResult"
+      "paymentMessage"
     );
 
-  const button =
-    document.getElementById(
-      "premiumButton"
+
+  if(!box)return;
+
+
+  box.textContent =
+    text || "";
+
+
+  box.className =
+    "message show " +
+    (
+      type === "bad"
+        ? "bad"
+        : "ok"
     );
 
-  if(result){
+}
 
-    result.className =
-      "message show ok";
 
-    result.textContent =
-      "Vous allez être redirigé vers Tchotchom pour payer 250 HTG.";
+/* =====================================================
+   DATE PAR DÉFAUT DU PLANNING
+===================================================== */
+
+function setDefaultEventDate(){
+
+  const input =
+    document.getElementById(
+      "eventDate"
+    );
+
+
+  if(!input)return;
+
+
+  if(!input.value){
+
+    const today =
+      new Date();
+
+
+    const year =
+      today.getFullYear();
+
+
+    const month =
+      String(
+        today.getMonth() + 1
+      ).padStart(2,"0");
+
+
+    const day =
+      String(
+        today.getDate()
+      ).padStart(2,"0");
+
+
+    input.value =
+      `${year}-${month}-${day}`;
 
   }
-
-  if(button){
-
-    button.disabled = true;
-
-    button.textContent =
-      "Ouverture du paiement...";
-
-  }
-
-  /*
-    Le paiement est effectué directement
-    sur le lien Tchotchom.
-
-    Montant prévu :
-    250 HTG
-  */
-
-  setTimeout(function(){
-
-    window.location.href =
-      TCHOTCHOM_PAYMENT_URL;
-
-  },700);
 
 }
 
@@ -3130,49 +4901,51 @@ function activatePremium(){
    INITIALISATION
 ===================================================== */
 
+function initializeLumio(){
+
+  updateFocusDisplay();
+
+  setDefaultEventDate();
+
+  updatePremiumUI();
+
+
+  /*
+    Si un token existe déjà,
+    on tente de restaurer
+    automatiquement la session.
+  */
+
+  if(token){
+
+    openApp();
+
+  }else{
+
+    showAuth();
+
+  }
+
+}
+
+
+/* =====================================================
+   LANCEMENT
+===================================================== */
+
 document.addEventListener(
   "DOMContentLoaded",
   function(){
 
-    updateTimer();
-
-    /*
-      Si un token existe déjà,
-      on essaie de restaurer la session.
-    */
-
-    if(token){
-
-      openApp();
-
-    }else{
-
-      showAuth();
-
-    }
+    initializeLumio();
 
   }
 );
 
-
-/* =====================================================
-   PROTECTION CONTRE LES ERREURS
-===================================================== */
-
-window.addEventListener(
-  "error",
-  function(event){
-
-    console.error(
-      "Erreur JavaScript Lumio:",
-      event.error || event.message
-    );
-
-  }
-);
 
 </script>
 
+
 </body>
+
 </html>
-        
